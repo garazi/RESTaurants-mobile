@@ -281,8 +281,9 @@
                   "layoutType": "absolute",
                   "size.w": "100%",
                   "margin.top": 40,
+                  "padding.left": 5,
                   "font": "HelveticaNeue-Thin:16",
-                  "text": "Be the first to write a Review: [[dataReviews.reviews.0.count]]",
+                  "text": "Be the first to write a Review",
                   "text.align": "left",
                   "visible": false
                 }
