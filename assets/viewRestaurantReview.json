@@ -1,148 +1,234 @@
 {
-    "view": {
-        "actions": [],
+  "view": {
+    "actions": [
+      {
+        "_type": "Function",
         "attributes": {
-            "_id": "restaurantReview",
-            "bg.color": "#ffffff",
-            "statusBar.style": "dark"
+          "_target": "reviewTitle",
+          "functionName": "focus",
+          "delay": 0.5
         },
-        "controls": [{
-            "_id": "layoutMain",
+        "on": "didAppear"
+      }
+    ],
+    "attributes": {
+      "_id": "restaurantReview",
+      "bg.color": "#ffffff",
+      "statusBar.style": "dark"
+    },
+    "controls": [
+      {
+        "_id": "layoutHeader",
+        "_type": "Layout",
+        "attributes": {
+          "bg.color": "#ffffff",
+          "layoutType": "float",
+          "size.h": 70,
+          "size.w": "100%",
+          "position.t": 0
+        },
+        "controls": [
+          {
+            "_id": "layoutDivider",
             "_type": "Layout",
             "attributes": {
-                "bg.color": "#ffffff",
-                "layoutType": "absolute",
-                "size.h": "100%",
-                "size.w": "100%"
+              "bg.color": "#FF4300",
+              "layoutType": "absolute",
+              "size.h": 1,
+              "size.w": "100%",
+              "align.v": "bottom"
+            }
+          },
+          {
+            "_id": "title",
+            "_type": "Text",
+            "attributes": {
+              "align.h": "center",
+              "align.v": "top",
+              "color": "#FF4300",
+              "font": "HelveticaNeue-Thin:26",
+              "layoutType": "float",
+              "margin.top": 20,
+              "size.h": 50,
+              "size.w": "100%",
+              "text": "Write A Review",
+              "text.align": "center"
+            }
+          },
+          {
+            "_id": "imageLeft",
+            "_type": "Text",
+            "actions": [
+              {
+                "_type": "Navigate",
+                "attributes": {
+                  "animation.duration": 0.5,
+                  "animation.type": "flip.l",
+                  "stackType": "pop"
+                },
+                "on": "touchUp"
+              }
+            ],
+            "attributes": {
+              "align.h": "left",
+              "align.v": "middle",
+              "color": "#FF4300",
+              "font": "FontAwesome:24",
+              "text": "fa-times",
+              "layoutType": "float",
+              "margin.left": 10,
+              "padding.top": 18,
+              "size.h": 44,
+              "size.w": 44,
+              "visible": true
+            }
+          }
+        ]
+      },
+      {
+        "_id": "layoutMain",
+        "_type": "Layout",
+        "attributes": {
+          "bg.color": "#ffffff",
+          "layoutType": "absolute",
+          "size.h": "100%",
+          "size.w": "100%"
+        },
+        "controls": [
+          {
+            "_id": "reviewForm",
+            "_type": "Layout",
+            "attributes": {
+              "size.h": "100%",
+              "padding.top": 70,
+              "padding": 10,
+              "size.w": "100%"
             },
-            "controls": [{
-                "_id": "layoutHeader",
-                "_type": "Layout",
+            "controls": [
+              {
+                "_id": "reviewTitle",
+                "_type": "TextInput",
+                "actions": [
+                  {
+                    "_type": "Modify",
+                    "attributes": {
+                      "_target": "layoutMain",
+                      "duration": 0.33
+                    },
+                    "on": "focus",
+                    "set": {
+                      "padding.bottom": 255
+                    }
+                  },
+                  {
+                    "_type": "Modify",
+                    "attributes": {
+                      "_target": "layoutMain",
+                      "duration": 0.33
+                    },
+                    "on": "focusLost",
+                    "set": {
+                      "padding.bottom": 0
+                    }
+                  }
+                ],
                 "attributes": {
-                    "bg.color": "#ffffff",
-                    "layoutType": "absolute",
-                    "size.h": 70,
-                    "size.w": "100%",
-                    "position.t": 0
-                },
-                "controls": [{
-                    "_id": "layoutDivider",
-                    "_type": "Layout",
+                  "keyboardAdjustsScreen.enabled": false,
+                  "placeholder.text": "Give your review a title...",
+                  "margin.top": 10,
+                  "padding": 10,
+                  "size.h": 44,
+                  "size.w": "100%",
+                  "text.align": "left",
+                  "font": "HelveticaNeue-Thin:20",
+                  "bg.color": "#f0f0f0"
+                }
+              },
+              {
+                "_id": "reviewAuthor",
+                "_type": "TextInput",
+                "actions": [
+                  {
+                    "_type": "Modify",
                     "attributes": {
-                        "bg.color": "#FF4300",
-                        "layoutType": "absolute",
-                        "size.h": 1,
-                        "size.w": "100%",
-                        "align.v": "bottom"
+                      "_target": "layoutMain",
+                      "duration": 0.33
+                    },
+                    "on": "focus",
+                    "set": {
+                      "padding.bottom": 255
                     }
-                }, {
-                    "_id": "title",
-                    "_type": "Text",
+                  },
+                  {
+                    "_type": "Modify",
                     "attributes": {
-                        "align.h": "center",
-                        "align.v": "top",
-                        "color": "#FF4300",
-                        "font": "HelveticaNeue-Thin:26",
-                        "layoutType": "float",
-                        "margin.top": 20,
-                        "size.h": 50,
-                        "size.w": "100%",
-                        "text": "Write A Review",
-                        "text.align": "center"
+                      "_target": "layoutMain",
+                      "duration": 0.33
+                    },
+                    "on": "focusLost",
+                    "set": {
+                      "padding.bottom": 0
                     }
-                }, {
-                    "_id": "imageLeft",
-                    "_type": "Text",
-                    "actions": [{
-                        "_type": "Navigate",
-                        "attributes": {
-                            "animation.duration": 0.5,
-                            "animation.type": "flip.l",
-                            "stackType": "pop"
-                        },
-                        "on": "touchUp"
-                    }],
-                    "attributes": {
-                        "align.h": "left",
-                        "align.v": "middle",
-                        "color": "#FF4300",
-                        "font": "FontAwesome:24",
-                        "text": "fa-times",
-                        "layoutType": "float",
-                        "margin.left": 10,
-                        "padding.top": 18,
-                        "size.h": 44,
-                        "size.w": 44,
-                        "visible": true
-                    }
-                }]
-            }, {
-                "_id": "reviewForm",
-                "_type": "Layout",
+                  }
+                ],
                 "attributes": {
-                    "align.h": "center",
-                    "align.v": "middle",
-                    "layoutType": "absolute",
-                    "padding.top": 80,
-                    "position.t": 80,
-                    "size.w": "100%"
-                },
-                "controls": [{
-                    "_id": "reviewTitle",
-                    "_type": "TextInput",
+                  "keyboardAdjustsScreen.enabled": false,
+                  "keyboard.returnKey": "go",
+                  "placeholder.text": "Your name",
+                  "padding": 10,
+                  "size.h": 44,
+                  "margin.top": 10,
+                  "size.w": "100%",
+                  "text.align": "left",
+                  "font": "HelveticaNeue-Thin:20",
+                  "bg.color": "#f0f0f0"
+                }
+              },
+              {
+                "_id": "reviewBody",
+                "_type": "TextInput",
+                "actions": [
+                  {
+                    "_type": "Modify",
                     "attributes": {
-                        "align.h": "left",
-                        "align.v": "top",
-                        "keyboardAdjustsScreen.enabled": true,
-                        "layoutType": "absolute",
-                        "placeholder.text": "Give your review a title...",
-                        "position.t": 10,
-                        "padding": 10,
-                        "size.h": 60,
-                        "size.w": "100%",
-                        "text.align": "left",
-                        "font": "HelveticaNeue-Thin:20",
-                        "*bg.color": "#888888"
+                      "_target": "layoutMain",
+                      "duration": 0.33
+                    },
+                    "on": "focus",
+                    "set": {
+                      "padding.bottom": 255
                     }
-                },{
-                    "_id": "reviewAuthor",
-                    "_type": "TextInput",
+                  },
+                  {
+                    "_type": "Modify",
                     "attributes": {
-                        "align.h": "left",
-                        "align.v": "top",
-                        "keyboard.returnKey": "go",
-                        "keyboardAdjustsScreen.enabled": true,
-                        "layoutType": "float",
-                        "placeholder.text": "Your name",
-                        "margin.top": 140,
-                        "padding": 10,
-                        "size.h": 60,
-                        "size.w": "100%",
-                        "text.align": "left",
-                        "font": "HelveticaNeue-Thin:20",
-                        "*bg.color": "#999999"
+                      "_target": "layoutMain",
+                      "duration": 0.33
+                    },
+                    "on": "focusLost",
+                    "set": {
+                      "padding.bottom": 0
                     }
-                },{
-                    "_id": "reviewBody",
-                    "_type": "TextInput",
-                    "attributes": {
-                        "align.h": "left",
-                        "align.v": "top",
-                        "keyboard.returnKey": "Done",
-                        "keyboardAdjustsScreen.enabled": true,
-                        "layoutType": "float",
-                        "placeholder.text": "Write your review...",
-                        "margin.top": 200,
-                        "padding": 10,
-                        "size.h": 300,
-                        "size.w": "100%",
-                        "text.align": "left",
-                        "font": "HelveticaNeue-Thin:20",
-                        "*bg.color": "#666666"
-                    }
-                }]
-            }]
-        }],
-        "datasources": []
-    }
+                  }
+                ],
+                "attributes": {
+                  "keyboardAdjustsScreen.enabled": false,
+                  "keyboard.returnKey": "Done",
+                  "padding": 10,
+                  "margin.top": 10,
+                  "size.h": 300,
+                  "size.w": "100%",
+                  "text.align": "left",
+                  "multiline.enabled": true,
+                  "font": "HelveticaNeue-Thin:20",
+                  "bg.color": "#f0f0f0"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "datasources": []
+  }
 }
