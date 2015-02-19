@@ -23,8 +23,7 @@
           "bg.color": "#ffffff",
           "layoutType": "absolute",
           "size.h": "100%",
-          "size.w": "100%",
-          "padding.bottom": 1
+          "size.w": "100%"
         },
         "controls": [
           {

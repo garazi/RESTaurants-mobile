@@ -14,8 +14,7 @@
                 "layoutType": "absolute",
                 "layoutFlow": "vertical",
                 "size.h": "100%",
-                "size.w": "100%",
-                "padding.bottom": 1
+                "size.w": "100%"
             },
             "controls": [{
                 "_id": "layoutHeader",
@@ -214,7 +213,10 @@
                         "actions": [{
                             "_type": "Navigate",
                             "attributes": {
-                                "stackType": "pop"
+                                "stackType": "push",
+                                "animation.duration": 0.5,
+                "animation.type": "flip.r",
+                                "to":"viewRestaurantReview.json"
                             },
                             "on": "touchUp"
                         }],
