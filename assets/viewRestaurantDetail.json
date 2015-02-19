@@ -71,11 +71,11 @@
                   "align.h": "left",
                   "align.v": "middle",
                   "color": "#FF4300",
-                  "font": "FontAwesome:36",
+                  "font": "FontAwesome:28",
                   "text": "fa-angle-left",
                   "layoutType": "float",
-                  "margin.left": 15,
-                  "padding.top": 12,
+                  "margin.left": 10,
+                  "padding.top": 18,
                   "size.h": 44,
                   "size.w": 44,
                   "visible": true
@@ -197,6 +197,8 @@
               "layoutType": "relative",
               "margin.top": 350,
               "size.w": "100%",
+              "padding.left": 5,
+              "padding.right": 5,
               "autofill.h": true
             },
             "controls": [
@@ -220,9 +222,10 @@
                       "color": "#FF4300",
                       "font": "HelveticaNeue-Thin:18",
                       "layoutType": "absolute",
-                      "margin.left": 5,
+                      "margin.left": 10,
                       "padding.top": 0,
                       "size.h": 50,
+                      "size.w": "100%",
                       "sizeToFit.enabled": true,
                       "text": "Reviews",
                       "text.align": "left"
@@ -247,7 +250,7 @@
                       "font": "FontAwesome:16",
                       "text": "fa-pencil",
                       "layoutType": "float",
-                      "margin.right": 5,
+                      "margin.right": 10,
                       "padding.top": 0,
                       "size.h": 44,
                       "size.w": 44,
@@ -258,7 +261,18 @@
                 ]
               },
               {
-                "_id": "tableTitle",
+                "_id": "myActivityIndicator",
+                "_type": "ActivityIndicator",
+                "attributes": {
+                  "align.h": "center",
+                  "align.v": "middle",
+                  "color": "#fa4c06",
+                  "layoutType": "float",
+                  "size": "small"
+                }
+              },
+              {
+                "_id": "noReviewsText",
                 "_type": "Text",
                 "attributes": {
                   "align.h": "left",
@@ -268,10 +282,7 @@
                   "font": "HelveticaNeue-Thin:16",
                   "text": "Be the first to write a Review",
                   "text.align": "left",
-                  "visible": [
-                    "if :: [[dataReviews.reviews.0.count]] > 0 :: false",
-                    "if :: [[dataReviews.reviews.0.count]] = 0 :: true"
-                  ]
+                  "visible": false
                 }
               },
               {
@@ -287,10 +298,7 @@
                   "autofill.h": true,
                   "margin.top": 40,
                   "separator.style": "none",
-                  "visible": [
-                    "if :: [[dataReviews.reviews.0.count]] > 0 :: true",
-                    "if :: [[dataReviews.reviews.0.count]] = 0 :: false"
-                  ]
+                  "visible": false
                 },
                 "controls": [
                   {
@@ -309,8 +317,9 @@
                     "_type": "Text",
                     "attributes": {
                       "color": "#6c6c6c",
-                      "font": "HelveticaNeue-Light:11",
+                      "font": "HelveticaNeue-LightItalic:11",
                       "margin.left": 5,
+                      "margin.top": 2,
                       "text": "[[dataRow.reviewer]]"
                     }
                   },
@@ -321,6 +330,7 @@
                       "color": "#6c6c6c",
                       "font": "HelveticaNeue-Light:11",
                       "margin.left": 5,
+                      "margin.top": 2,
                       "text": "[[dataRow.body]]"
                     }
                   }
@@ -371,6 +381,42 @@
         "_id": "dataReviews",
         "_type": "JSON",
         "actions": [
+          {
+            "_type": "Modify",
+            "attributes": {
+              "_target": "myActivityIndicator"
+            },
+            "on": "success",
+            "set": {
+              "visible": false
+            }
+          },
+          {
+            "_type": "Modify",
+            "attributes": {
+              "_target": "noReviewsText"
+            },
+            "on": "success",
+            "set": {
+              "visible": [
+                    "if :: [[dataReviews.reviews.0.count]] > 0 :: false",
+                    "if :: [[dataReviews.reviews.0.count]] = 0 :: true"
+                  ]
+            }
+          },
+          {
+            "_type": "Modify",
+            "attributes": {
+              "_target": "tableviewReviews"
+            },
+            "on": "success",
+            "set": {
+              "visible": [
+                    "if :: [[dataReviews.reviews.0.count]] > 0 :: true",
+                    "if :: [[dataReviews.reviews.0.count]] = 0 :: false"
+                  ]
+            }
+          },
           {
             "_type": "Refresh",
             "attributes": {
