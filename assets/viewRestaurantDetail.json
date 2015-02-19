@@ -1,402 +1,462 @@
 {
-    "view": {
-        "actions": [],
+  "view": {
+    "actions": [],
+    "attributes": {
+      "_id": "restaurantDetail",
+      "bg.color": "#ffffff",
+      "statusBar.style": "dark"
+    },
+    "controls": [
+      {
+        "_id": "layoutMain",
+        "_type": "Layout",
         "attributes": {
-            "_id": "restaurantDetail",
-            "bg.color": "#ffffff",
-            "statusBar.style": "dark"
+          "bg.color": "#000000",
+          "layoutType": "absolute",
+          "layoutFlow": "vertical",
+          "size.h": "100%",
+          "size.w": "100%"
         },
-        "controls": [{
-            "_id": "layoutMain",
+        "controls": [
+          {
+            "_id": "layoutHeader",
             "_type": "Layout",
             "attributes": {
-                "bg.color": "#000000",
-                "layoutType": "absolute",
-                "layoutFlow": "vertical",
-                "size.h": "100%",
-                "size.w": "100%"
+              "bg.color": "#ffffff",
+              "layoutType": "absolute",
+              "size.h": 70,
+              "size.w": "100%"
             },
-            "controls": [{
+            "controls": [
+              {
+                "_id": "headerTitle",
+                "_type": "Text",
+                "actions": [
+                  {
+                    "_type": "Function",
+                    "attributes": {
+                      "_target": "actionSheetTest",
+                      "functionName": "present"
+                    },
+                    "on": "touchUp"
+                  }
+                ],
+                "attributes": {
+                  "align.h": "center",
+                  "align.v": "middle",
+                  "color": "#FF4300",
+                  "font": "HelveticaNeue-Thin:26",
+                  "layoutType": "float",
+                  "padding.top": 20,
+                  "size.h": 50,
+                  "sizeToFit.enabled": true,
+                  "text": "[[session.restaurantName]]",
+                  "text.align": "center"
+                }
+              },
+              {
+                "_id": "imageLeft",
+                "_type": "Text",
+                "actions": [
+                  {
+                    "_type": "Navigate",
+                    "attributes": {
+                      "stackType": "pop"
+                    },
+                    "on": "touchUp"
+                  }
+                ],
+                "attributes": {
+                  "align.h": "left",
+                  "align.v": "middle",
+                  "color": "#FF4300",
+                  "font": "FontAwesome:28",
+                  "text": "fa-angle-left",
+                  "layoutType": "float",
+                  "margin.left": 10,
+                  "padding.top": 18,
+                  "size.h": 44,
+                  "size.w": 44,
+                  "visible": true
+                }
+              }
+            ]
+          },
+          {
+            "_id": "restaurantDetails",
+            "_type": "Layout",
+            "attributes": {
+              "align.h": "center",
+              "align.v": "top",
+              "autofill.h": true,
+              "layoutType": "absolute",
+              "bg.color": "#ffffff",
+              "margin.top": 70,
+              "size.w": "100%"
+            },
+            "controls": [
+              {
+                "_id": "layoutTest",
+                "_type": "Layout",
+                "attributes": {
+                  "align.h": "center",
+                  "align.v": "top",
+                  "layoutType": "absolute",
+                  "size.h": "50%",
+                  "size.w": "100%"
+                },
+                "controls": [
+                  {
+                    "_id": "restAddr",
+                    "_type": "Text",
+                    "attributes": {
+                      "align.h": "center",
+                      "align.v": "top",
+                      "color": "#FF4300",
+                      "font": "HelveticaNeue-Thin:16",
+                      "layoutType": "float",
+                      "padding.top": 0,
+                      "size.h": 50,
+                      "sizeToFit.enabled": true,
+                      "text": "[[session.restAddr]]",
+                      "text.align": "center"
+                    }
+                  },
+                  {
+                    "_id": "restAddr",
+                    "_type": "Text",
+                    "attributes": {
+                      "align.h": "center",
+                      "align.v": "top",
+                      "color": "#FF4300",
+                      "font": "HelveticaNeue-Thin:16",
+                      "layoutType": "absolute",
+                      "padding.top": 0,
+                      "margin.top": 20,
+                      "size.h": 50,
+                      "sizeToFit.enabled": true,
+                      "text": "[[session.restCity]]",
+                      "text.align": "center"
+                    }
+                  },
+                  {
+                    "_id": "restAddr",
+                    "_type": "Text",
+                    "attributes": {
+                      "align.h": "center",
+                      "align.v": "top",
+                      "color": "#FF4300",
+                      "font": "HelveticaNeue-Thin:14",
+                      "layoutType": "absolute",
+                      "padding.top": 0,
+                      "margin.top": 40,
+                      "size.h": 50,
+                      "sizeToFit.enabled": true,
+                      "text": "[[session.restPhone]]",
+                      "text.align": "center"
+                    }
+                  }
+                ]
+              },
+              {
+                "_id": "mapControl",
+                "_type": "Map",
+                "actions": [
+                  {
+                    "_type": "Alert",
+                    "attributes": {
+                      "title": "You touched on [[$self.pin.title]]."
+                    },
+                    "on": "touchUp"
+                  }
+                ],
+                "attributes": {
+                  "animatePinDrop.enabled": true,
+                  "pin": {
+                    "lat": "[[session.restLat]]",
+                    "long": "[[session.restLon]]",
+                    "subtitle": "[[session.restAddr]]",
+                    "title": "1: [[session.restaurantName]]"
+                  },
+                  "margin.top": 75,
+                  "margin.bottom": 75,
+                  "size.w": "100%",
+                  "size.h": 200,
+                  "userLocation.enabled": true,
+                  "zoomLevel": 12
+                }
+              }
+            ]
+          },
+          {
+            "_id": "layoutReviews",
+            "_type": "Layout",
+            "attributes": {
+              "align.h": "center",
+              "layoutType": "relative",
+              "margin.top": 350,
+              "size.w": "100%",
+              "padding.left": 5,
+              "padding.right": 5,
+              "autofill.h": true
+            },
+            "controls": [
+              {
                 "_id": "layoutHeader",
                 "_type": "Layout",
                 "attributes": {
-                    "bg.color": "#ffffff",
-                    "layoutType": "absolute",
-                    "size.h": 70,
-                    "size.w": "100%"
+                  "bg.color": "#ffffff",
+                  "layoutType": "absolute",
+                  "size.h": 70,
+                  "size.w": "100%"
                 },
-                "controls": [{
-                    "_id": "headerTitle",
+                "controls": [
+                  {
+                    "_id": "reviewsTitle",
                     "_type": "Text",
-                    "actions": [{
-                        "_type": "Function",
-                        "attributes": {
-                            "_target": "actionSheetTest",
-                            "functionName": "present"
-                        },
-                        "on": "touchUp"
-                    }],
+                    "actions": [],
                     "attributes": {
-                        "align.h": "center",
-                        "align.v": "middle",
-                        "color": "#FF4300",
-                        "font": "HelveticaNeue-Thin:26",
-                        "layoutType": "float",
-                        "padding.top": 20,
-                        "size.h": 50,
-                        "sizeToFit.enabled": true,
-                        "text": "[[session.restaurantName]]",
-                        "text.align": "center"
+                      "align.h": "left",
+                      "align.v": "middle",
+                      "color": "#FF4300",
+                      "font": "HelveticaNeue-Thin:18",
+                      "layoutType": "absolute",
+                      "margin.left": 10,
+                      "padding.top": 0,
+                      "size.h": 50,
+                      "size.w": "100%",
+                      "sizeToFit.enabled": true,
+                      "text": "Reviews",
+                      "text.align": "left"
                     }
-                }, {
-                    "_id": "imageLeft",
+                  },
+                  {
+                    "_id": "imageRight",
                     "_type": "Text",
-                    "actions": [{
+                    "actions": [
+                      {
                         "_type": "Navigate",
                         "attributes": {
-                            "stackType": "pop"
+                          "stackType": "push",
+                          "animation.duration": 0.5,
+                          "animation.type": "flip.r",
+                          "to": "viewRestaurantReview.json"
                         },
                         "on": "touchUp"
-                    }],
+                      }
+                    ],
                     "attributes": {
-                        "align.h": "left",
-                        "align.v": "middle",
-                        "color": "#FF4300",
-                        "font": "FontAwesome:28",
-                        "text": "fa-angle-left",
-                        "layoutType": "float",
-                        "margin.left": 10,
-                        "padding.top": 18,
-                        "size.h": 44,
-                        "size.w": 44,
-                        "visible": true
+                      "align.h": "right",
+                      "align.v": "top",
+                      "color": "#FF4300",
+                      "font": "FontAwesome:16",
+                      "text": "fa-pencil",
+                      "layoutType": "float",
+                      "margin.right": 10,
+                      "padding.top": 0,
+                      "size.h": 44,
+                      "size.w": 44,
+                      "text.align": "right",
+                      "visible": true
                     }
-                }]
-            }, {
-                "_id": "restaurantDetails",
-                "_type": "Layout",
+                  }
+                ]
+              },
+              {
+                "_id": "myActivityIndicator",
+                "_type": "ActivityIndicator",
                 "attributes": {
-                    "align.h": "center",
-                    "align.v": "top",
-                    "autofill.h": true,
-                    "layoutType": "absolute",
-                    "bg.color": "#ffffff",
-                    "margin.top": 70,
-                    "size.w": "100%"
+                  "align.h": "center",
+                  "align.v": "middle",
+                  "color": "#fa4c06",
+                  "layoutType": "float",
+                  "size": "small"
+                }
+              },
+              {
+                "_id": "noReviewsText",
+                "_type": "Text",
+                "attributes": {
+                  "align.h": "left",
+                  "layoutType": "absolute",
+                  "size.w": "100%",
+                  "margin.top": 40,
+                  "font": "HelveticaNeue-Thin:16",
+                  "text": "Be the first to write a Review: [[dataReviews.reviews.0.count]]",
+                  "text.align": "left",
+                  "visible": false
+                }
+              },
+              {
+                "_id": "tableviewReviews",
+                "_type": "TableView",
+                "attributes": {
+                  "autofill.w": true,
+                  "*cell.size.h": 30,
+                  "cell.size.w": "100%",
+                  "datasource.id": "dataReviews",
+                  "data.basepath": "reviews.0.entities",
+                  "enabled": true,
+                  "autofill.h": true,
+                  "margin.top": 40,
+                  "separator.style": "none",
+                  "visible": false
                 },
-                "controls": [{
-                    "_id": "layoutTest",
+                "controls": [
+                  {
+                    "_id": "reviewLayout",
                     "_type": "Layout",
                     "attributes": {
-                        "align.h": "center",
-                        "align.v": "top",
-                        "layoutType": "absolute",
-                        "size.h": "50%",
-                        "size.w": "100%"
+                        "size.w":320,
+                        "autosize.includeInParent":true,
+                        "padding":5
                     },
-                    "controls": [{
-                        "_id": "restAddr",
-                        "_type": "Text",
-                        "attributes": {
-                            "align.h": "center",
-                            "align.v": "top",
-                            "color": "#FF4300",
-                            "font": "HelveticaNeue-Thin:16",
-                            "layoutType": "float",
-                            "padding.top": 0,
-                            "size.h": 50,
-                            "sizeToFit.enabled": true,
-                            "text": "[[session.restAddr]]",
-                            "text.align": "center"
-                        }
-                    }, {
-                        "_id": "restAddr",
-                        "_type": "Text",
-                        "attributes": {
-                            "align.h": "center",
-                            "align.v": "top",
-                            "color": "#FF4300",
-                            "font": "HelveticaNeue-Thin:16",
-                            "layoutType": "absolute",
-                            "padding.top": 0,
-                            "margin.top": 20,
-                            "size.h": 50,
-                            "sizeToFit.enabled": true,
-                            "text": "[[session.restCity]]",
-                            "text.align": "center"
-                        }
-                    }, {
-                        "_id": "restAddr",
-                        "_type": "Text",
-                        "attributes": {
-                            "align.h": "center",
-                            "align.v": "top",
-                            "color": "#FF4300",
-                            "font": "HelveticaNeue-Thin:14",
-                            "layoutType": "absolute",
-                            "padding.top": 0,
-                            "margin.top": 40,
-                            "size.h": 50,
-                            "sizeToFit.enabled": true,
-                            "text": "[[session.restPhone]]",
-                            "text.align": "center"
-                        }
-                    }]
-                }, {
-                    "_id": "mapControl",
-                    "_type": "Map",
-                    "actions": [{
-                        "_type": "Alert",
-                        "attributes": {
-                            "title": "You touched on [[$self.pin.title]]."
-                        },
-                        "on": "touchUp"
-                    }],
-                    "attributes": {
-                        "animatePinDrop.enabled": true,
-                        "pin": {
-                            "lat": "[[session.restLat]]",
-                            "long": "[[session.restLon]]",
-                            "subtitle": "[[session.restAddr]]",
-                            "title": "1: [[session.restaurantName]]"
-                        },
-                        "margin.top": 75,
-                        "margin.bottom": 75,
-                        "size.w": "100%",
-                        "size.h": 200,
-                        "userLocation.enabled": true,
-                        "zoomLevel": 12
-                    }
-                }]
-            }, {
-                "_id": "layoutReviews",
-                "_type": "Layout",
-                "attributes": {
-                    "align.h": "center",
-                    "layoutType": "relative",
-                    "margin.top": 350,
-                    "size.w": "100%",
-                    "padding.left": 5,
-                    "padding.right": 5,
-                    "autofill.h": true
-                },
-                "controls": [{
-                    "_id": "layoutHeader",
-                    "_type": "Layout",
-                    "attributes": {
-                        "bg.color": "#ffffff",
-                        "layoutType": "absolute",
-                        "size.h": 70,
-                        "size.w": "100%"
-                    },
-                    "controls": [{
-                        "_id": "reviewsTitle",
-                        "_type": "Text",
-                        "actions": [],
-                        "attributes": {
-                            "align.h": "left",
-                            "align.v": "middle",
-                            "color": "#FF4300",
-                            "font": "HelveticaNeue-Thin:18",
-                            "layoutType": "absolute",
-                            "margin.left": 10,
-                            "padding.top": 0,
-                            "size.h": 50,
-                            "size.w": "100%",
-                            "sizeToFit.enabled": true,
-                            "text": "Reviews",
-                            "text.align": "left"
-                        }
-                    }, {
-                        "_id": "imageRight",
-                        "_type": "Text",
-                        "actions": [{
-                            "_type": "Navigate",
-                            "attributes": {
-                                "stackType": "push",
-                                "animation.duration": 0.5,
-                "animation.type": "flip.r",
-                                "to":"viewRestaurantReview.json"
-                            },
-                            "on": "touchUp"
-                        }],
-                        "attributes": {
-                            "align.h": "right",
-                            "align.v": "top",
-                            "color": "#FF4300",
-                            "font": "FontAwesome:16",
-                            "text": "fa-pencil",
-                            "layoutType": "float",
-                            "margin.right": 10,
-                            "padding.top": 0,
-                            "size.h": 44,
-                            "size.w": 44,
-                            "text.align": "right",
-                            "visible": true
-                        }
-                    }]
-                }, {
-                    "_id": "myActivityIndicator",
-                    "_type": "ActivityIndicator",
-                    "attributes": {
-                        "align.h": "center",
-                        "align.v": "middle",
-                        "color": "#fa4c06",
-                        "layoutType": "float",
-                        "size": "small"
-                    }
-                }, {
-                    "_id": "noReviewsText",
-                    "_type": "Text",
-                    "attributes": {
-                        "align.h": "left",
-                        "layoutType": "absolute",
-                        "size.w": "100%",
-                        "margin.top": 40,
-                        "font": "HelveticaNeue-Thin:16",
-                        "text": "Be the first to write a Review: [[dataReviews.reviews.0.count]]",
-                        "text.align": "left",
-                        "visible": false
-                    }
-                }, {
-                    "_id": "tableviewReviews",
-                    "_type": "TableView",
-                    "attributes": {
-                        "autofill.w": true,
-                        "*cell.size.h": 30,
-                        "cell.size.w": "100%",
-                        "datasource.id": "dataReviews",
-                        "data.basepath": "reviews.0.entities",
-                        "enabled": true,
-                        "autofill.h": true,
-                        "margin.top": 40,
-                        "separator.style": "none",
-                        "visible": false
-                    },
-                    "controls": [{
+                    "controls": [
+                      {
                         "_id": "reviewTitle",
                         "_type": "Text",
                         "attributes": {
-                            "color": "#6c6c6c",
-                            "font": "HelveticaNeue-Light:14",
-                            "margin.left": 5,
-                            "margin.top": 10,
-                            "text": "[[dataRow.title]]"
+                          "color": "#6c6c6c",
+                          "font": "HelveticaNeue-Light:14",
+                          "margin.top": 10,
+                          "text": "[[dataRow.title]]"
                         }
-                    }, {
+                      },
+                      {
                         "_id": "reviewReviewer",
                         "_type": "Text",
                         "attributes": {
-                            "color": "#6c6c6c",
-                            "font": "HelveticaNeue-LightItalic:11",
-                            "margin.left": 5,
-                            "margin.top": 2,
-                            "text": "[[dataRow.reviewer]]"
+                          "color": "#6c6c6c",
+                          "font": "HelveticaNeue-LightItalic:11",
+                          "margin.top": 2,
+                          "text": "[[dataRow.reviewer]]"
                         }
-                    }, {
+                      },
+                      {
                         "_id": "reviewBody",
                         "_type": "Text",
                         "attributes": {
-                            "color": "#6c6c6c",
-                            "font": "HelveticaNeue-Light:11",
-                            "margin.left": 5,
-                            "margin.top": 2,
-                            "text": "[[dataRow.body]]"
+                          "color": "#6c6c6c",
+                          "font": "HelveticaNeue-Light:11",
+                          "margin.top": 2,
+                          "size.w": 300,
+                          "text": "[[dataRow.body]]"
                         }
-                    }]
-                }]
-            }, {
-                "_id": "actionSheetTest",
-                "_type": "ActionSheet",
-                "actions": [{
-                    "_type": "Alert",
-                    "attributes": {
-                        "title": "Cancel Pressed"
-                    },
-                    "on": "cancel"
-                }, {
-                    "_type": "Navigate",
-                    "attributes": {
-                        "stackType": "external",
-                        "to": "tel://18005551212"
-                    },
-                    "on": "call"
-                }, {
-                    "_type": "Navigate",
-                    "attributes": {
-                        "stackType": "external",
-                        "to": "mailto://me@me.com"
-                    },
-                    "on": "email"
-                }],
-                "attributes": {
-                    "buttons.cancel": "Cancel",
-                    "buttons.others": "Email,Call",
-                    "style": "black.opaque",
-                    "title": "sheetTitle"
-                }
-            }]
-        }],
-        "datasources": [{
-            "_id": "dataReviews",
-            "_type": "JSON",
-            "actions": [{
-                "_type": "Modify",
-                "attributes": {
-                    "_target": "myActivityIndicator"
-                },
-                "on": "success",
-                "set": {
-                    "visible": false
-                }
-            }, {
-                "_type": "Modify",
-                "attributes": {
-                    "_target": "tableviewReviews"
-                },
-                "on": "success",
-                "set": {
-                    "visible": [
-                        "if :: [[dataReviews.reviews.0.count]] > 0 :: true",
-                        "if :: [[dataReviews.reviews.0.count]] == 0 :: false"
+                      }
                     ]
-                },
-                "actions": [{
-                    "_type": "Refresh",
-                    "attributes": {
-                        "_target": "layoutReviews"
-                    },
-                    "on": "success"
-                }]
-            }, {
-                "_type": "Modify",
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_id": "actionSheetTest",
+            "_type": "ActionSheet",
+            "actions": [
+              {
+                "_type": "Alert",
                 "attributes": {
-                    "_target": "noReviewsText"
+                  "title": "Cancel Pressed"
                 },
-                "on": "success",
-                "set": {
-                    "visible": [
-                        "if :: [[dataReviews.reviews.0.count]] > 0 :: false",
-                        "if :: [[dataReviews.reviews.0.count]] == 0 :: true"
-                    ]
+                "on": "cancel"
+              },
+              {
+                "_type": "Navigate",
+                "attributes": {
+                  "stackType": "external",
+                  "to": "tel://18005551212"
                 },
-                "actions": [{
-                    "_type": "Refresh",
-                    "attributes": {
-                        "_target": "layoutReviews"
-                    },
-                    "on": "success"
-                }]
-            }],
+                "on": "call"
+              },
+              {
+                "_type": "Navigate",
+                "attributes": {
+                  "stackType": "external",
+                  "to": "mailto://me@me.com"
+                },
+                "on": "email"
+              }
+            ],
             "attributes": {
-                "autoLoad.enabled": true,
-                "baseUrl": "http://grewis-test.apigee.net",
-                "pathSuffix": "/api-workshop-v2/restaurants/[[session.restID]]",
-                "http_method": "GET"
-            },
-            "parameters": {
-                "client_id": "e3363508f9e449ea88a73b70ff7107bc"
+              "buttons.cancel": "Cancel",
+              "buttons.others": "Email,Call",
+              "style": "black.opaque",
+              "title": "sheetTitle"
             }
-        }]
-    }
+          }
+        ]
+      }
+    ],
+    "datasources": [
+      {
+        "_id": "dataReviews",
+        "_type": "JSON",
+        "actions": [
+          {
+            "_type": "Modify",
+            "attributes": {
+              "_target": "myActivityIndicator"
+            },
+            "on": "success",
+            "set": {
+              "visible": false
+            }
+          },
+          {
+            "_type": "Modify",
+            "attributes": {
+              "_target": "tableviewReviews"
+            },
+            "on": "success",
+            "set": {
+              "visible": [
+                "if :: [[dataReviews.reviews.0.count]] > 0 :: true",
+                "if :: [[dataReviews.reviews.0.count]] == 0 :: false"
+              ]
+            },
+            "actions": [
+              {
+                "_type": "Refresh",
+                "attributes": {
+                  "_target": "layoutReviews"
+                },
+                "on": "success"
+              }
+            ]
+          },
+          {
+            "_type": "Modify",
+            "attributes": {
+              "_target": "noReviewsText"
+            },
+            "on": "success",
+            "set": {
+              "visible": [
+                "if :: [[dataReviews.reviews.0.count]] > 0 :: false",
+                "if :: [[dataReviews.reviews.0.count]] == 0 :: true"
+              ]
+            },
+            "actions": [
+              {
+                "_type": "Refresh",
+                "attributes": {
+                  "_target": "layoutReviews"
+                },
+                "on": "success"
+              }
+            ]
+          }
+        ],
+        "attributes": {
+          "autoLoad.enabled": true,
+          "baseUrl": "http://grewis-test.apigee.net",
+          "pathSuffix": "/api-workshop-v2/restaurants/[[session.restID]]",
+          "http_method": "GET"
+        },
+        "parameters": {
+          "client_id": "e3363508f9e449ea88a73b70ff7107bc"
+        }
+      }
+    ]
+  }
 }
