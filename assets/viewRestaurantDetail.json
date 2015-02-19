@@ -358,7 +358,7 @@
                 "set": {
                     "visible": [
                         "if :: [[dataReviews.reviews.0.count]] > 0 :: true",
-                        "if :: [[dataReviews.reviews.0.count]] = 0 :: false"
+                        "if :: [[dataReviews.reviews.0.count]] == 0 :: false"
                     ]
                 },
                 "actions": [{
@@ -377,7 +377,7 @@
                 "set": {
                     "visible": [
                         "if :: [[dataReviews.reviews.0.count]] > 0 :: false",
-                        "if :: [[dataReviews.reviews.0.count]] = 0 :: true"
+                        "if :: [[dataReviews.reviews.0.count]] == 0 :: true"
                     ]
                 },
                 "actions": [{
