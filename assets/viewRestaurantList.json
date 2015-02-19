@@ -1,0 +1,178 @@
+{
+  "view": {
+    "actions": [
+      {
+        "_type": "Function",
+        "attributes": {
+          "_target": "app",
+          "functionName": "location.auth.request"
+        },
+        "on": "didAppear"
+      }
+    ],
+    "attributes": {
+      "_id": "restaurantList",
+      "bg.color": "#000000",
+      "statusBar.style": "dark"
+    },
+    "controls": [
+      {
+        "_id": "layoutMain",
+        "_type": "Layout",
+        "attributes": {
+          "bg.color": "#ffffff",
+          "layoutType": "absolute",
+          "size.h": "100%",
+          "size.w": "100%",
+          "padding.bottom": 1
+        },
+        "controls": [
+          {
+            "_id": "layoutHeader",
+            "_type": "Layout",
+            "attributes": {
+              "bg.color": "#ffffff",
+              "layoutType": "absolute",
+              "size.h": 70,
+              "size.w": "100%"
+            },
+            "controls": [
+              {
+                "_id": "layoutDivider",
+                "_type": "Layout",
+                "attributes": {
+                  "bg.color": "#FF4300",
+                  "layoutType": "absolute",
+                  "size.h": 1,
+                  "size.w": "100%",
+                  "align.v": "bottom"
+                }
+              },
+              {
+                "_id": "title",
+                "_type": "Text",
+                "attributes": {
+                  "align.h": "center",
+                  "align.v": "top",
+                  "color": "#FF4300",
+                  "font": "HelveticaNeue-Thin:26",
+                  "layoutType": "float",
+                  "margin.top": 20,
+                  "size.h": 50,
+                  "size.w": "100%",
+                  "text": "RESTaurants",
+                  "text.align": "center"
+                }
+              }
+            ]
+          },
+          {
+            "_id": "collectionRestaurants",
+            "_type": "Collection",
+            "attributes": {
+              "autofill.w": true,
+              "cell.size.h": 40,
+              "cell.size.w": "100%",
+              "datasource.id": "dataRestaurants",
+              "data.basepath": "entities",
+              "enabled": true,
+              "autofill.h": true,
+              "margin.top": 70,
+              "separator.style": "default",
+              "text.align": "left"
+            },
+            "controls": [
+              {
+                "_id": "layoutTest",
+                "_type": "Layout",
+                "attributes": {
+                  "align.h": "center",
+                  "align.v": "middle",
+                  "layoutType": "absolute",
+                  "bg.color": "#ffffff",
+                  "padding": 75,
+                  "padding.left": 60,
+                  "padding.right": 60,
+                  "padding.top": 145,
+                  "size.h": "100%",
+                  "size.w": "100%"
+                },
+                "actions": [
+                  {
+                    "_type": "Modify",
+                    "attributes": {
+                      "_target": "session"
+                    },
+                    "on": "touchUp",
+                    "set": {
+                      "restaurantName": "[[dataRow.name]]",
+                      "restID": "[[dataRow.restID]]",
+                      "restAddr": "[[dataRow.address]]",
+                      "restCity": "[[dataRow.city]], [[dataRow.state]]",
+                      "restPhone": "[[dataRow.phone]]",
+                      "restLat": "[[dataRow.location.latitude]]",
+                      "restLon": "[[dataRow.location.longitude]]"
+                    }
+                  },
+                  {
+                    "_type": "Navigate",
+                    "attributes": {
+                      "1nav_animation_duration": 0,
+                      "1nav_animation_type": "crossDissolve",
+                      "1nav_stack_type": "push",
+                      "to": "viewRestaurantDetail.json"
+                    },
+                    "on": "touchUp"
+                  }
+                ],
+                "controls": [
+                  {
+                    "_id": "layoutDivider",
+                    "_type": "Layout",
+                    "attributes": {
+                      "bg.color": "#CCCCCC",
+                      "layoutType": "absolute",
+                      "size.h": 1,
+                      "size.w": "100%",
+                      "align.v": "bottom"
+                    }
+                  },
+                  {
+                    "_type": "Text",
+                    "attributes": {
+                      "color": "#6c6c6c",
+                      "font": "HelveticaNeue-Light:16",
+                      "sizeToFit.enabled": true,
+                      "margin.left": 15,
+                      "margin.right": 20,
+                      "text.align": "left",
+                      "align.v": "middle",
+                      "layoutType": "absolute",
+                      "text": "[[dataRow.name]]"
+                    }
+                  },
+                  {
+                    "_type": "Text",
+                    "attributes": {
+                      "color": "#FF4300",
+                      "font": "FontAwesome:18",
+                      "sizeToFit.enabled": true,
+                      "margin.left": 20,
+                      "margin.right": 15,
+                      "text.align": "left",
+                      "align.v": "middle",
+                      "align.h": "right",
+                      "layoutType": "absolute",
+                      "text": "fa-angle-right"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "datasources": []
+  }
+}

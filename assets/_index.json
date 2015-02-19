@@ -1,0 +1,47 @@
+{
+  "app": {
+    "actions": [
+      {
+        "_type": "Function",
+        "attributes": {
+          "_target": "app",
+          "functionName": "location.beginTracking"
+        },
+        "on": "willFirstAppear"
+      },
+      {
+        "_type": "Alert",
+        "attributes": {
+          "title": "Hi. [[device.location.lat]]"
+        },
+        "on": "location.changed"
+      }
+    ],
+    "attributes": {
+      "view.index": "viewRestaurantList.json",
+      "debug.layout.enabled": false,
+      "logging.datasource.enabled": true,
+      "logging.level": "verbose",
+      "mode": "verbose",
+      "navigationBar.enabled": false,
+      "apigee.org": "grewis",
+      "apigee.app": "sandbox"
+    },
+    "datasources": [
+      {
+        "_id": "dataRestaurants",
+        "_type": "JSON",
+        "actions": [],
+        "attributes": {
+          "autoLoad.enabled": true,
+          "baseUrl": "http://grewis-test.apigee.net",
+          "pathSuffix": "/api-workshop-v2/restaurants",
+          "http_method": "GET"
+        },
+        "parameters": {
+          "client_id": "e3363508f9e449ea88a73b70ff7107bc"
+        }
+      }
+    ]
+  }
+}
