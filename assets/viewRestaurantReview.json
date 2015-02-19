@@ -22,7 +22,8 @@
                     "bg.color": "#ffffff",
                     "layoutType": "absolute",
                     "size.h": 70,
-                    "size.w": "100%"
+                    "size.w": "100%",
+                    "position.t": 0
                 },
                 "controls": [{
                     "_id": "layoutDivider",
@@ -82,8 +83,8 @@
                     "align.h": "center",
                     "align.v": "middle",
                     "layoutType": "absolute",
-                    "padding.top": 145,
-                    "size.h": "100%",
+                    "padding.top": 80,
+                    "position.t": 80,
                     "size.w": "100%"
                 },
                 "controls": [{
@@ -95,7 +96,7 @@
                         "keyboardAdjustsScreen.enabled": true,
                         "layoutType": "absolute",
                         "placeholder.text": "Give your review a title...",
-                        "margin.top": 80,
+                        "position.t": 10,
                         "padding": 10,
                         "size.h": 60,
                         "size.w": "100%",
@@ -111,7 +112,7 @@
                         "align.v": "top",
                         "keyboard.returnKey": "go",
                         "keyboardAdjustsScreen.enabled": true,
-                        "layoutType": "absolute",
+                        "layoutType": "float",
                         "placeholder.text": "Your name",
                         "margin.top": 140,
                         "padding": 10,
@@ -129,7 +130,7 @@
                         "align.v": "top",
                         "keyboard.returnKey": "Done",
                         "keyboardAdjustsScreen.enabled": true,
-                        "layoutType": "absolute",
+                        "layoutType": "float",
                         "placeholder.text": "Write your review...",
                         "margin.top": 200,
                         "padding": 10,

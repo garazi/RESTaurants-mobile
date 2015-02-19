@@ -308,7 +308,6 @@
                     "_type": "Layout",
                     "attributes": {
                         "size.w":320,
-                        "autosize.includeInParent":true,
                         "padding":5
                     },
                     "controls": [
@@ -339,7 +338,7 @@
                           "color": "#6c6c6c",
                           "font": "HelveticaNeue-Light:11",
                           "margin.top": 2,
-                          "size.w": 300,
+                          "size.w": "100%",
                           "text": "[[dataRow.body]]"
                         }
                       }
