@@ -286,7 +286,6 @@
                 "_type": "Text",
                 "attributes": {
                   "align.h": "left",
-                  "layoutType": "absolute",
                   "size.w": "100%",
                   "margin.top": 40,
                   "padding.left": 5,
