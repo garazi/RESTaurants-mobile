@@ -245,9 +245,9 @@
                       {
                         "_type": "Navigate",
                         "attributes": {
-                          "stackType": "push",
-                          "animation.duration": 0.5,
-                          "animation.type": "flip.r",
+                          "*stackType": "push",
+                          "*animation.duration": 0.5,
+                          "*animation.type": "flip.r",
                           "to": "viewRestaurantReview.json"
                         },
                         "on": "touchUp"
