@@ -278,7 +278,7 @@
                   "align.v": "middle",
                   "color": "#fa4c06",
                   "layoutType": "float",
-                  "size": "small"
+                  "size": "large"
                 }
               },
               {
@@ -316,8 +316,8 @@
                     "_id": "reviewLayout",
                     "_type": "Layout",
                     "attributes": {
-                        "size.w":320,
-                        "padding":5
+                      "size.w": 320,
+                      "padding": 5
                     },
                     "controls": [
                       {
@@ -347,6 +347,7 @@
                           "color": "#6c6c6c",
                           "font": "HelveticaNeue-Light:11",
                           "margin.top": 2,
+                          "padding.right": 5,
                           "size.w": "100%",
                           "text": "[[dataRow.body]]"
                         }
@@ -388,8 +389,7 @@
             "attributes": {
               "buttons.cancel": "Cancel",
               "buttons.others": "Email,Call",
-              "style": "black.opaque",
-              "title": "sheetTitle"
+              "style": "black.opaque"
             }
           }
         ]
@@ -460,9 +460,6 @@
           "baseUrl": "http://grewis-test.apigee.net",
           "pathSuffix": "/api-workshop-v2/restaurants/[[session.restID]]",
           "http_method": "GET"
-        },
-        "parameters": {
-          "client_id": "e3363508f9e449ea88a73b70ff7107bc"
         }
       }
     ]
