@@ -99,6 +99,16 @@
                     "actions": [{
                         "_type": "Modify",
                         "attributes": {
+                            "_target": "session"
+                        },
+                        "enabled": true,
+                        "on": "textChanged",
+                        "set": {
+                            "reviewTitle": "[[$self.text]]"
+                        }
+                    }, {
+                        "_type": "Modify",
+                        "attributes": {
                             "_target": "layoutMain",
                             "duration": 0.33
                         },
@@ -134,6 +144,16 @@
                     "actions": [{
                         "_type": "Modify",
                         "attributes": {
+                            "_target": "session"
+                        },
+                        "enabled": true,
+                        "on": "textChanged",
+                        "set": {
+                            "reviewAuthor": "[[$self.text]]"
+                        }
+                    }, {
+                        "_type": "Modify",
+                        "attributes": {
                             "_target": "layoutMain",
                             "duration": 0.33
                         },
@@ -165,9 +185,57 @@
                         "bg.color": "#f0f0f0"
                     }
                 }, {
+                    "_id": "sliderTest",
+                    "_type": "Slider",
+                    "actions": [{
+                        "_type": "Modify",
+                        "attributes": {
+                            "_target": "session"
+                        },
+                        "set": {
+                            "reviewRating": "{{parseInt([[$self.value]])}}"
+                        },
+                        "on": "valueChanged"
+                    }, {
+                        "_type": "Function",
+                        "attributes": {
+                            "_target": "[[$self]]",
+                            "functionName": "setValue"
+                        },
+                        "set": {
+                            "value": "{{parseInt([[$self.value]])}}"
+                        },
+                        "on": "touchUp"
+                    }, {
+                        "_type": "Refresh",
+                        "attributes": {
+                            "_target": "sliderTest"
+                        },
+                        "on": "touchUp"
+                    }],
+                    "attributes": {
+                        "keyboardAdjustsScreen.enabled": false,
+                        "size.w": "100%",
+                        "value.max": 5,
+                        "value.min": 1,
+                        "bg.color": "#f0f0f0",
+                        "padding": 10,
+                        "margin.top": 10
+                    }
+                }, {
                     "_id": "reviewBody",
                     "_type": "TextInput",
                     "actions": [{
+                        "_type": "Modify",
+                        "attributes": {
+                            "_target": "session"
+                        },
+                        "enabled": true,
+                        "on": "textChanged",
+                        "set": {
+                            "reviewBody": "[[$self.text]]"
+                        }
+                    }, {
                         "_type": "Modify",
                         "attributes": {
                             "_target": "layoutMain",
@@ -194,7 +262,7 @@
                         "placeholder.text": "Write your review...",
                         "padding": 10,
                         "margin.top": 10,
-                        "size.h": 320,
+                        "size.h": 250,
                         "size.w": "100%",
                         "text.align": "left",
                         "multiline.enabled": true,
@@ -218,15 +286,22 @@
                 "size.w": "100%"
             },
             "actions": [{
-                "_type": "Alert",
+                "_type": "Refresh",
                 "attributes": {
-                    "message": "You touched the submit button!",
-                    "title": "touchUp"
+                    "_target": "dataReviewPost"
+                },
+                "enabled": true,
+                "on": "touchUp"
+            }, {
+                "_type": "Navigate",
+                "attributes": {
+                    "animation.duration": 0.5,
+                    "animation.type": "flip.l",
+                    "stackType": "pop"
                 },
                 "on": "touchUp"
             }],
-            "controls": [
-            {
+            "controls": [{
                 "_id": "btnSubmit",
                 "_type": "Text",
                 "attributes": {
@@ -241,9 +316,22 @@
                     "text": "Submit",
                     "text.align": "center"
                 }
-            }
-            ]
+            }]
         }],
-        "datasources": []
+        "datasources": [{
+            "_id": "dataReviewPost",
+            "_type": "JSON",
+            "actions": [],
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "attributes": {
+                "autoLoad.enabled": false,
+                "baseUrl": "http://grewis-test.apigee.net",
+          "pathSuffix": "/api-workshop-v2/reviews",
+                "http.method": "POST",
+                "http.body": "{\"title\": \"[[session.reviewTitle]]\",\"restID\":[[session.restID]],\"reviewer\": \"[[session.reviewAuthor]]\",\"rating\":[[session.reviewRating]],\"body\": \"[[session.reviewBody]]\"}"
+            }
+        }]
     }
 }

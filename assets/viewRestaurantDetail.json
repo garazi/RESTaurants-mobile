@@ -1,6 +1,14 @@
 {
   "view": {
-    "actions": [],
+    "actions": [
+      {
+        "_type": "Refresh",
+        "attributes": {
+          "_target": "dataReviews"
+        },
+        "on": "didAppear"
+      }
+    ],
     "attributes": {
       "_id": "restaurantDetail",
       "bg.color": "#ffffff",
