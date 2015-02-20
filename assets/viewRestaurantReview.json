@@ -62,8 +62,8 @@
               {
                 "_type": "Navigate",
                 "attributes": {
-                  "animation.duration": 0.5,
-                  "animation.type": "flip.l",
+                  "*animation.duration": 0.5,
+                  "*animation.type": "flip.l",
                   "stackType": "pop"
                 },
                 "on": "touchUp"
@@ -301,42 +301,42 @@
                   "font": "HelveticaNeue-Thin:20",
                   "bg.color": "#f0f0f0"
                 }
-              },{
-            "_id": "btnSubmit",
-            "_type": "Text",
-            "attributes": {
-              "align.h": "center",
-              "color": "#FF4300",
-              "font": "HelveticaNeue-Thin:26",
-              "margin.top": 5,
-              "size.h": 44,
-              "size.w": "100%",
-              "text": "Submit",
-              "text.align": "center"
-            },
-            "actions": [
-              {
-                "_type": "Refresh",
-                "attributes": {
-                  "_target": "dataReviewPost"
-                },
-                "enabled": true,
-                "on": "touchUp"
               },
               {
-                "_type": "Navigate",
+                "_id": "btnSubmit",
+                "_type": "Text",
                 "attributes": {
-                  "animation.duration": 0.5,
-                  "animation.type": "flip.l",
-                  "stackType": "pop"
+                  "align.h": "center",
+                  "color": "#FF4300",
+                  "font": "HelveticaNeue-Thin:26",
+                  "margin.top": 5,
+                  "size.h": 44,
+                  "size.w": "100%",
+                  "text": "Submit",
+                  "text.align": "center"
                 },
-                "on": "touchUp"
+                "actions": [
+                  {
+                    "_type": "Refresh",
+                    "attributes": {
+                      "_target": "dataReviewPost"
+                    },
+                    "enabled": true,
+                    "on": "touchUp"
+                  },
+                  {
+                    "_type": "Navigate",
+                    "attributes": {
+                      "*animation.duration": 0.5,
+                      "*animation.type": "flip.l",
+                      "stackType": "pop"
+                    },
+                    "on": "touchUp"
+                  }
+                ]
               }
             ]
           }
-            ]
-          }
-
         ]
       }
     ],
