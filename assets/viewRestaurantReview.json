@@ -207,6 +207,228 @@
                 }
               },
               {
+                "_id": "ratingLayout",
+                "_type": "Layout",
+                "attributes": {
+                  "visible": true,
+                  "size.w": "100%",
+                  "size.h": 50,
+                  "layoutFlow": "horizontal"
+                },
+                "controls": [
+                  {
+                    "_id": "ratingStarOne",
+                    "_type": "Text",
+                    "actions": [
+                      {
+                        "_type": "Modify",
+                        "attributes": {
+                          "_target": "ratingStarOne"
+                        },
+                        "set": {
+                          "color": "FF4300"
+                        },
+                        "on": "touchUp"
+                      },
+                      {
+                        "_type": "Modify",
+                        "attributes": {
+                          "_target": "ratingStarTwo,ratingStarThree,ratingStarFour,ratingStarFive"
+                        },
+                        "set": {
+                          "color": "f0f0f0"
+                        },
+                        "on": "touchUp"
+                      },
+                      {
+                        "_type": "Modify",
+                        "attributes": {
+                          "_target": "session"
+                        },
+                        "set": {
+                          "userRating": 1
+                        },
+                        "on": "touchUp"
+                      }
+                    ],
+                    "attributes": {
+                      "color": "#f0f0f0",
+                      "font": "FontAwesome:26",
+                      "size.h": "100%",
+                      "size.w": "20%",
+                      "text": "fa-star",
+                      "text.align": "center"
+                    }
+                  },
+                  {
+                    "_id": "ratingStarTwo",
+                    "_type": "Text",
+                    "actions": [
+                      {
+                        "_type": "Modify",
+                        "attributes": {
+                          "_target": "ratingStarOne,ratingStarTwo"
+                        },
+                        "set": {
+                          "color": "FF4300"
+                        },
+                        "on": "touchUp"
+                      },
+                      {
+                        "_type": "Modify",
+                        "attributes": {
+                          "_target": "ratingStarThree,ratingStarFour,ratingStarFive"
+                        },
+                        "set": {
+                          "color": "f0f0f0"
+                        },
+                        "on": "touchUp"
+                      },
+                      {
+                        "_type": "Modify",
+                        "attributes": {
+                          "_target": "session"
+                        },
+                        "set": {
+                          "userRating": 2
+                        },
+                        "on": "touchUp"
+                      }
+                    ],
+                    "attributes": {
+                      "color": "#f0f0f0",
+                      "font": "FontAwesome:26",
+                      "size.h": "100%",
+                      "size.w": "20%",
+                      "text": "fa-star",
+                      "text.align": "center"
+                    }
+                  },
+                  {
+                    "_id": "ratingStarThree",
+                    "_type": "Text",
+                    "actions": [
+                      {
+                        "_type": "Modify",
+                        "attributes": {
+                          "_target": "ratingStarOne,ratingStarTwo,ratingStarThree"
+                        },
+                        "set": {
+                          "color": "FF4300"
+                        },
+                        "on": "touchUp"
+                      },
+                      {
+                        "_type": "Modify",
+                        "attributes": {
+                          "_target": "ratingStarFour,ratingStarFive"
+                        },
+                        "set": {
+                          "color": "f0f0f0"
+                        },
+                        "on": "touchUp"
+                      },
+                      {
+                        "_type": "Modify",
+                        "attributes": {
+                          "_target": "session"
+                        },
+                        "set": {
+                          "userRating": 3
+                        },
+                        "on": "touchUp"
+                      }
+                    ],
+                    "attributes": {
+                      "color": "#f0f0f0",
+                      "font": "FontAwesome:26",
+                      "size.h": "100%",
+                      "size.w": "20%",
+                      "text": "fa-star",
+                      "text.align": "center"
+                    }
+                  },
+                  {
+                    "_id": "ratingStarFour",
+                    "_type": "Text",
+                    "actions": [
+                      {
+                        "_type": "Modify",
+                        "attributes": {
+                          "_target": "ratingStarOne,ratingStarTwo,ratingStarThree,ratingStarFour"
+                        },
+                        "set": {
+                          "color": "FF4300"
+                        },
+                        "on": "touchUp"
+                      },
+                      {
+                        "_type": "Modify",
+                        "attributes": {
+                          "_target": "ratingStarFive"
+                        },
+                        "set": {
+                          "color": "f0f0f0"
+                        },
+                        "on": "touchUp"
+                      },
+                      {
+                        "_type": "Modify",
+                        "attributes": {
+                          "_target": "session"
+                        },
+                        "set": {
+                          "userRating": 4
+                        },
+                        "on": "touchUp"
+                      }
+                    ],
+                    "attributes": {
+                      "color": "#f0f0f0",
+                      "font": "FontAwesome:26",
+                      "size.h": "100%",
+                      "size.w": "20%",
+                      "text": "fa-star",
+                      "text.align": "center"
+                    }
+                  },
+                  {
+                    "_id": "ratingStarFive",
+                    "_type": "Text",
+                    "actions": [
+                      {
+                        "_type": "Modify",
+                        "attributes": {
+                          "_target": "ratingStarOne,ratingStarTwo,ratingStarThree,ratingStarFour,ratingStarFive"
+                        },
+                        "set": {
+                          "color": "FF4300"
+                        },
+                        "on": "touchUp"
+                      },
+                      {
+                        "_type": "Modify",
+                        "attributes": {
+                          "_target": "session"
+                        },
+                        "set": {
+                          "userRating": 5
+                        },
+                        "on": "touchUp"
+                      }
+                    ],
+                    "attributes": {
+                      "color": "#f0f0f0",
+                      "font": "FontAwesome:26",
+                      "size.h": "100%",
+                      "size.w": "20%",
+                      "text": "fa-star",
+                      "text.align": "center"
+                    }
+                  }
+                ]
+              },
+              {
                 "_id": "sliderTest",
                 "_type": "Slider",
                 "actions": [
@@ -240,12 +462,14 @@
                   }
                 ],
                 "attributes": {
+                  "visible": false,
                   "keyboardAdjustsScreen.enabled": false,
                   "size.w": "100%",
                   "value.max": 5,
                   "value.min": 1,
                   "bg.color": "#f0f0f0",
-                  "padding": 10,
+                  "size.h": 50,
+                  "padding": 0,
                   "margin.top": 10
                 }
               },
@@ -292,7 +516,7 @@
                   "keyboard.returnKey": "Done",
                   "placeholder.text": "Write your review...",
                   "padding": 10,
-                  "margin.top": 10,
+                  "margin.top": 0,
                   "size.h": 250,
                   "size.w": "100%",
                   "text.align": "left",
@@ -316,6 +540,14 @@
                   "text.align": "center"
                 },
                 "actions": [
+                  {
+                    "_type": "Alert",
+                    "attributes": {
+                      "title": "[[session.userRating]]"
+                    },
+                    "enabled": true,
+                    "on": "touchUp"
+                  },
                   {
                     "_type": "Refresh",
                     "attributes": {
