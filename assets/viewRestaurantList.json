@@ -110,7 +110,8 @@
                       "restCity": "[[dataRow.city]], [[dataRow.state]]",
                       "restPhone": "[[dataRow.phone]]",
                       "restLat": "[[dataRow.location.latitude]]",
-                      "restLon": "[[dataRow.location.longitude]]"
+                      "restLon": "[[dataRow.location.longitude]]",
+                      "restRate": "[[dataRow.rating]]"
                     }
                   },
                   {
