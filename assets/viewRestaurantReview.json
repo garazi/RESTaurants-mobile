@@ -541,14 +541,6 @@
                 },
                 "actions": [
                   {
-                    "_type": "Alert",
-                    "attributes": {
-                      "title": "[[session.userRating]]"
-                    },
-                    "enabled": true,
-                    "on": "touchUp"
-                  },
-                  {
                     "_type": "Refresh",
                     "attributes": {
                       "_target": "dataReviewPost"
@@ -585,7 +577,7 @@
           "baseUrl": "http://grewis-test.apigee.net",
           "pathSuffix": "/api-workshop-v2/reviews",
           "http.method": "POST",
-          "http.body": "{\"title\": \"[[session.reviewTitle]]\",\"restID\":[[session.restID]],\"reviewer\": \"[[session.reviewAuthor]]\",\"rating\":[[session.reviewRating]],\"body\": \"[[session.reviewBody]]\"}"
+          "http.body": "{\"title\": \"[[session.reviewTitle]]\",\"restID\":[[session.restID]],\"reviewer\": \"[[session.reviewAuthor]]\",\"rating\":[[session.userRating]],\"body\": \"[[session.reviewBody]]\"}"
         }
       }
     ]
