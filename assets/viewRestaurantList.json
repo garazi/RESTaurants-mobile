@@ -8,6 +8,14 @@
           "functionName": "location.auth.request"
         },
         "on": "didAppear"
+      },
+      {
+        "_type": "Refresh",
+        "attributes": {
+          "_target": "dataRestaurants"
+        },
+        "enabled": true,
+        "on": "didAppear"
       }
     ],
     "attributes": {
@@ -78,8 +86,18 @@
               "autofill.h": true,
               "margin.top": 70,
               "separator.style": "default",
-              "text.align": "left"
+              "text.align": "left",
+              "pullToRefresh.enabled": true
             },
+            "actions": [
+              {
+                "_type": "Refresh",
+                "attributes": {
+                  "_target": "[[$self.datasource.id]]"
+                },
+                "on": "pullToRefresh"
+              }
+            ],
             "controls": [
               {
                 "_id": "layoutTest",
@@ -173,6 +191,37 @@
         ]
       }
     ],
-    "datasources": []
+    "datasources": [
+      {
+        "_id": "dataRestaurants",
+        "_type": "JSON",
+        "actions": [
+          {
+            "_type": "Refresh",
+            "attributes": {
+              "_target": "collectionRestaurants,layoutTest"
+            },
+            "on": "success"
+          },
+          {
+            "_type": "Function",
+            "attributes": {
+              "_target": "collectionRestaurants",
+              "functionName": "pullToRefresh.end"
+            },
+            "on": "success"
+          }
+        ],
+        "attributes": {
+          "autoLoad.enabled": false,
+          "baseUrl": "http://grewis-test.apigee.net",
+          "pathSuffix": "/api-mobile-app/yelp?ll=[[device.location.lat]],[[device.location.long]]",
+          "http_method": "GET"
+        },
+        "parameters": {
+          "client_id": "e3363508f9e449ea88a73b70ff7107bc"
+        }
+      }
+    ]
   }
 }
