@@ -11,14 +11,14 @@
 #import "IXDataRowDataProvider.h"
 #import "IXCollection.h"
 #import "IXCustom.h"
-#import "IXLayoutEngine.h"
 #import "IXProperty.h"
-#import "IXTableView.h"
+#import "IXTable.h"
 
 #import "IXUICollectionViewCell.h"
 #import "IXUITableViewCell.h"
 #import "IXCellBackgroundSwipeController.h"
 
+#import "Ignite_iOS_Engine-Swift.h"
 #import "NSString+IXAdditions.h"
 
 // Attributes
@@ -44,9 +44,8 @@ IX_STATIC_CONST_STRING kIXPullToRefreshTextColor = @"pullToRefresh.color";
 IX_STATIC_CONST_STRING kIXPullToRefreshTextFont = @"pullToRefresh.font";
 IX_STATIC_CONST_STRING kIXPullToRefreshTintColor = @"pullToRefresh.tint";
 IX_STATIC_CONST_STRING kIXScrollIndicatorStyle = @"scrollBars.style";
-IX_STATIC_CONST_STRING kIXShowsScrollIndicators = @"scrollBars.enabled";
 IX_STATIC_CONST_STRING kIXDataRowBasePath = @"data.basepath";
-#warning Not implemented:
+IX_STATIC_CONST_STRING kIXShowsScrollIndicators = @"scrollBars.enabled";
 IX_STATIC_CONST_STRING kIXShowsVScrollIndicators = @"scrollBars.v.enabled";
 IX_STATIC_CONST_STRING kIXShowsHScrollIndicators = @"scrollBars.h.enabled";
 
@@ -60,7 +59,6 @@ IX_STATIC_CONST_STRING kIXScrollIndicatorStyleDefault = @"default"; // scrollBar
 IX_STATIC_CONST_STRING kIXRowCount = @"data.count";
 
 // Functions
-#warning Why are these functions?
 IX_STATIC_CONST_STRING kIXPullToRefreshBegin = @"pullToRefresh.start";
 IX_STATIC_CONST_STRING kIXPullToRefreshEnd = @"pullToRefresh.end";
 
@@ -94,7 +92,8 @@ IX_STATIC_CONST_STRING kIXHorizontalScrollEnabled = @"scrolling.h.enabled";
 @property (nonatomic, assign) BOOL backgroundSlidesInFromSide;
 @property (nonatomic, assign) BOOL scrollEnabled;
 @property (nonatomic, assign) BOOL pagingEnabled;
-@property (nonatomic, assign) BOOL showsScrollIndicators;
+@property (nonatomic, assign) BOOL showsVertScrollIndicators;
+@property (nonatomic, assign) BOOL showsHorizScrollIndicators;
 @property (nonatomic, assign) UIScrollViewIndicatorStyle scrollIndicatorStyle;
 @property (nonatomic, strong) id<IXCellContainerDelegate> cellToCalculateSize;
 @property (nonatomic, assign) BOOL pullToRefreshEnabled;
@@ -160,10 +159,13 @@ IX_STATIC_CONST_STRING kIXHorizontalScrollEnabled = @"scrolling.h.enabled";
     [self setAnimateReload:[[self propertyContainer] getBoolPropertyValue:kIXAnimateReload defaultValue:NO]];
     [self setAnimateReloadDuration:[[self propertyContainer] getFloatPropertyValue:kIXAnimateReloadDuration defaultValue:0.2f]];
     [self setScrollEnabled:[[self propertyContainer] getBoolPropertyValue:kIXScrollable defaultValue:YES]];
-    [self setShowsScrollIndicators:[[self propertyContainer] getBoolPropertyValue:kIXShowsScrollIndicators defaultValue:YES]];
     [self setPagingEnabled:[[self propertyContainer] getBoolPropertyValue:kIXPagingEnabled defaultValue:NO]];
     [self setPullToRefreshEnabled:[[self propertyContainer] getBoolPropertyValue:kIXPullToRefreshEnabled defaultValue:NO]];
-    
+
+    BOOL showsScrollIndicators = [[self propertyContainer] getBoolPropertyValue:kIXShowsScrollIndicators defaultValue:YES];
+    [self setShowsHorizScrollIndicators:[[self propertyContainer] getBoolPropertyValue:kIXShowsHScrollIndicators defaultValue:showsScrollIndicators]];
+    [self setShowsVertScrollIndicators:[[self propertyContainer] getBoolPropertyValue:kIXShowsVScrollIndicators defaultValue:showsScrollIndicators]];
+
     if( [self pullToRefreshEnabled] )
     {
         if( [self refreshControl] == nil )
@@ -336,7 +338,7 @@ IX_STATIC_CONST_STRING kIXHorizontalScrollEnabled = @"scrolling.h.enabled";
     {
         if( [self isKindOfClass:[IXCollection class]] ) {
             [self setCellToCalculateSize:[[IXUICollectionViewCell alloc] initWithFrame:CGRectZero]];
-        } else if( [self isKindOfClass:[IXTableView class]] ) {
+        } else if( [self isKindOfClass:[IXTable class]] ) {
             [self setCellToCalculateSize:[[IXUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil]];
         }
         
@@ -348,6 +350,18 @@ IX_STATIC_CONST_STRING kIXHorizontalScrollEnabled = @"scrolling.h.enabled";
     return [[[[self cellToCalculateSize] layoutControl] contentView] bounds].size;
 }
 
++(IXPropertyContainer*)layoutPropertyContainerForCells
+{
+    IXPropertyContainer* layoutPropertyContainer = [[IXPropertyContainer alloc] init];
+    [layoutPropertyContainer addProperties:@[[IXProperty propertyWithPropertyName:kIXMargin rawValue:@"0"],
+                                             [IXProperty propertyWithPropertyName:kIXPadding rawValue:@"0"],
+                                             [IXProperty propertyWithPropertyName:kIXSizeW rawValue:@"100%"],
+                                             [IXProperty propertyWithPropertyName:kIXLayoutType rawValue:kIXLayoutTypeDefault],
+                                             [IXProperty propertyWithPropertyName:kIXVerticalScrollEnabled rawValue:@"NO"],
+                                             [IXProperty propertyWithPropertyName:kIXHorizontalScrollEnabled rawValue:@"NO"]]];
+    return layoutPropertyContainer;
+}
+
 -(IXLayout*)layoutForCell:(id<IXCellContainerDelegate>)cell
 {
     IXLayout* layoutControl = [[IXLayout alloc] init];
@@ -356,7 +370,7 @@ IX_STATIC_CONST_STRING kIXHorizontalScrollEnabled = @"scrolling.h.enabled";
     [layoutControl setNotifyParentOfLayoutUpdates:NO];
     [layoutControl setActionContainer:[[self actionContainer] copy]];
     
-    IXPropertyContainer* layoutPropertyContainer = [cell layoutPropertyContainerForCell];
+    IXPropertyContainer* layoutPropertyContainer = [IXCellBasedControl layoutPropertyContainerForCells];
     [layoutControl setPropertyContainer:layoutPropertyContainer];
 
     if( [[self propertyContainer] propertyExistsForPropertyNamed:kIXItemHeight] )
@@ -396,7 +410,7 @@ IX_STATIC_CONST_STRING kIXHorizontalScrollEnabled = @"scrolling.h.enabled";
     [layoutControl setParentObject:self];
     [layoutControl setNotifyParentOfLayoutUpdates:NO];
     
-    IXPropertyContainer* layoutPropertyContainer = [cell layoutPropertyContainerForCell];
+    IXPropertyContainer* layoutPropertyContainer = [IXCellBasedControl layoutPropertyContainerForCells];
     [layoutControl setPropertyContainer:layoutPropertyContainer];
     [layoutControl setActionContainer:[[self actionContainer] copy]];
     
@@ -449,15 +463,7 @@ IX_STATIC_CONST_STRING kIXHorizontalScrollEnabled = @"scrolling.h.enabled";
         [layoutControl setParentObject:self];
         [layoutControl setNotifyParentOfLayoutUpdates:NO];
 
-        IXPropertyContainer* layoutPropertyContainer = [[IXPropertyContainer alloc] init];
-
-        [layoutPropertyContainer addProperties:@[[IXProperty propertyWithPropertyName:kIXMargin rawValue:@"0"],
-                                                 [IXProperty propertyWithPropertyName:kIXPadding rawValue:@"0"],
-                                                 [IXProperty propertyWithPropertyName:kIXSizeW rawValue:@"100%"],
-                                                 [IXProperty propertyWithPropertyName:kIXLayoutType rawValue:kIXLayoutTypeDefault],
-                                                 [IXProperty propertyWithPropertyName:kIXVerticalScrollEnabled rawValue:@"NO"],
-                                                 [IXProperty propertyWithPropertyName:kIXHorizontalScrollEnabled rawValue:@"NO"]]];
-
+        IXPropertyContainer* layoutPropertyContainer = [IXCellBasedControl layoutPropertyContainerForCells];
         [layoutControl setPropertyContainer:layoutPropertyContainer];
         [layoutControl setActionContainer:[[self actionContainer] copy]];
         [layoutControl setSandbox:sectionHeaderSandbox];
@@ -531,7 +537,7 @@ IX_STATIC_CONST_STRING kIXHorizontalScrollEnabled = @"scrolling.h.enabled";
         [cellLayout applySettings];
         
         // Need to apply settings first on the layout to be able to get the size for the layout.  Then we can layout.
-        CGSize layoutSize = [IXLayoutEngine getControlSize:cellLayout forLayoutSize:[self itemSize]];
+        CGSize layoutSize = [LayoutEngine calculateControlSize:cellLayout layoutSize:[self itemSize]];
         CGRect layoutRect = CGRectIntegral(CGRectMake(0.0f, 0.0f, layoutSize.width, layoutSize.height));
         
         [[cellLayout contentView] setFrame:layoutRect];

@@ -28,7 +28,7 @@
 		13033FA2183ED8F200C29157 /* IXMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 13033F53183ED8F200C29157 /* IXMessage.m */; };
 		13033FA4183ED8F200C29157 /* IXScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 13033F57183ED8F200C29157 /* IXScanner.m */; };
 		13033FA5183ED8F200C29157 /* IXSocial.m in Sources */ = {isa = PBXBuildFile; fileRef = 13033F59183ED8F200C29157 /* IXSocial.m */; };
-		13033FA6183ED8F200C29157 /* IXTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13033F5B183ED8F200C29157 /* IXTableView.m */; };
+		13033FA6183ED8F200C29157 /* IXTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 13033F5B183ED8F200C29157 /* IXTable.m */; };
 		13033FA7183ED8F200C29157 /* IXText.m in Sources */ = {isa = PBXBuildFile; fileRef = 13033F5D183ED8F200C29157 /* IXText.m */; };
 		13033FA9183ED8F200C29157 /* IXTextInput.m in Sources */ = {isa = PBXBuildFile; fileRef = 13033F61183ED8F200C29157 /* IXTextInput.m */; };
 		13033FAA183ED8F200C29157 /* IXToggle.m in Sources */ = {isa = PBXBuildFile; fileRef = 13033F63183ED8F200C29157 /* IXToggle.m */; };
@@ -40,7 +40,6 @@
 		13033FB3183ED8F200C29157 /* IXAppShortCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 13033F78183ED8F200C29157 /* IXAppShortCode.m */; };
 		13033FB4183ED8F200C29157 /* IXBaseShortCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 13033F7A183ED8F200C29157 /* IXBaseShortCode.m */; };
 		13033FB5183ED8F200C29157 /* IXControlLayoutInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 13033F7D183ED8F200C29157 /* IXControlLayoutInfo.m */; };
-		13033FB6183ED8F200C29157 /* IXLayoutEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 13033F7F183ED8F200C29157 /* IXLayoutEngine.m */; };
 		13033FB8183ED8F200C29157 /* IXClickableScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13033F86183ED8F200C29157 /* IXClickableScrollView.m */; };
 		13033FB9183ED8F200C29157 /* IXControlContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13033F88183ED8F200C29157 /* IXControlContentView.m */; };
 		13033FBA183ED8F200C29157 /* IXNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13033F8A183ED8F200C29157 /* IXNavigationViewController.m */; };
@@ -104,7 +103,7 @@
 		6366D6DA18A1B9C7000AEEA5 /* IXWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 6366D6D918A1B9C7000AEEA5 /* IXWindow.m */; };
 		6366D6DD18A30BC7000AEEA5 /* UIImage+IXAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6366D6DC18A30BC7000AEEA5 /* UIImage+IXAdditions.m */; };
 		6366D6E018A95A7A000AEEA5 /* IXSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 6366D6DF18A95A7A000AEEA5 /* IXSlider.m */; };
-		636949EA19A3E0E80009AF81 /* Formatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 636949E919A3E0E80009AF81 /* Formatter.m */; };
+		636949EA19A3E0E80009AF81 /* IXFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 636949E919A3E0E80009AF81 /* IXFormatter.m */; };
 		638226BE18ADF48D00E856ED /* IXTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 638226BD18ADF48D00E856ED /* IXTimer.m */; };
 		638DE4761860C6CB00F2E36A /* IXDatarowShortCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 638DE4751860C6CB00F2E36A /* IXDatarowShortCode.m */; };
 		638DE47F1860E80D00F2E36A /* UIView+IXAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 638DE47E1860E80D00F2E36A /* UIView+IXAdditions.m */; };
@@ -121,6 +120,9 @@
 		63AEA734193F7D760088F480 /* MKMapView+IXAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AEA733193F7D760088F480 /* MKMapView+IXAdditions.m */; };
 		63B05B8F19144BAC00D0B4FC /* IXCustomNavPushPopTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B05B8E19144BAC00D0B4FC /* IXCustomNavPushPopTransition.m */; };
 		63B0E9AD19476D37002BF48E /* IXShortCodeFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B0E9AC19476D37002BF48E /* IXShortCodeFunction.m */; };
+		63B0FE711A9D394B00B1DB99 /* LayoutEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B0FE701A9D394B00B1DB99 /* LayoutEngine.swift */; };
+		63B0FE741A9D39BE00B1DB99 /* IXStructs.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B0FE731A9D39BE00B1DB99 /* IXStructs.m */; };
+		63B0FE771A9D58D700B1DB99 /* IXColorPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B0FE761A9D58D700B1DB99 /* IXColorPicker.m */; };
 		63B92C2719C0F4E5004C0A13 /* IXMMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B92C2619C0F4E5004C0A13 /* IXMMDrawerController.m */; };
 		63C0A7B118CFDAB700F72064 /* IXNetworkShortCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C0A7B018CFDAB700F72064 /* IXNetworkShortCode.m */; };
 		63C0A7B418CFDB9600F72064 /* IXDeviceShortCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C0A7B318CFDB9600F72064 /* IXDeviceShortCode.m */; };
@@ -135,6 +137,7 @@
 		63CC9ABF18BE8AB600ECCECB /* IXLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 63CC9ABE18BE8AB600ECCECB /* IXLogger.m */; };
 		63D23AAF1845B33D00C93BC7 /* IXDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63D23AAD1845B33D00C93BC7 /* IXDataModel.xcdatamodeld */; };
 		63D23AB41845B3E400C93BC7 /* IXAFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D23AB31845B3E400C93BC7 /* IXAFJSONRequestOperation.m */; };
+		63D8690D1A9CFF2800603602 /* IXSocketDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D8690C1A9CFF2800603602 /* IXSocketDataProvider.m */; };
 		63DFD9E8188F1A3200C5941E /* IXUICollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DFD9E7188F1A3200C5941E /* IXUICollectionViewCell.m */; };
 		63EAB3F618BEC588001AC248 /* IXBaseDataProviderConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EAB3F518BEC588001AC248 /* IXBaseDataProviderConfig.m */; };
 		63EAFBD118D798830016CA69 /* IXControlCacheContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EAFBD018D798830016CA69 /* IXControlCacheContainer.m */; };
@@ -154,12 +157,11 @@
 		CA604CE618C10CF000D027E1 /* IXDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CA604CE518C10CF000D027E1 /* IXDeviceInfo.m */; };
 		CA7525C91A898028002C54CD /* UIFont+IXAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7525C81A898028002C54CD /* UIFont+IXAdditions.m */; };
 		CAEB7E0818D26437005E1A2F /* IXAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = CAEB7E0718D26437005E1A2F /* IXAttributedText.m */; };
-		DC33DC76CDF64EE8A8AD7118 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D522CE73164D978B4CF70F /* libPods.a */; };
+		F8B88554BE461ED555984CDF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 241ECECBCF76B3E53F59CD4D /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		040674DC9F98C0FDF08BD498 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		05D522CE73164D978B4CF70F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		13033F22183ED8F200C29157 /* IXAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXAppDelegate.h; sourceTree = "<group>"; };
 		13033F23183ED8F200C29157 /* IXAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXAppDelegate.m; sourceTree = "<group>"; };
 		13033F24183ED8F200C29157 /* IXAppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXAppManager.h; sourceTree = "<group>"; };
@@ -204,8 +206,8 @@
 		13033F57183ED8F200C29157 /* IXScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXScanner.m; sourceTree = "<group>"; };
 		13033F58183ED8F200C29157 /* IXSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXSocial.h; sourceTree = "<group>"; };
 		13033F59183ED8F200C29157 /* IXSocial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXSocial.m; sourceTree = "<group>"; };
-		13033F5A183ED8F200C29157 /* IXTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXTableView.h; sourceTree = "<group>"; };
-		13033F5B183ED8F200C29157 /* IXTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXTableView.m; sourceTree = "<group>"; };
+		13033F5A183ED8F200C29157 /* IXTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXTable.h; sourceTree = "<group>"; };
+		13033F5B183ED8F200C29157 /* IXTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXTable.m; sourceTree = "<group>"; };
 		13033F5C183ED8F200C29157 /* IXText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXText.h; sourceTree = "<group>"; };
 		13033F5D183ED8F200C29157 /* IXText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXText.m; sourceTree = "<group>"; };
 		13033F60183ED8F200C29157 /* IXTextInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXTextInput.h; sourceTree = "<group>"; };
@@ -228,8 +230,6 @@
 		13033F7A183ED8F200C29157 /* IXBaseShortCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXBaseShortCode.m; sourceTree = "<group>"; };
 		13033F7C183ED8F200C29157 /* IXControlLayoutInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXControlLayoutInfo.h; sourceTree = "<group>"; };
 		13033F7D183ED8F200C29157 /* IXControlLayoutInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXControlLayoutInfo.m; sourceTree = "<group>"; };
-		13033F7E183ED8F200C29157 /* IXLayoutEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXLayoutEngine.h; sourceTree = "<group>"; };
-		13033F7F183ED8F200C29157 /* IXLayoutEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXLayoutEngine.m; sourceTree = "<group>"; };
 		13033F85183ED8F200C29157 /* IXClickableScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXClickableScrollView.h; sourceTree = "<group>"; };
 		13033F86183ED8F200C29157 /* IXClickableScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXClickableScrollView.m; sourceTree = "<group>"; };
 		13033F87183ED8F200C29157 /* IXControlContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXControlContentView.h; sourceTree = "<group>"; };
@@ -253,6 +253,7 @@
 		1387A0C619CBA80600A85B04 /* IXTouchID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXTouchID.m; sourceTree = "<group>"; };
 		13BF0464183EBE7E00894760 /* Ignite_iOS_Engine-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Ignite_iOS_Engine-Prefix.pch"; path = "Ignite_iOS_Engine/Ignite_iOS_Engine-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		13BF0466183EBE7E00894760 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Ignite_iOS_Engine/main.m; sourceTree = SOURCE_ROOT; };
+		241ECECBCF76B3E53F59CD4D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F66D2C31A7A34A700E8D288 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = SOURCE_ROOT; };
 		3F66D2C51A7A34C100E8D288 /* ARSMaquettePro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ARSMaquettePro-Light.otf"; path = "assets/_project/fonts/ARSMaquettePro-Light.otf"; sourceTree = SOURCE_ROOT; };
 		3F66D2C61A7A34C100E8D288 /* ARSMaquettePro-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ARSMaquettePro-Medium.otf"; path = "assets/_project/fonts/ARSMaquettePro-Medium.otf"; sourceTree = SOURCE_ROOT; };
@@ -332,8 +333,8 @@
 		6366D6DC18A30BC7000AEEA5 /* UIImage+IXAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+IXAdditions.m"; sourceTree = "<group>"; };
 		6366D6DE18A95A7A000AEEA5 /* IXSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXSlider.h; sourceTree = "<group>"; };
 		6366D6DF18A95A7A000AEEA5 /* IXSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXSlider.m; sourceTree = "<group>"; };
-		636949E819A3E0E80009AF81 /* Formatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Formatter.h; sourceTree = "<group>"; };
-		636949E919A3E0E80009AF81 /* Formatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Formatter.m; sourceTree = "<group>"; };
+		636949E819A3E0E80009AF81 /* IXFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXFormatter.h; sourceTree = "<group>"; };
+		636949E919A3E0E80009AF81 /* IXFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXFormatter.m; sourceTree = "<group>"; };
 		638226BC18ADF48D00E856ED /* IXTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXTimer.h; sourceTree = "<group>"; };
 		638226BD18ADF48D00E856ED /* IXTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXTimer.m; sourceTree = "<group>"; };
 		638DE4741860C6CB00F2E36A /* IXDatarowShortCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXDatarowShortCode.h; sourceTree = "<group>"; };
@@ -364,6 +365,11 @@
 		63B05B8E19144BAC00D0B4FC /* IXCustomNavPushPopTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXCustomNavPushPopTransition.m; sourceTree = "<group>"; };
 		63B0E9AB19476D37002BF48E /* IXShortCodeFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXShortCodeFunction.h; sourceTree = "<group>"; };
 		63B0E9AC19476D37002BF48E /* IXShortCodeFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXShortCodeFunction.m; sourceTree = "<group>"; };
+		63B0FE701A9D394B00B1DB99 /* LayoutEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutEngine.swift; sourceTree = "<group>"; };
+		63B0FE721A9D395B00B1DB99 /* Ignite_iOS_Engine-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Ignite_iOS_Engine-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		63B0FE731A9D39BE00B1DB99 /* IXStructs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXStructs.m; sourceTree = "<group>"; };
+		63B0FE751A9D58D700B1DB99 /* IXColorPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXColorPicker.h; sourceTree = "<group>"; };
+		63B0FE761A9D58D700B1DB99 /* IXColorPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXColorPicker.m; sourceTree = "<group>"; };
 		63B92C2519C0F4E5004C0A13 /* IXMMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXMMDrawerController.h; sourceTree = "<group>"; };
 		63B92C2619C0F4E5004C0A13 /* IXMMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXMMDrawerController.m; sourceTree = "<group>"; };
 		63C0A7AF18CFDAB700F72064 /* IXNetworkShortCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXNetworkShortCode.h; sourceTree = "<group>"; };
@@ -391,6 +397,8 @@
 		63D23AAE1845B33D00C93BC7 /* IXDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IXDataModel.xcdatamodel; sourceTree = "<group>"; };
 		63D23AB21845B3E400C93BC7 /* IXAFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXAFJSONRequestOperation.h; sourceTree = "<group>"; };
 		63D23AB31845B3E400C93BC7 /* IXAFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXAFJSONRequestOperation.m; sourceTree = "<group>"; };
+		63D8690B1A9CFF2800603602 /* IXSocketDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXSocketDataProvider.h; sourceTree = "<group>"; };
+		63D8690C1A9CFF2800603602 /* IXSocketDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXSocketDataProvider.m; sourceTree = "<group>"; };
 		63DFD9E6188F1A3200C5941E /* IXUICollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXUICollectionViewCell.h; sourceTree = "<group>"; };
 		63DFD9E7188F1A3200C5941E /* IXUICollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXUICollectionViewCell.m; sourceTree = "<group>"; };
 		63EAB3F418BEC588001AC248 /* IXBaseDataProviderConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXBaseDataProviderConfig.h; sourceTree = "<group>"; };
@@ -439,7 +447,6 @@
 				63A69FCA19491B0E00D5D712 /* libz.1.2.5.dylib in Frameworks */,
 				63AEA72B193EA3DC0088F480 /* libxml2.dylib in Frameworks */,
 				131591EB18396B3E0046B16D /* libiconv.dylib in Frameworks */,
-				DC33DC76CDF64EE8A8AD7118 /* libPods.a in Frameworks */,
 				632807E3193E1D1100F5D2DE /* AssetsLibrary.framework in Frameworks */,
 				1312FD1E1837112100A20FF7 /* CFNetwork.framework in Frameworks */,
 				1312FD1C183710C200A20FF7 /* CoreData.framework in Frameworks */,
@@ -456,6 +463,7 @@
 				1312FDE4183715DD00A20FF7 /* SystemConfiguration.framework in Frameworks */,
 				631DA69A1A8A997600968BC4 /* ApigeeiOSSDK.framework in Frameworks */,
 				6324BF541835931C00748F27 /* UIKit.framework in Frameworks */,
+				F8B88554BE461ED555984CDF /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +485,7 @@
 				63311BD5184581EE0048C668 /* IXDataGrabber.h */,
 				63311BD6184581EE0048C668 /* IXDataGrabber.m */,
 				13033F2B183ED8F200C29157 /* IXStructs.h */,
+				63B0FE731A9D39BE00B1DB99 /* IXStructs.m */,
 				13033F2C183ED8F200C29157 /* Model */,
 				13033F84183ED8F200C29157 /* View */,
 				63A10B2318AAE15D00130BEA /* ThirdParty */,
@@ -581,6 +590,8 @@
 				CA1279EA18D69618007EEC5A /* IXCircle.m */,
 				63F8A400187368BC00250994 /* IXCollection.h */,
 				63F8A401187368BC00250994 /* IXCollection.m */,
+				63B0FE751A9D58D700B1DB99 /* IXColorPicker.h */,
+				63B0FE761A9D58D700B1DB99 /* IXColorPicker.m */,
 				6366D6D518A18741000AEEA5 /* IXCustom.h */,
 				6366D6D618A18741000AEEA5 /* IXCustom.m */,
 				63A10B2018AAD7E200130BEA /* IXDial.h */,
@@ -603,8 +614,8 @@
 				6366D6DF18A95A7A000AEEA5 /* IXSlider.m */,
 				13033F58183ED8F200C29157 /* IXSocial.h */,
 				13033F59183ED8F200C29157 /* IXSocial.m */,
-				13033F5A183ED8F200C29157 /* IXTableView.h */,
-				13033F5B183ED8F200C29157 /* IXTableView.m */,
+				13033F5A183ED8F200C29157 /* IXTable.h */,
+				13033F5B183ED8F200C29157 /* IXTable.m */,
 				13033F5C183ED8F200C29157 /* IXText.h */,
 				13033F5D183ED8F200C29157 /* IXText.m */,
 				13033F60183ED8F200C29157 /* IXTextInput.h */,
@@ -640,6 +651,8 @@
 				635A2FDF1852855800B97B36 /* IXJSONDataProvider.m */,
 				63240E7E194A318300412927 /* IXOAuth2DataProvider.h */,
 				63240E7F194A318300412927 /* IXOAuth2DataProvider.m */,
+				63D8690B1A9CFF2800603602 /* IXSocketDataProvider.h */,
+				63D8690C1A9CFF2800603602 /* IXSocketDataProvider.m */,
 				CA13689D1A702C73009E7DA1 /* IXSwaggerDataProvider.h */,
 				CA13689E1A702C73009E7DA1 /* IXSwaggerDataProvider.m */,
 				63AEA72F193EA6D50088F480 /* IXXMLDataProvider.h */,
@@ -686,8 +699,6 @@
 		13033F7B183ED8F200C29157 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				636949E819A3E0E80009AF81 /* Formatter.h */,
-				636949E919A3E0E80009AF81 /* Formatter.m */,
 				6320A055193FF9B000ABC932 /* IXCellBackgroundSwipeController.h */,
 				6320A056193FF9B000ABC932 /* IXCellBackgroundSwipeController.m */,
 				63EAFBCF18D798830016CA69 /* IXControlCacheContainer.h */,
@@ -696,8 +707,9 @@
 				13033F7D183ED8F200C29157 /* IXControlLayoutInfo.m */,
 				CA604CE418C10CF000D027E1 /* IXDeviceInfo.h */,
 				CA604CE518C10CF000D027E1 /* IXDeviceInfo.m */,
-				13033F7E183ED8F200C29157 /* IXLayoutEngine.h */,
-				13033F7F183ED8F200C29157 /* IXLayoutEngine.m */,
+				636949E819A3E0E80009AF81 /* IXFormatter.h */,
+				636949E919A3E0E80009AF81 /* IXFormatter.m */,
+				63B0FE701A9D394B00B1DB99 /* LayoutEngine.swift */,
 				63C4ED5D1A8455EB005A13DE /* IXLocationManager.h */,
 				63C4ED5E1A8455EB005A13DE /* IXLocationManager.m */,
 				63CC9ABD18BE8AB600ECCECB /* IXLogger.h */,
@@ -761,7 +773,6 @@
 				63A69FC919491B0E00D5D712 /* libz.1.2.5.dylib */,
 				63AEA72A193EA3DC0088F480 /* libxml2.dylib */,
 				131591EA18396B3E0046B16D /* libiconv.dylib */,
-				05D522CE73164D978B4CF70F /* libPods.a */,
 				631DA6991A8A997600968BC4 /* ApigeeiOSSDK.framework */,
 				632807E2193E1D1100F5D2DE /* AssetsLibrary.framework */,
 				1312FD1D1837112100A20FF7 /* CFNetwork.framework */,
@@ -779,6 +790,7 @@
 				1312FDE3183715DD00A20FF7 /* SystemConfiguration.framework */,
 				6324BF531835931C00748F27 /* UIKit.framework */,
 				6324BF681835931D00748F27 /* XCTest.framework */,
+				241ECECBCF76B3E53F59CD4D /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -799,6 +811,7 @@
 		6324BF561835931C00748F27 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				63B0FE721A9D395B00B1DB99 /* Ignite_iOS_Engine-Bridging-Header.h */,
 				3F66D2D51A7A34DC00E8D288 /* Ignite_iOS_Engine-Info.plist */,
 				634EE09F1982DA9A00C08FCD /* PhoneFormats.dat */,
 				13BF0464183EBE7E00894760 /* Ignite_iOS_Engine-Prefix.pch */,
@@ -986,7 +999,7 @@
 				ORGANIZATIONNAME = Ignite;
 				TargetAttributes = {
 					6324BF4B1835931C00748F27 = {
-						DevelopmentTeam = CM8YLQ5AFJ;
+						DevelopmentTeam = WRCX63TMJ2;
 					};
 				};
 			};
@@ -1101,7 +1114,6 @@
 			files = (
 				63311BD118444D600048C668 /* NSString+IXAdditions.m in Sources */,
 				63311BCB1844439E0048C668 /* UIViewController+IXAdditions.m in Sources */,
-				13033FB6183ED8F200C29157 /* IXLayoutEngine.m in Sources */,
 				13BF0469183EBE7E00894760 /* main.m in Sources */,
 				63CC9AB418BD0BD700ECCECB /* IXGIFImageView.m in Sources */,
 				63CC9A5A18B7F06200ECCECB /* IXBaseControlConfig.m in Sources */,
@@ -1112,6 +1124,7 @@
 				634816E718EDB5F400EC6FEE /* IXOAuthWebAuthViewController.m in Sources */,
 				13033F8E183ED8F200C29157 /* IXAppManager.m in Sources */,
 				13033FA4183ED8F200C29157 /* IXScanner.m in Sources */,
+				63B0FE741A9D39BE00B1DB99 /* IXStructs.m in Sources */,
 				63F8A402187368BC00250994 /* IXCollection.m in Sources */,
 				CA50B3BC18EB9D39009282D0 /* YLMoment+IXAdditions.m in Sources */,
 				634EE0981982D16F00C08FCD /* IXTextToSpeech.m in Sources */,
@@ -1131,6 +1144,7 @@
 				63D23AB41845B3E400C93BC7 /* IXAFJSONRequestOperation.m in Sources */,
 				6320A057193FF9B000ABC932 /* IXCellBackgroundSwipeController.m in Sources */,
 				63C0A7B118CFDAB700F72064 /* IXNetworkShortCode.m in Sources */,
+				63B0FE771A9D58D700B1DB99 /* IXColorPicker.m in Sources */,
 				13033FBA183ED8F200C29157 /* IXNavigationViewController.m in Sources */,
 				63CC9ABF18BE8AB600ECCECB /* IXLogger.m in Sources */,
 				63311BCE184445060048C668 /* UIImagePickerController+IXAdditions.m in Sources */,
@@ -1143,7 +1157,7 @@
 				CA00FA3B18C666EB0090263D /* UIImage+ResizeMagick.m in Sources */,
 				13033FA5183ED8F200C29157 /* IXSocial.m in Sources */,
 				6333614D18973DA6004F3433 /* IXDeleteAction.m in Sources */,
-				13033FA6183ED8F200C29157 /* IXTableView.m in Sources */,
+				13033FA6183ED8F200C29157 /* IXTable.m in Sources */,
 				13033F9B183ED8F200C29157 /* IXBaseControl.m in Sources */,
 				63C4ED5F1A8455EB005A13DE /* IXLocationManager.m in Sources */,
 				63C4F4DC1960F9CE00577B75 /* UIImage+ImageEffects.m in Sources */,
@@ -1156,7 +1170,7 @@
 				6394F455193FD59A009EE1C4 /* IXCellBasedControl.m in Sources */,
 				13033FAE183ED8F200C29157 /* IXEntityContainer.m in Sources */,
 				CA1279E818D52B35007EEC5A /* UIButton+IXAdditions.m in Sources */,
-				636949EA19A3E0E80009AF81 /* Formatter.m in Sources */,
+				636949EA19A3E0E80009AF81 /* IXFormatter.m in Sources */,
 				13033FB0183ED8F200C29157 /* IXProperty.m in Sources */,
 				CA28B85B18C9052E0067686C /* IXLoadAction.m in Sources */,
 				63F0B1D019DB29DA0061D870 /* IXAFHTTPRequestOperationLogger.m in Sources */,
@@ -1186,11 +1200,13 @@
 				6366D6D718A18741000AEEA5 /* IXCustom.m in Sources */,
 				63CC9ABC18BD1D8700ECCECB /* IXPathHandler.m in Sources */,
 				13033FA2183ED8F200C29157 /* IXMessage.m in Sources */,
+				63B0FE711A9D394B00B1DB99 /* LayoutEngine.swift in Sources */,
 				63311BC818442F270048C668 /* UITextField+IXAdditions.m in Sources */,
 				63AEA734193F7D760088F480 /* MKMapView+IXAdditions.m in Sources */,
 				63A10B2218AAD7E200130BEA /* IXDial.m in Sources */,
 				63C3FD23183FEEEB00D2BA1E /* IXGetShortCode.m in Sources */,
 				639A53191A227ED800640C89 /* NSURL+IXAdditions.m in Sources */,
+				63D8690D1A9CFF2800603602 /* IXSocketDataProvider.m in Sources */,
 				6366D6DD18A30BC7000AEEA5 /* UIImage+IXAdditions.m in Sources */,
 				13033F91183ED8F200C29157 /* IXActionContainer.m in Sources */,
 				63311BD7184581EE0048C668 /* IXDataGrabber.m in Sources */,
@@ -1306,8 +1322,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jeremy Anticouni (DTK434NTWA)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/ApigeeiOSSDK/zip/apigee-ios-sdk-2.0.16/lib",
@@ -1322,6 +1338,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/assets/_project/Ignite_iOS_Engine-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1329,7 +1346,9 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = Ignite_iOS_Engine;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e2780067-fd6e-4a1a-ac37-08140579207a";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ignite_iOS_Engine-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1340,8 +1359,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: APIGEE CORPORATION";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/ApigeeiOSSDK/zip/apigee-ios-sdk-2.0.16/lib",
@@ -1356,6 +1375,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/assets/_project/Ignite_iOS_Engine-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1363,7 +1383,8 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = Ignite_iOS_Engine;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "2A7DEE59-BD9A-4F61-8E38-F4CABCFE8D46";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ignite_iOS_Engine-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

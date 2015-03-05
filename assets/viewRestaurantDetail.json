@@ -118,7 +118,7 @@
                             "text.align": "center"
                         }
                     }, {
-                        "_id": "restAddr",
+                        "_id": "restCity",
                         "_type": "Text",
                         "attributes": {
                             "align.h": "center",

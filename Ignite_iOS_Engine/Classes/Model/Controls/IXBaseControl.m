@@ -11,11 +11,11 @@
 #import "IXAppManager.h"
 #import "IXPropertyContainer.h"
 #import "ColorUtils.h"
-#import "IXLayoutEngine.h"
 #import "IXControlLayoutInfo.h"
 #import "IXLogger.h"
 
 #import "UIImage+ResizeMagick.h"
+#import "Ignite_iOS_Engine-Swift.h"
 
 #warning Clean this up and organize it into Attributes/Returns/Events/Functions
 
@@ -168,6 +168,7 @@ static BOOL kIXDidDetermineOriginalCenter = false; // used for pan gesture
 //
 -(void)buildView
 {
+    _layoutInfo = [[IXControlLayoutInfo alloc] init];
     _contentView = [[IXControlContentView alloc] initWithFrame:CGRectZero viewTouchDelegate:self];
     [_contentView setClipsToBounds:NO];
 }
@@ -203,7 +204,7 @@ static BOOL kIXDidDetermineOriginalCenter = false; // used for pan gesture
     }
     else
     {
-        CGRect internalLayoutRect = [IXLayoutEngine getInternalLayoutRectForControl:self forOuterLayoutRect:[[self contentView] bounds]];
+        CGRect internalLayoutRect = [LayoutEngine calculateInternalLayoutRect:self rect:[[self contentView] bounds]];
         [self layoutControlContentsInRect:internalLayoutRect];
     }
 }
@@ -220,11 +221,16 @@ static BOOL kIXDidDetermineOriginalCenter = false; // used for pan gesture
         }
         else
         {
+            [_layoutInfo setPropertyContainer:[self propertyContainer]];
             [_layoutInfo refreshLayoutInfo];
         }
         
         [self applyContentViewSettings];
         [self applyGestureRecognizerSettings];
+    }
+    else
+    {
+        _layoutInfo = nil;
     }
     
     for( IXBaseControl* baseControl in [self childObjects] )

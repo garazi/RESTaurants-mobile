@@ -119,28 +119,6 @@
                     "set": {
                       "reviewTitle": "[[$self.text]]"
                     }
-                  },
-                  {
-                    "_type": "Modify",
-                    "attributes": {
-                      "_target": "layoutMain",
-                      "duration": 0.33
-                    },
-                    "on": "focus",
-                    "set": {
-                      "padding.bottom": 255
-                    }
-                  },
-                  {
-                    "_type": "Modify",
-                    "attributes": {
-                      "_target": "layoutMain",
-                      "duration": 0.33
-                    },
-                    "on": "focusLost",
-                    "set": {
-                      "padding.bottom": 0
-                    }
                   }
                 ],
                 "attributes": {
@@ -168,28 +146,6 @@
                     "on": "textChanged",
                     "set": {
                       "reviewAuthor": "[[$self.text]]"
-                    }
-                  },
-                  {
-                    "_type": "Modify",
-                    "attributes": {
-                      "_target": "layoutMain",
-                      "duration": 0.33
-                    },
-                    "on": "focus",
-                    "set": {
-                      "padding.bottom": 255
-                    }
-                  },
-                  {
-                    "_type": "Modify",
-                    "attributes": {
-                      "_target": "layoutMain",
-                      "duration": 0.33
-                    },
-                    "on": "focusLost",
-                    "set": {
-                      "padding.bottom": 0
                     }
                   }
                 ],
@@ -486,28 +442,6 @@
                     "on": "textChanged",
                     "set": {
                       "reviewBody": "[[$self.text]]"
-                    }
-                  },
-                  {
-                    "_type": "Modify",
-                    "attributes": {
-                      "_target": "layoutMain",
-                      "duration": 0.33
-                    },
-                    "on": "focus",
-                    "set": {
-                      "padding.bottom": 255
-                    }
-                  },
-                  {
-                    "_type": "Modify",
-                    "attributes": {
-                      "_target": "layoutMain",
-                      "duration": 0.33
-                    },
-                    "on": "focusLost",
-                    "set": {
-                      "padding.bottom": 0
                     }
                   }
                 ],

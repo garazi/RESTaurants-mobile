@@ -66,17 +66,30 @@
 #define COCOAPODS_VERSION_MINOR_CocoaLumberjack_Extensions 0
 #define COCOAPODS_VERSION_PATCH_CocoaLumberjack_Extensions 0
 
+// Color-Picker-for-iOS
+#define COCOAPODS_POD_AVAILABLE_Color_Picker_for_iOS
+#define COCOAPODS_VERSION_MAJOR_Color_Picker_for_iOS 2
+#define COCOAPODS_VERSION_MINOR_Color_Picker_for_iOS 0
+#define COCOAPODS_VERSION_PATCH_Color_Picker_for_iOS 0
+
 // ColorUtils
 #define COCOAPODS_POD_AVAILABLE_ColorUtils
 #define COCOAPODS_VERSION_MAJOR_ColorUtils 1
 #define COCOAPODS_VERSION_MINOR_ColorUtils 1
-#define COCOAPODS_VERSION_PATCH_ColorUtils 2
+#define COCOAPODS_VERSION_PATCH_ColorUtils 3
 
 // FontAwesome+iOS
 #define COCOAPODS_POD_AVAILABLE_FontAwesome_iOS
 #define COCOAPODS_VERSION_MAJOR_FontAwesome_iOS 0
-#define COCOAPODS_VERSION_MINOR_FontAwesome_iOS 1
+#define COCOAPODS_VERSION_MINOR_FontAwesome_iOS 0
 #define COCOAPODS_VERSION_PATCH_FontAwesome_iOS 1
+
+// IQKeyboardManager
+#define COCOAPODS_POD_AVAILABLE_IQKeyboardManager
+// This library does not follow semantic-versioning,
+// so we were not able to define version macros.
+// Please contact the author.
+// Version: 3.2.1.1.
 
 // MMDrawerController
 #define COCOAPODS_POD_AVAILABLE_MMDrawerController
@@ -117,8 +130,8 @@
 // Reachability
 #define COCOAPODS_POD_AVAILABLE_Reachability
 #define COCOAPODS_VERSION_MAJOR_Reachability 3
-#define COCOAPODS_VERSION_MINOR_Reachability 1
-#define COCOAPODS_VERSION_PATCH_Reachability 1
+#define COCOAPODS_VERSION_MINOR_Reachability 2
+#define COCOAPODS_VERSION_PATCH_Reachability 0
 
 // RestKit
 #define COCOAPODS_POD_AVAILABLE_RestKit
@@ -213,6 +226,12 @@
 // ZipArchive
 #define COCOAPODS_POD_AVAILABLE_ZipArchive
 #define COCOAPODS_VERSION_MAJOR_ZipArchive 1
-#define COCOAPODS_VERSION_MINOR_ZipArchive 3
+#define COCOAPODS_VERSION_MINOR_ZipArchive 4
 #define COCOAPODS_VERSION_PATCH_ZipArchive 0
+
+// jetfire
+#define COCOAPODS_POD_AVAILABLE_jetfire
+#define COCOAPODS_VERSION_MAJOR_jetfire 0
+#define COCOAPODS_VERSION_MINOR_jetfire 1
+#define COCOAPODS_VERSION_PATCH_jetfire 2
 

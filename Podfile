@@ -1,4 +1,4 @@
-platform :ios, '7.0' 
+platform :ios, '8.0' 
 
 inhibit_all_warnings!
 
@@ -23,4 +23,7 @@ pod 'APParallaxHeader', :head
 pod 'RaptureXML', '~> 1.0'
 pod 'MMDrawerController', '~> 0.5.6'
 pod 'ZipArchive', '~> 1.2'
-pod 'FontAwesome+iOS', '~> 0.1'
+pod 'FontAwesome+iOS', :git => 'https://github.com/jeremyanticouni/ios-fontawesome.git'
+pod 'jetfire', '~> 0.1'
+pod 'Color-Picker-for-iOS', '~> 2.0'
+pod 'IQKeyboardManager'

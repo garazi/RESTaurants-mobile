@@ -23,7 +23,6 @@
 @property (nonatomic,assign) BOOL backgroundSlidesInFromSide;
 @property (nonatomic,assign) BOOL adjustsBackgroundAlphaWithSwipe;
 
--(IXPropertyContainer*)layoutPropertyContainerForCell;
 -(void)enableBackgroundSwipe:(BOOL)enableBackgroundSwipe swipeWidth:(CGFloat)swipeWidth;
 
 @end
@@ -35,7 +34,8 @@
 @property (nonatomic,assign,readonly) CGFloat animateReloadDuration;
 @property (nonatomic,assign,readonly) BOOL scrollEnabled;
 @property (nonatomic,assign,readonly) BOOL pagingEnabled;
-@property (nonatomic,assign,readonly) BOOL showsScrollIndicators;
+@property (nonatomic,assign,readonly) BOOL showsVertScrollIndicators;
+@property (nonatomic,assign,readonly) BOOL showsHorizScrollIndicators;
 @property (nonatomic,assign,readonly) UIScrollViewIndicatorStyle scrollIndicatorStyle;
 @property (nonatomic, assign) CGFloat backgroundViewSwipeWidth;
 
