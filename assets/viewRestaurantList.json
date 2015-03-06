@@ -12,6 +12,18 @@
       {
         "_type": "Refresh",
         "attributes": {
+          "_target": "session"
+        },
+        "set": {
+          "searchTerm": [
+            "if :: [[session.searchTerm]] == null :: restaurants",
+            "if :: [[session.searchTerm]] !== null :: [[session.searchTerm]]"
+          ]
+        }
+      },
+      {
+        "_type": "Refresh",
+        "attributes": {
           "_target": "dataRestaurants"
         },
         "enabled": true,
@@ -69,6 +81,33 @@
                   "size.w": "100%",
                   "text": "RESTaurants",
                   "text.align": "center"
+                }
+              },
+              {
+                "_id": "menuLeft",
+                "_type": "Text",
+                "actions": [
+                  {
+                    "_type": "Function",
+                    "attributes": {
+                      "_target": "app",
+                      "functionName": "drawerController.l.toggle"
+                    },
+                    "on": "touchUp"
+                  }
+                ],
+                "attributes": {
+                  "align.h": "left",
+                  "align.v": "middle",
+                  "color": "#FF4300",
+                  "font": "FontAwesome:18",
+                  "text": "fa-bars",
+                  "layoutType": "float",
+                  "margin.left": 15,
+                  "padding.top": 14,
+                  "size.h": 28,
+                  "size.w": 28,
+                  "visible": true
                 }
               }
             ]
@@ -215,7 +254,7 @@
         "attributes": {
           "autoLoad.enabled": false,
           "baseUrl": "http://grewis-test.apigee.net",
-          "pathSuffix": "/api-mobile-app/yelp?ll=[[device.location.lat]],[[device.location.long]]",
+          "pathSuffix": "/api-mobile-app/yelp?term=[[session.searchTerm]]&ll=[[device.location.lat]],[[device.location.long]]",
           "http_method": "GET"
         },
         "parameters": {
