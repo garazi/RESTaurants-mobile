@@ -166,7 +166,7 @@
                             "lat": "[[session.restLat]]",
                             "long": "[[session.restLon]]",
                             "subtitle": "[[session.restAddr]]",
-                            "title": "1: [[session.restaurantName]]"
+                            "title": "[[session.restaurantName]]"
                         },
                         "margin.top": 75,
                         "margin.bottom": 75,
