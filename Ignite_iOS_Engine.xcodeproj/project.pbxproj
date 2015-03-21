@@ -999,7 +999,7 @@
 				ORGANIZATIONNAME = Ignite;
 				TargetAttributes = {
 					6324BF4B1835931C00748F27 = {
-						DevelopmentTeam = WRCX63TMJ2;
+						DevelopmentTeam = CM8YLQ5AFJ;
 					};
 				};
 			};
@@ -1323,7 +1323,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jeremy Anticouni (DTK434NTWA)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/ApigeeiOSSDK/zip/apigee-ios-sdk-2.0.16/lib",
@@ -1346,7 +1347,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = Ignite_iOS_Engine;
-				PROVISIONING_PROFILE = "e2780067-fd6e-4a1a-ac37-08140579207a";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Ignite_iOS_Engine-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
@@ -1360,7 +1361,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: APIGEE CORPORATION";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/ApigeeiOSSDK/zip/apigee-ios-sdk-2.0.16/lib",
@@ -1383,7 +1385,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = Ignite_iOS_Engine;
-				PROVISIONING_PROFILE = "2A7DEE59-BD9A-4F61-8E38-F4CABCFE8D46";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Ignite_iOS_Engine-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};

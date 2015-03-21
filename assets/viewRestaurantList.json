@@ -28,11 +28,18 @@
         },
         "enabled": true,
         "on": "didAppear"
+      },
+      {
+        "_type": "Refresh",
+        "attributes": {
+          "_target": "dataSearchHistoryAppend"
+        },
+        "on": "didAppear"
       }
     ],
     "attributes": {
       "_id": "restaurantList",
-      "bg.color": "#000000",
+      "bg.color": "#ffffff",
       "statusBar.style": "dark"
     },
     "controls": [

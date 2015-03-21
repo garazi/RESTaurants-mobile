@@ -28,6 +28,51 @@
       "drawerController.r.url": "viewMenu.json",
       "drawerController.shadow.enabled": false
     },
-    "datasources": []
+    "datasources": [
+      {
+        "_id": "dataSearchHistory-old",
+        "_type": "JSON",
+        "actions": [
+          {
+            "_type": "Refresh",
+            "attributes": {
+              "_target": "tableviewHistory"
+            },
+            "on": [
+              "success",
+              "fail"
+            ]
+          }
+        ],
+        "attributes": {
+          "autoLoad.enabled": false,
+          "baseUrl": "searchHistory.json",
+          "data.basepath": "entities",
+          "http_method": "GET"
+        }
+      },
+      {
+        "_id": "dataSearchHistoryAppend-old",
+        "_type": "JSON",
+        "actions": [
+          {
+            "_type": "Refresh",
+            "attributes": {
+              "_target": "tableviewHistory"
+            },
+            "on": [
+              "success",
+              "fail"
+            ]
+          }
+        ],
+        "attributes": {
+          "autoLoad.enabled": false,
+          "baseUrl": "searchHistoryAppend.json",
+          "data.basepath": "entities",
+          "http_method": "GET"
+        }
+      }
+    ]
   }
 }
