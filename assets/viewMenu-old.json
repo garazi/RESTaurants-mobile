@@ -3,8 +3,8 @@
     "actions": [],
     "attributes": {
       "_id": "viewMenu",
-      "bg.color": "#000000",
-      "statusBar.style": "light"
+      "bg.color": "#ffffff",
+      "statusBar.style": "hidden"
     },
     "controls": [
       {
@@ -58,14 +58,6 @@
                         }
                       },
                       {
-                        "_type": "Navigate",
-                        "attributes": {
-                          "to": "viewRestaurantList.json"
-                        },
-                        "enabled": true,
-                        "on": "returnKeyPressed"
-                      },
-                      {
                         "_type": "Function",
                         "attributes": {
                           "_target": "dataTest",
@@ -76,18 +68,34 @@
                           "parse_json_as_object": true,
                           "modify.type": "append",
                           "json_to_append": {
-                            "term": "[[$self.text]]"
+                            "term": "[[inputSearch.text]]"
                           }
                         },
                         "enabled": true,
                         "on": "returnKeyPressed"
                       },
                       {
-                        "_type": "Load",
+                        "_type": "Alert",
                         "attributes": {
-                          "_target": "tableviewTest"
+                          "message": "[[dataTest.response.raw]]"
                         },
                         "enabled": true,
+                        "on": "returnKeyPressed"
+                      },
+                      {
+                        "_type": "Refresh",
+                        "attributes": {
+                          "_target": "searchHistoryCollection"
+                        },
+                        "enabled": true,
+                        "on": "returnKeyPressed"
+                      },
+                      {
+                        "_type": "Navigate",
+                        "attributes": {
+                          "to": "viewRestaurantList.json"
+                        },
+                        "enabled": false,
                         "on": "returnKeyPressed"
                       }
                     ],
@@ -138,33 +146,60 @@
                       "size.w": 28,
                       "visible": true
                     }
+                  },
+                  {
+                    "_type": "Text",
+                    "attributes": {
+                      "color": "#000000",
+                      "font": "HelveticaNeue-Light:22",
+                      "margin.top": 120,
+                      "margin.left": 20,
+                      "text": "test"
+                    }
                   }
                 ]
               }
             ]
           },
           {
-            "_id": "tableviewTest",
-            "_type": "TableView",
+            "_id": "layoutHistory",
+            "_type": "Layout",
             "attributes": {
-              "cell.size.h": 50,
-              "cell.size.w": "100%",
-              "datasource.id": "dataTest",
-              "data.basepath": "entities",
-              "margin.top": 70,
-              "size.w": "100%",
-              "autofill.h": true,
-              "separator.style": "none"
+              "align.h": "center",
+              "align.v": "top",
+              "layoutType": "absolute",
+              "padding": 75,
+              "padding.left": 6,
+              "padding.right": 6,
+              "margin.top": 60,
+              "size.w": "100%"
             },
             "controls": [
               {
-                "_type": "Text",
+                "_id": "searchHistoryCollection",
+                "_type": "Table",
                 "attributes": {
-                  "bg.color": "#ffffff",
-                  "size.h": "100%",
-                  "size.w": "100%",
-                  "text": "[[dataRow.term]]"
-                }
+                  "autofill.w": true,
+                  "cell.size.h": 50,
+                  "cell.size.w": "100%",
+                  "datasource.id": "dataTest",
+                  "data.basepath": "entities",
+                  "enabled": true,
+                  "autofill.h": true,
+                  "margin.top": 70,
+                  "separator.style": "none"
+                },
+                "controls": [
+                  {
+                    "_type": "Text",
+                    "attributes": {
+                      "color": "#6c6c6c",
+                      "font": "HelveticaNeue-Light:18",
+                      "margin.left": 20,
+                      "text": "[[dataRow.term]]"
+                    }
+                  }
+                ]
               }
             ]
           }
