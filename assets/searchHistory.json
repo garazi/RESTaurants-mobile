@@ -1,7 +1,3 @@
 {
-    "entities": [{
-        "term": "restaurants"
-    }, {
-        "term": "bars"
-    }]
+    "entities": []
 }
