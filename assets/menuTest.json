@@ -16,7 +16,7 @@
           "datasource.id": "dataTest",
           "data.basepath": "entities",
           "padding.top": 20,
-          "size.w": "{{[[device.screen.w]] - 100}}",
+          "size.w": "{{[[$device.screen.w]] - 100}}",
           "size.h": "100%",
           "separator.style": "default"
         },

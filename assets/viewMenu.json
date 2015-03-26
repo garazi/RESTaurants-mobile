@@ -1,10 +1,10 @@
 {
-    "view": {
+    "$view": {
         "actions": [],
         "attributes": {
             "_id": "viewMenu",
             "bg.color": "#000000",
-            "statusBar.style": "light"
+            "statusBar.style": "dark"
         },
         "controls": [{
             "_id": "layoutMain",
@@ -21,9 +21,9 @@
                 "_type": "Layout",
                 "attributes": {
                     "layoutType": "absolute",
-                    "margin.top": 14,
+                    "margin.top": 22,
                     "size.h": 46,
-                    "size.w": "{{[[device.screen.w]] - 100}}"
+                    "size.w": "{{[[$device.screen.w]] - 100}}"
                 },
                 "controls": [{
                     "_id": "layoutSearch",
@@ -34,7 +34,7 @@
                         "layoutFlow": "horizontal",
                         "layoutType": "absolute",
                         "size.h": 38,
-                        "size.w": "{{[[device.screen.w]] - 110}}",
+                        "size.w": "{{[[$device.screen.w]] - 110}}",
                         "border.size": 1,
                         "border.color": "FF4300"
                     },
@@ -44,7 +44,7 @@
                         "actions": [{
                             "_type": "Modify",
                             "attributes": {
-                                "_target": "session"
+                                "_target": "$session"
                             },
                             "enabled": true,
                             "on": "textChanged",
@@ -91,7 +91,7 @@
                             "padding.left": 8,
                             "placeholder.text": "Enter a search term...",
                             "size.h": "100%",
-                            "size.w": "{{[[device.screen.w]] - 130}}"
+                            "size.w": "{{[[$device.screen.w]] - 130}}"
                         }
                     }, {
                         "_id": "searchBtn",
@@ -120,7 +120,7 @@
                             "text": "fa-search",
                             "layoutType": "float",
                             "margin.left": 15,
-                            "padding.top": 6,
+                            "padding.top": 4,
                             "size.h": 28,
                             "size.w": 28,
                             "visible": true
@@ -155,7 +155,21 @@
                         "size.w": "100%",
                         "text": "[[dataRow.term]]"
                     }
-                }]
+                }, {
+                    "_type": "Text",
+                    "attributes": {
+                      "color": "#FF4300",
+                      "font": "FontAwesome:16",
+                      "sizeToFit.enabled": true,
+                      "margin.left": 20,
+                      "margin.right": 15,
+                      "text.align": "right",
+                      "align.v": "middle",
+                      "align.h": "right",
+                      "layoutType": "absolute",
+                      "text": "fa-minus-circle"
+                    }
+                    }]
             }]
         }],
         "datasources": [{

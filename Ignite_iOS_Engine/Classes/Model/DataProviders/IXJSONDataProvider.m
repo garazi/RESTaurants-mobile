@@ -18,6 +18,7 @@
 #import "IXViewController.h"
 #import "IXSandbox.h"
 
+// TODO: Clean up naming and document
 IX_STATIC_CONST_STRING kIXModifyResponse = @"modify_response";
 IX_STATIC_CONST_STRING kIXModifyType = @"modify.type";
 IX_STATIC_CONST_STRING kIXDelete = @"delete";
@@ -31,9 +32,9 @@ IX_STATIC_CONST_STRING kIXPredicateArguments = @"predicate.arguments";      //e.
 IX_STATIC_CONST_STRING kIXJSONToAppend = @"json_to_append";
 IX_STATIC_CONST_STRING kIXParseJSONAsObject = @"parse_json_as_object";
 
-#warning These should be migrated to base data provider
-IX_STATIC_CONST_STRING kIXResponseHeadersPrefix = @"responseHeaders.";
-IX_STATIC_CONST_STRING kIXResponseTime = @"responseTime";
+// TODO: These should be migrated to base data provider
+IX_STATIC_CONST_STRING kIXResponseHeadersPrefix = @"response.headers.";
+IX_STATIC_CONST_STRING kIXResponseTime = @"response.time";
 
 @interface IXJSONDataProvider ()
 
@@ -276,7 +277,7 @@ IX_STATIC_CONST_STRING kIXResponseTime = @"responseTime";
                     id jsonToAppendObject = nil;
                     if( [parameterContainer getBoolPropertyValue:kIXParseJSONAsObject defaultValue:NO] )
                     {
-                        jsonToAppendObject = [[parameterContainer getAllPropertiesObjectValues] objectForKey:kIXJSONToAppend];
+                        jsonToAppendObject = [[parameterContainer getAllPropertiesObjectValues:NO] objectForKey:kIXJSONToAppend];
                     }
                     else
                     {
@@ -344,8 +345,16 @@ IX_STATIC_CONST_STRING kIXResponseTime = @"responseTime";
     if( returnValue == nil )
     {
         if ([propertyName hasPrefix:kIXResponseHeadersPrefix]) {
-            NSString* headerKey = [propertyName stringByReplacingOccurrencesOfString:kIXResponseHeadersPrefix withString:@""];
-            returnValue = [[self lastResponseHeaders] valueForKey:headerKey];
+            NSString* headerKey = [[propertyName componentsSeparatedByString:kIX_PERIOD_SEPERATOR] lastObject];
+            @try {
+                returnValue = [self lastResponseHeaders][headerKey];
+                if (!returnValue) {
+                    returnValue = [self lastResponseHeaders][[headerKey lowercaseString]]; // try again with lowercase?
+                }
+            }
+            @catch (NSException *exception) {
+                DDLogDebug(@"No header value named '%@' exists in response object", headerKey);
+            }
         }
         else if ([propertyName hasPrefix:kIXResponseTime]) {
             returnValue = [NSString stringWithFormat: @"%0.f", [self responseTime]];
@@ -472,15 +481,15 @@ IX_STATIC_CONST_STRING kIXResponseTime = @"responseTime";
     {
         NSString* objectID = [seperatedValue firstObject];
         NSString* propertyName = [seperatedValue lastObject];
-        if( [objectID isEqualToString:kIX_SESSION] )
+        if( [objectID isEqualToString:kIXSessionRef] )
         {
             returnValue = [[[IXAppManager sharedAppManager] sessionProperties] getStringPropertyValue:propertyName defaultValue:value];
         }
-        else if( [objectID isEqualToString:kIX_APP] )
+        else if( [objectID isEqualToString:kIXAppRef] )
         {
             returnValue = [[[IXAppManager sharedAppManager] appProperties] getStringPropertyValue:propertyName defaultValue:value];
         }
-        else if( [objectID isEqualToString:kIX_VIEW] )
+        else if( [objectID isEqualToString:kIXViewControlRef] )
         {
             returnValue = [[[self sandbox] viewController] getViewPropertyNamed:propertyName];
             if( returnValue == nil )

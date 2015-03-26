@@ -9,18 +9,18 @@
 #import "IXConstants.h"
 
 // APP LEVEL NOTIFICATIONS
-NSString* const kIXAppWillResignActiveEvent = @"app_will_resign_active";
-NSString* const kIXAppDidEnterBackgroundEvent = @"app_did_enter_background";
-NSString* const kIXAppWillEnterForegroundEvent = @"app_will_enter_foreground";
-NSString* const kIXAppDidBecomeActiveEvent = @"app_did_become_active";
-NSString* const kIXAppWillTerminateEvent = @"app_will_terminate";
-NSString* const kIXAppRegisterForRemoteNotificationsSuccess = @"app_register_for_notifications_success";
-NSString* const kIXAppRegisterForRemoteNotificationsFailed = @"app_register_for_notifications_failed";
-NSString* const kIXPushRecievedEvent = @"push_recieved";
-NSString* const kIXCustomURLSchemeOpened = @"custom_url_scheme_opened";
-NSString* const kIXLocationAuthChanged = @"location_auth_changed";
-NSString* const kIXLocationLocationUpdated = @"location_updated";
-NSString* const kIXMicrophoneAuthChanged = @"microphone_auth_changed";
+NSString* const kIXAppWillResignActiveEvent = @"willResignActive";
+NSString* const kIXAppDidEnterBackgroundEvent = @"didEnterBackground";
+NSString* const kIXAppWillEnterForegroundEvent = @"willEnterForeground";
+NSString* const kIXAppDidBecomeActiveEvent = @"didBecomeActive";
+NSString* const kIXAppWillTerminateEvent = @"willTerminate";
+NSString* const kIXAppRegisterForRemoteNotificationsSuccess = @"push.register.success";
+NSString* const kIXAppRegisterForRemoteNotificationsFailed = @"push.register.error";
+NSString* const kIXPushRecievedEvent = @"push.received";
+NSString* const kIXCustomURLSchemeOpened = @"customUrl.opened";
+NSString* const kIXLocationAuthChanged = @"location.auth.changed";
+NSString* const kIXLocationLocationUpdated = @"location.changed";
+NSString* const kIXMicrophoneAuthChanged = @"mic.auth.changed";
 
 // SPECIAL
 NSString* const kIX_CONTROL_CLASS_NAME_FORMAT = @"IX%@";
@@ -33,18 +33,15 @@ NSString* const kIX_DEBUG = @"debug";
 NSString* const kIX_RELEASE = @"release";
 
 NSString* const kIX_ID = @"_id";
-NSString* const kIX_APP = @"app";
 NSString* const kIX_TYPE = @"_type";
 NSString* const kIX_STYLE = @"_style";
-NSString* const kIX_SESSION = @"session";
-#warning Should we change this to "target.id" ? or "control.id"
+// TODO: Should we change this to "target.id" ? or "control.id"
 NSString* const kIX_TARGET = @"_target";
-NSString* const kIX_VIEW = @"view";
 NSString* const kIX_CONTROLS = @"controls";
 NSString* const kIX_ACTION = @"action";
 NSString* const kIX_ACTIONS = @"actions";
 NSString* const kIX_ATTRIBUTES = @"attributes";
-NSString* const kIX_datasources = @"datasources";
+NSString* const kIX_DATASOURCES = @"datasources";
 NSString* const kIX_VALUE = @"value";
 NSString* const kIX_ORIENTATION = @"orientation";
 NSString* const kIX_LANDSCAPE = @"landscape";
@@ -53,7 +50,6 @@ NSString* const kIX_IF = @"if";
 NSString* const kIX_ENABLED = @"enabled";
 NSString* const kIX_ON = @"on";
 NSString* const kIX_DELAY = @"delay";
-NSString* const kIX_REPEAT_DELAY = @"repeatDelay";
 NSString* const kIX_TRUE = @"true";
 NSString* const kIX_FALSE = @"false";
 NSString* const kIX_ZERO = @"0";
@@ -63,6 +59,7 @@ NSString* const kIX_PIPECOMMAPIPE_SEPERATOR = @"|,|";
 NSString* const kIX_PIPE_SEPERATOR = @"|";
 NSString* const kIX_PERIOD_SEPERATOR = @".";
 NSString* const kIX_COLON_SEPERATOR = @":";
+NSString* const kIX_DOUBLE_COLON_SEPERATOR = @"::";
 NSString* const kIX_EVAL_BRACKETS = @"{{";
 
 // DATA PROVIDER SPECIFIC NODES

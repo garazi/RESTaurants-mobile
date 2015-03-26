@@ -96,17 +96,14 @@ extern NSString* const kIX_DEBUG;
 extern NSString* const kIX_RELEASE;
 
 extern NSString* const kIX_ID;
-extern NSString* const kIX_APP;
 extern NSString* const kIX_STYLE;
 extern NSString* const kIX_TARGET;
 extern NSString* const kIX_TYPE;
-extern NSString* const kIX_SESSION;
-extern NSString* const kIX_VIEW;
 extern NSString* const kIX_CONTROLS;
 extern NSString* const kIX_ACTION;
 extern NSString* const kIX_ACTIONS;
 extern NSString* const kIX_ATTRIBUTES;
-extern NSString* const kIX_datasources;
+extern NSString* const kIX_DATASOURCES;
 extern NSString* const kIX_VALUE;
 extern NSString* const kIX_ORIENTATION;
 extern NSString* const kIX_LANDSCAPE;
@@ -115,8 +112,6 @@ extern NSString* const kIX_IF;
 extern NSString* const kIX_ENABLED;
 extern NSString* const kIX_ON;
 extern NSString* const kIX_DELAY;
-#warning Move repeat delay const to action container
-extern NSString* const kIX_REPEAT_DELAY;
 extern NSString* const kIX_TRUE;
 extern NSString* const kIX_FALSE;
 extern NSString* const kIX_ZERO;
@@ -126,12 +121,14 @@ extern NSString* const kIX_PIPE_SEPERATOR;
 extern NSString* const kIX_PIPECOMMAPIPE_SEPERATOR;
 extern NSString* const kIX_PERIOD_SEPERATOR;
 extern NSString* const kIX_COLON_SEPERATOR;
+extern NSString* const kIX_DOUBLE_COLON_SEPERATOR;
 extern NSString* const kIX_EVAL_BRACKETS;
 
 // GLOBAL EVENT NAMES
 extern NSString* const kIX_ERROR;
 extern NSString* const kIX_FAILED;
 extern NSString* const kIX_FINISHED;
+extern NSString* const kIX_DONE;
 extern NSString* const kIX_SUCCESS;
 
 // DATA PROVIDER SPECIFIC NODES

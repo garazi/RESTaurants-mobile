@@ -12,12 +12,14 @@
 #import "IXGetShortCode.h"
 #import "IXShortCodeFunction.h"
 #import "NSString+IXAdditions.h"
+#import "IXSandbox.h"
 #import "IXLogger.h"
+#import "IXAppShortCode.h"
 
 // NSCoding Key Constants
 static NSString* const kIXRawValueNSCodingKey = @"rawValue";
 static NSString* const kIXObjectIDNSCodingKey = @"objectID";
-#warning Suggest "method" and "function"
+// TODO: Suggest "method" and "function"
 static NSString* const kIXMethodNameNSCodingKey = @"methodName";
 static NSString* const kIXFunctionNameNSCodingKey = @"functionName";
 static NSString* const kIXParametersNSCodingKey = @"parameters";
@@ -166,7 +168,12 @@ NSArray* ix_ValidRangesFromTextCheckingResult(NSTextCheckingResult* textChecking
                 Class shortCodeClass = NSClassFromString([NSString stringWithFormat:kIX_SHORTCODE_CLASS_NAME_FORMAT,[objectID capitalizedString]]);
                 if( !shortCodeClass )
                 {
-                    // If the class doesn't exist this must be a Get shortcode.
+                    // Try to find the class by removing the $. Basically used for app shortcodes but maybe even network and device if people mess up.
+                    shortCodeClass = NSClassFromString([NSString stringWithFormat:kIX_SHORTCODE_CLASS_NAME_FORMAT,[[objectID stringByReplacingOccurrencesOfString:@"$" withString:@""] capitalizedString]]);
+                }
+
+                if( !shortCodeClass )
+                {
                     shortCodeClass = [IXGetShortCode class];
                 }
                 else

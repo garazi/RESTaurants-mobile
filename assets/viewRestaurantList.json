@@ -1,10 +1,10 @@
 {
-  "view": {
+  "$view": {
     "actions": [
       {
         "_type": "Function",
         "attributes": {
-          "_target": "app",
+          "_target": "$app",
           "functionName": "location.auth.request"
         },
         "on": "didAppear"
@@ -12,12 +12,12 @@
       {
         "_type": "Refresh",
         "attributes": {
-          "_target": "session"
+          "_target": "$session"
         },
         "set": {
           "searchTerm": [
-            "if :: [[session.searchTerm]] == null :: restaurants",
-            "if :: [[session.searchTerm]] !== null :: [[session.searchTerm]]"
+            "if :: [[$session.searchTerm]] == null :: restaurants",
+            "if :: [[$session.searchTerm]] !== null :: [[$session.searchTerm]]"
           ]
         }
       },
@@ -97,7 +97,7 @@
                   {
                     "_type": "Function",
                     "attributes": {
-                      "_target": "app",
+                      "_target": "$app",
                       "functionName": "drawerController.l.toggle"
                     },
                     "on": "touchUp"
@@ -146,7 +146,7 @@
             ],
             "controls": [
               {
-                "_id": "layoutTest",
+                "_id": "layoutRestaurantList",
                 "_type": "Layout",
                 "attributes": {
                   "align.h": "center",
@@ -164,7 +164,7 @@
                   {
                     "_type": "Modify",
                     "attributes": {
-                      "_target": "session"
+                      "_target": "$session"
                     },
                     "on": "touchUp",
                     "set": {
@@ -245,7 +245,7 @@
           {
             "_type": "Refresh",
             "attributes": {
-              "_target": "collectionRestaurants,layoutTest"
+              "_target": "collectionRestaurants,layoutRestaurantList"
             },
             "on": "success"
           },
@@ -261,7 +261,7 @@
         "attributes": {
           "autoLoad.enabled": false,
           "baseUrl": "http://grewis-test.apigee.net",
-          "pathSuffix": "/api-mobile-app/yelp?term=[[session.searchTerm]]&ll=[[device.location.lat]],[[device.location.long]]",
+          "pathSuffix": "/api-mobile-app/yelp?term=[[$session.searchTerm]]&ll=[[$device.location.lat]],[[$device.location.long]]",
           "http_method": "GET"
         },
         "parameters": {

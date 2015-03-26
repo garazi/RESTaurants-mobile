@@ -17,7 +17,7 @@
 #import "UIImage+ResizeMagick.h"
 #import "Ignite_iOS_Engine-Swift.h"
 
-#warning Clean this up and organize it into Attributes/Returns/Events/Functions
+// TODO: Clean this up and organize it into Attributes/Returns/Events/Functions
 
 // Attributes
 IX_STATIC_CONST_STRING kIXAlpha = @"alpha";
@@ -40,8 +40,6 @@ IX_STATIC_CONST_STRING kIXShadowAlpha = @"shadow.alpha";
 IX_STATIC_CONST_STRING kIXShadowColor = @"shadow.color";
 IX_STATIC_CONST_STRING kIXShadowOffsetRight = @"shadow.offset.r";
 IX_STATIC_CONST_STRING kIXShadowOffsetDown = @"shadow.offset.b";
-#warning Suspect the following "visible" is not required
-// IX_STATIC_CONST_STRING kIXVisible = @"visible"; // pretty sure this is used in IXControlLayoutInfo only
 IX_STATIC_CONST_STRING kIXPanReset = @"pan.resetOnRelease.enabled";
 IX_STATIC_CONST_STRING kIXPanSnap = @"pan.snapToBounds.enabled";
 IX_STATIC_CONST_STRING kIXTapCount = @"tap.count";
@@ -50,6 +48,7 @@ IX_STATIC_CONST_STRING kIXPinchReset = @"pinch.resetOnRelease.enabled";
 IX_STATIC_CONST_STRING kIXPinchMax = @"pinch.zoomScale.max";
 IX_STATIC_CONST_STRING kIXPinchMin = @"pinch.zoomScale.min";
 IX_STATIC_CONST_STRING kIXPinchElastic = @"pinch.zoomScale.elasticity";
+IX_STATIC_CONST_STRING kIXRotation = @"rotation"; // rotates a control, in degrees
 
 // Attribute Accepted Values
 IX_STATIC_CONST_STRING kIXBackgroundImageScaleCover = @"cover"; // bg.scale
@@ -69,6 +68,7 @@ IX_STATIC_CONST_STRING kIXReverse = @"reverse"; // spin direction
 
 // Returns
 IX_STATIC_CONST_STRING kIXPinchTransformScale = @"transform.scale"; // pinch transform scale
+IX_STATIC_CONST_STRING KIXTransformRotation = @"transform.rotation"; // control rotation in degrees
 IX_STATIC_CONST_STRING kIXLocation = @"position"; // what is returned here? comma separated?
 IX_STATIC_CONST_STRING kIXLocationX = @"position.x";
 IX_STATIC_CONST_STRING kIXLocationY = @"position.y";
@@ -80,7 +80,7 @@ IX_STATIC_CONST_STRING kIXTouch = @"touch";
 IX_STATIC_CONST_STRING kIXTouchUp = @"touchUp";
 IX_STATIC_CONST_STRING kIXTouchCancelled = @"touchCancelled";
 IX_STATIC_CONST_STRING kIXTap = @"tap";
-#warning Should support events on swipe.<direction> rather than this or make swipe.direction a read-only property
+// TODO: Should support events on swipe.<direction> rather than this or make swipe.direction a read-only property
 IX_STATIC_CONST_STRING kIXSwipe = @"swipe";
 IX_STATIC_CONST_STRING kIXSwipeDirection = @"swipe.direction";
 IX_STATIC_CONST_STRING kIXPan = @"pan";
@@ -92,7 +92,7 @@ IX_STATIC_CONST_STRING kIXSnapshotFailed = @"snapshot.error";
 
 // Functions
 IX_STATIC_CONST_STRING kIXSpin = @"spin";
-#warning Suspect the following "start_animation" is not required
+// TODO: Suspect the following "start_animation" is not required
 IX_STATIC_CONST_STRING kIXStartAnimation = @"start_animation"; // deprecate?
 IX_STATIC_CONST_STRING kIXStopAnimation = @"stopAnimating";
 IX_STATIC_CONST_STRING kIXSnapshot = @"takeSnapshot";
@@ -117,6 +117,7 @@ IX_STATIC_CONST_STRING kIXToggle = @"dev_toggle";
 @end
 
 #define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
+#define RADIANS_TO_DEGREES(radians) ((radians) * 180.0 / M_PI)
 
 @implementation IXBaseControl
 
@@ -193,7 +194,14 @@ static BOOL kIXDidDetermineOriginalCenter = false; // used for pan gesture
 
 -(void)layoutControlContentsInRect:(CGRect)rect
 {
-    
+    NSString* rotationProperty = [[self propertyContainer] getStringPropertyValue:kIXRotation defaultValue:nil];
+    if (rotationProperty != nil) {
+        CGFloat rotationInRadians = DEGREES_TO_RADIANS([rotationProperty floatValue]);
+        _contentView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        _contentView.layer.transform = CATransform3DIdentity;
+        _contentView.frame = _layoutInfo.layoutRect;
+        _contentView.layer.transform = CATransform3DMakeRotation(rotationInRadians, 0, 0, 1);
+    }
 }
 
 -(void)layoutControl
@@ -249,7 +257,6 @@ static BOOL kIXDidDetermineOriginalCenter = false; // used for pan gesture
                                                                              defaultValue:kIXBackgroundImageScaleCover];
         
         static NSDictionary *sIXBackgroundImageScaleFormatDictionary = nil;
-# warning Not sure a dispatch_once is going to work properly here? Means you can never change it
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
             sIXBackgroundImageScaleFormatDictionary = @{kIXBackgroundImageScaleCover: @"%.0fx%.0f^",
@@ -643,27 +650,41 @@ static BOOL kIXDidDetermineOriginalCenter = false; // used for pan gesture
 -(NSString*)getReadOnlyPropertyValue:(NSString*)propertyName
 {
     NSString* returnValue = nil;
-    if ( [propertyName hasPrefix:kIXLocation] && [[self propertyContainer] hasLayoutProperties] )
-    {
-        UIView* rootView = [[[[[UIApplication sharedApplication] windows] firstObject] rootViewController] view];
-        CGPoint location = [self.contentView convertPoint:self.contentView.frame.origin toView:rootView];
-        
-        if ( [propertyName isEqualToString:kIXLocationX] )
-            returnValue = [NSString stringWithFormat:@"%f", location.x / 2];
-        if ( [propertyName isEqualToString:kIXLocationY] )
-            returnValue = [NSString stringWithFormat:@"%f", location.y / 2];
-        if ( [propertyName isEqualToString:kIXLocation] )
-            returnValue = NSStringFromCGPoint(CGPointMake(location.x / 2, location.y / 2));
-    }
-    if ( [propertyName hasPrefix:kIXActualHeight] && [[self propertyContainer] hasLayoutProperties] )
-    {
-        CGFloat selfHeight=self.contentView.bounds.size.height;
-        returnValue = [NSString stringWithFormat: @"%.0f", selfHeight];
-    }
-    if ( [propertyName hasPrefix:kIXActualWidth] && [[self propertyContainer] hasLayoutProperties] )
-    {
-        CGFloat selfWidth=self.contentView.bounds.size.width;
-        returnValue = [NSString stringWithFormat: @"%.0f", selfWidth];
+    if ([[self propertyContainer] hasLayoutProperties]) {
+        if ( [propertyName hasPrefix:kIXLocation] )
+        {
+            UIView* rootView = [[[[[UIApplication sharedApplication] windows] firstObject] rootViewController] view];
+            CGPoint location = [self.contentView convertPoint:self.contentView.frame.origin toView:rootView];
+            
+            if ( [propertyName isEqualToString:kIXLocationX] )
+                returnValue = [NSString stringWithFormat:@"%f", location.x / 2];
+            if ( [propertyName isEqualToString:kIXLocationY] )
+                returnValue = [NSString stringWithFormat:@"%f", location.y / 2];
+            if ( [propertyName isEqualToString:kIXLocation] )
+                returnValue = NSStringFromCGPoint(CGPointMake(location.x / 2, location.y / 2));
+        }
+        if ( [propertyName hasPrefix:kIXActualHeight] )
+        {
+            CGFloat selfHeight=self.contentView.bounds.size.height;
+            returnValue = [NSString stringWithFormat: @"%.0f", selfHeight];
+        }
+        if ( [propertyName hasPrefix:kIXActualWidth] )
+        {
+            CGFloat selfWidth=self.contentView.bounds.size.width;
+            returnValue = [NSString stringWithFormat: @"%.0f", selfWidth];
+        }
+        if ( [propertyName isEqualToString:kIXPinchTransformScale] )
+        {
+            CGAffineTransform transform = _contentView.transform;
+            CGFloat scaleFactor = sqrt(fabs(transform.a * transform.d - transform.b * transform.c));
+            returnValue = [NSString stringWithFormat: @"%f", scaleFactor];
+        }
+        if ( [propertyName isEqualToString:KIXTransformRotation] )
+        {
+            CGAffineTransform transform = _contentView.transform;
+            CGFloat radians = atan2f(transform.b, transform.a);
+            returnValue = [NSString stringWithFormat: @"%f", RADIANS_TO_DEGREES(radians)];
+        }
     }
     return returnValue;
 }

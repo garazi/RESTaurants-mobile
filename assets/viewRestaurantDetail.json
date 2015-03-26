@@ -1,5 +1,5 @@
 {
-    "view": {
+    "$view": {
         "actions": [{
             "_type": "Refresh",
             "attributes": {
@@ -53,7 +53,7 @@
                         "padding.right": 30,
                         "size.h": 50,
                         "sizeToFit.enabled": true,
-                        "text": "[[session.restaurantName]]",
+                        "text": "[[$session.restaurantName]]",
                         "text.align": "center"
                     }
                 }, {
@@ -114,7 +114,7 @@
                             "padding.top": 0,
                             "size.h": 50,
                             "sizeToFit.enabled": true,
-                            "text": "[[session.restAddr]]",
+                            "text": "[[$session.restAddr]]",
                             "text.align": "center"
                         }
                     }, {
@@ -130,7 +130,7 @@
                             "margin.top": 20,
                             "size.h": 50,
                             "sizeToFit.enabled": true,
-                            "text": "[[session.restCity]]",
+                            "text": "[[$session.restCity]]",
                             "text.align": "center"
                         }
                     }, {
@@ -146,7 +146,7 @@
                             "margin.top": 40,
                             "size.h": 50,
                             "sizeToFit.enabled": true,
-                            "text": "[[session.restPhone]]",
+                            "text": "[[$session.restPhone]]",
                             "text.align": "center"
                         }
                     }]
@@ -163,10 +163,10 @@
                     "attributes": {
                         "animatePinDrop.enabled": true,
                         "pin": {
-                            "lat": "[[session.restLat]]",
-                            "long": "[[session.restLon]]",
-                            "subtitle": "[[session.restAddr]]",
-                            "title": "[[session.restaurantName]]"
+                            "lat": "[[$session.restLat]]",
+                            "long": "[[$session.restLon]]",
+                            "subtitle": "[[$session.restAddr]]",
+                            "title": "[[$session.restaurantName]]"
                         },
                         "margin.top": 75,
                         "margin.bottom": 75,
@@ -503,7 +503,7 @@
             "attributes": {
                 "autoLoad.enabled": true,
                 "baseUrl": "http://grewis-test.apigee.net",
-                "pathSuffix": "/api-workshop-v2/restaurants/[[session.restID]]",
+                "pathSuffix": "/api-workshop-v2/restaurants/[[$session.restID]]",
                 "http_method": "GET"
             }
         }]

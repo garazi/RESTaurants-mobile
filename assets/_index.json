@@ -1,10 +1,10 @@
 {
-  "app": {
+  "$app": {
     "actions": [
       {
         "_type": "Function",
         "attributes": {
-          "_target": "app",
+          "_target": "$app",
           "functionName": "location.beginTracking"
         },
         "on": "willEnterForeground"
@@ -22,11 +22,11 @@
       "searchTerm": "restaurants",
       "drawerController.animation": "slide",
       "drawerController.animation.parallaxFactor": 2,
-      "drawerController.l.max.w": "{{[[device.screen.w]] - 100}}",
+      "drawerController.l.max.w": "{{[[$device.screen.w]] - 100}}",
       "drawerController.l.url": "viewMenu.json",
-      "drawerController.r.max.w": "{{[[device.screen.w]] - 50}}",
-      "drawerController.r.url": "viewMenu.json",
-      "drawerController.shadow.enabled": false
+      "*drawerController.r.max.w": "{{[[$device.screen.w]] - 50}}",
+      "*drawerController.r.url": "viewMenu.json",
+      "drawerController.shadow.enabled": true
     },
     "datasources": []
   }

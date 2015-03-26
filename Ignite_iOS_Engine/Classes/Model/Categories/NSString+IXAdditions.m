@@ -12,6 +12,7 @@
 #import "YLMoment.h"
 #import "YLMoment+IXAdditions.h"
 #import <CommonCrypto/CommonDigest.h>
+#import <objc/runtime.h>
 
 static NSString* const kIXFloatFormat = @"%f";
 
@@ -102,12 +103,7 @@ static NSString* const kIXFloatFormat = @"%f";
 {
     if (string.length > 0 && toDateFormat.length > 0)
     {
-        BOOL fromNow = false;
-        if ([toDateFormat hasSuffix:@":fromNow"])
-        {
-            fromNow = true;
-            toDateFormat = [toDateFormat substringToIndex:[toDateFormat length] - 8]; //8 characters to remove the :fromNow from string
-        }
+        BOOL fromNow = ([toDateFormat isEqualToString:@"fromNow"]);
         
         YLMoment* moment = nil;
         if ( [fromDateFormat length] > 0)
@@ -134,16 +130,46 @@ static NSString* const kIXFloatFormat = @"%f";
         }
         else
         {
-            return [moment format:toDateFormat];
+            if (fromNow) {
+                return [moment fromNow];
+            } else {
+                return [moment format:toDateFormat];
+            }
         }
     }
     else
         return string;
 }
 
+- (NSString*)trimLeadingAndTrailingWhitespace {
+    return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
 -(BOOL)containsSubstring:(NSString*)substring options:(NSStringCompareOptions)options
 {
     return [self rangeOfString:substring options:options].location != NSNotFound;
 }
+
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < 80000
+
++ (void)load {
+    @autoreleasepool {
+        [self ix_modernizeSelector:NSSelectorFromString(@"containsString:") withSelector:@selector(ix_containsString:)];
+    }
+}
+
++ (void)ix_modernizeSelector:(SEL)originalSelector withSelector:(SEL)newSelector {
+    if (![NSString instancesRespondToSelector:originalSelector]) {
+        Method newMethod = class_getInstanceMethod(self, newSelector);
+        class_addMethod(self, originalSelector, method_getImplementation(newMethod), method_getTypeEncoding(newMethod));
+    }
+}
+
+// containsString: has been added in iOS 8. We dynamically add this if we run on iOS 7.
+- (BOOL)ix_containsString:(NSString *)aString {
+    return [self rangeOfString:aString].location != NSNotFound;
+}
+
+#endif
 
 @end

@@ -14,6 +14,7 @@
 
 // NSCoding Key Constants
 static NSString* const kIXConditionalPropertyNSCodingKey = @"conditionalProperty";
+static NSString* const kIXElsePropertyNSCodingKey = @"elseProperty";
 static NSString* const kIXInterfaceOrientationMaskNSCodingKey = @"interfaceOrientationMask";
 
 @implementation IXBaseConditionalObject
@@ -33,8 +34,10 @@ static NSString* const kIXInterfaceOrientationMaskNSCodingKey = @"interfaceOrien
 
 -(id)copyWithZone:(NSZone *)zone
 {
-    return [[[self class] allocWithZone:zone] initWithInterfaceOrientationMask:[self interfaceOrientationMask]
-                                                           conditionalProperty:[[self conditionalProperty] copy]];
+    IXBaseConditionalObject* copiedObject = [[[self class] allocWithZone:zone] initWithInterfaceOrientationMask:[self interfaceOrientationMask]
+                                                                                            conditionalProperty:[[self conditionalProperty] copy]];
+    [copiedObject setElseProperty:[[self elseProperty] copy]];
+    return copiedObject;
 }
 
 -(instancetype)initWithInterfaceOrientationMask:(UIInterfaceOrientationMask)interfaceOrientationMask
@@ -51,14 +54,17 @@ static NSString* const kIXInterfaceOrientationMaskNSCodingKey = @"interfaceOrien
 
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
-    return [self initWithInterfaceOrientationMask:[aDecoder decodeIntegerForKey:kIXInterfaceOrientationMaskNSCodingKey]
-                              conditionalProperty:[aDecoder decodeObjectForKey:kIXConditionalPropertyNSCodingKey]];
+    IXBaseConditionalObject* baseConditionalObject = [self initWithInterfaceOrientationMask:[aDecoder decodeIntegerForKey:kIXInterfaceOrientationMaskNSCodingKey]
+                                                                        conditionalProperty:[aDecoder decodeObjectForKey:kIXConditionalPropertyNSCodingKey]];
+    [baseConditionalObject setElseProperty:[aDecoder decodeObjectForKey:kIXElsePropertyNSCodingKey]];
+    return baseConditionalObject;
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeInteger:[self interfaceOrientationMask] forKey:kIXInterfaceOrientationMaskNSCodingKey];
     [aCoder encodeObject:[self conditionalProperty] forKey:kIXConditionalPropertyNSCodingKey];
+    [aCoder encodeObject:[self elseProperty] forKey:kIXElsePropertyNSCodingKey];
 }
 
 -(BOOL)isOrientationMaskValidForOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -80,25 +86,25 @@ static NSString* const kIXInterfaceOrientationMaskNSCodingKey = @"interfaceOrien
     return orientationIsValid;
 }
 
--(BOOL)isConditionalValid
+-(BOOL)isConditionalTrue
 {
-    BOOL conditionalPropertyIsValid = YES;
+    BOOL conditionalPropertyEvaluatesTrue = YES;
     if( [self conditionalProperty] != nil )
     {
         NSString* conditionalPropertyValue = [[self conditionalProperty] getPropertyValue];
         if( conditionalPropertyValue && [conditionalPropertyValue length] > 0 )
         {
-            NSString* conditionalPropertyValueReturned = [[IXAppManager sharedAppManager] evaluateJavascript:conditionalPropertyValue];
+            NSString* evaluationResult = [[IXAppManager sharedAppManager] evaluateJavascript:conditionalPropertyValue];
             
-            conditionalPropertyIsValid = !( conditionalPropertyValueReturned == nil || [conditionalPropertyValueReturned length] <= 0 || [conditionalPropertyValueReturned isEqualToString:kIX_ZERO] || [conditionalPropertyValueReturned isEqualToString:kIX_FALSE] );
+            conditionalPropertyEvaluatesTrue = !( evaluationResult == nil || [evaluationResult length] <= 0 || [evaluationResult isEqualToString:kIX_ZERO] || [evaluationResult isEqualToString:kIX_FALSE] );
         }
     }
-    return conditionalPropertyIsValid;
+    return conditionalPropertyEvaluatesTrue;
 }
 
 -(BOOL)areConditionalAndOrientationMaskValid:(UIInterfaceOrientation)interfaceOrientation
 {
-    return [self isConditionalValid] && [self isOrientationMaskValidForOrientation:interfaceOrientation];
+    return [self isConditionalTrue] && [self isOrientationMaskValidForOrientation:interfaceOrientation];
 }
 
 +(UIInterfaceOrientationMask)orientationMaskForValue:(id)orientationValue

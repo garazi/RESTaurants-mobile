@@ -15,6 +15,7 @@
 
 @property (nonatomic,assign) UIInterfaceOrientationMask interfaceOrientationMask;
 @property (nonatomic,strong) IXProperty* conditionalProperty;
+@property (nonatomic,strong) IXProperty* elseProperty;
 
 -(instancetype)initWithInterfaceOrientationMask:(UIInterfaceOrientationMask)interfaceOrientationMask
                             conditionalProperty:(IXProperty*)conditionalProperty;
@@ -22,7 +23,7 @@
 +(instancetype)baseConditionalObjectWithInterfaceOrientationMask:(UIInterfaceOrientationMask)interfaceOrientationMask
                                              conditionalProperty:(IXProperty*)conditionalProperty;
 
--(BOOL)isConditionalValid;
+-(BOOL)isConditionalTrue;
 -(BOOL)isOrientationMaskValidForOrientation:(UIInterfaceOrientation)interfaceOrientation;
 -(BOOL)areConditionalAndOrientationMaskValid:(UIInterfaceOrientation)interfaceOrientation;
 

@@ -6,7 +6,7 @@ PODS:
     - AFNetworking (~> 1.3)
   - ALMoviePlayerController (0.3.0)
   - ApigeeiOSSDK (2.0.16)
-  - APParallaxHeader (HEAD based on 0.1.6)
+  - APParallaxHeader (0.1.6)
   - CocoaLumberjack (2.0.0-rc):
     - CocoaLumberjack/Default (= 2.0.0-rc)
     - CocoaLumberjack/Extensions (= 2.0.0-rc)
@@ -49,9 +49,9 @@ PODS:
   - RestKit/ObjectMapping (0.20.3)
   - RestKit/Support (0.20.3):
     - TransitionKit (= 1.1.1)
-  - SDWebImage (HEAD based on 3.7.1):
-    - SDWebImage/Core (= HEAD based on 3.7.1)
-  - SDWebImage/Core (HEAD based on 3.7.1)
+  - SDWebImage (HEAD based on 3.7.2):
+    - SDWebImage/Core (= HEAD based on 3.7.2)
+  - SDWebImage/Core (HEAD based on 3.7.2)
   - SOCKit (1.1)
   - SVPulsingAnnotationView (0.3.0)
   - SVWebViewController (1.0)
@@ -66,7 +66,7 @@ DEPENDENCIES:
   - AFOAuth2Client (~> 0.1)
   - ALMoviePlayerController (~> 0.3.0)
   - ApigeeiOSSDK (from `https://github.com/apigee/apigee-ios-sdk.git`)
-  - APParallaxHeader (HEAD)
+  - APParallaxHeader (from `https://github.com/r3mus/APParallaxHeader.git`)
   - CocoaLumberjack (= 2.0.0-rc)
   - Color-Picker-for-iOS (~> 2.0)
   - ColorUtils (~> 1.1.1)
@@ -88,6 +88,8 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   ApigeeiOSSDK:
     :git: https://github.com/apigee/apigee-ios-sdk.git
+  APParallaxHeader:
+    :git: https://github.com/r3mus/APParallaxHeader.git
   FontAwesome+iOS:
     :git: https://github.com/jeremyanticouni/ios-fontawesome.git
   TTTAttributedLabel:
@@ -98,6 +100,9 @@ CHECKOUT OPTIONS:
   ApigeeiOSSDK:
     :commit: 43798e479870fe0480579c33b3c0bf5e287e2d73
     :git: https://github.com/apigee/apigee-ios-sdk.git
+  APParallaxHeader:
+    :commit: 2e54fbdebecfd136786b07398beb0d1eee53501c
+    :git: https://github.com/r3mus/APParallaxHeader.git
   FontAwesome+iOS:
     :commit: 3290959b86e5ff96eb0b0ec62ec3c864d388e81c
     :git: https://github.com/jeremyanticouni/ios-fontawesome.git
@@ -111,7 +116,7 @@ SPEC CHECKSUMS:
   AFOAuth2Client: 4f05d29e0a26c7ddf529dd7c4480af6ee1e982c6
   ALMoviePlayerController: bee05da71110002321ba4f87dc021e97348d7a6a
   ApigeeiOSSDK: 8653fbd4330bbdd200da0ce672943c56489b19c3
-  APParallaxHeader: 6e7cc27c052be34e1a5655dc2fab6c40eecbbe55
+  APParallaxHeader: 5369815639059caa4e195a178c020f8e2b998336
   CocoaLumberjack: 6186e27827fc574b50b16c10102fcc591437f06c
   Color-Picker-for-iOS: 2eec454aa6b24a8b7c2537da0f61c6ead936949e
   ColorUtils: d99b38d2a7abf81df1698477b19f895576578738
@@ -122,7 +127,7 @@ SPEC CHECKSUMS:
   RaptureXML: b9b0aca9c68c684c189af73dd5e8f8fdeec74600
   Reachability: 1ef8adf5c4e3d362f96515d4278f68dad3c26930
   RestKit: 7f9490e709ee745e166c4d2aa7a8d132831275b0
-  SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
+  SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
   SOCKit: d8d0dd3688ae1026c12367570da8fa8e1a6980fb
   SVPulsingAnnotationView: 92364bec02160f481d1b603afc904183d385c3e6
   SVWebViewController: fbf917baa92744c54cfb89a52a4c056e409973a4

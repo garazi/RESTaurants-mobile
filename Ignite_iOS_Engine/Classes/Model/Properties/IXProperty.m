@@ -11,8 +11,8 @@
 #import "IXPropertyContainer.h"
 #import "IXBaseShortCode.h"
 #import "IXLogger.h"
+#import "NSString+IXAdditions.h"
 
-static NSString* const kIXIfRegexString = @"^if *:: *(.*) *:: *(.*$)";
 static NSString* const kIXShortcodeRegexString = @"(\\[{2}(.+?)(?::(.+?)(?:\\((.+?)\\))?)?\\]{2}|\\{{2}([^\\}]+)\\}{2})";
 
 // NSCoding Key Constants
@@ -59,31 +59,19 @@ static NSString* const kIXShortCodesNSCodingKey = @"shortCodes";
     if( [jsonObject isKindOfClass:[NSString class]] )
     {
         NSString* stringValue = (NSString*)jsonObject;
-        if( [stringValue length] )
+        if( [stringValue hasPrefix:kIX_IF] )
         {
-            static NSRegularExpression *sIXIfRegex = nil;
-            static dispatch_once_t onceToken;
-            dispatch_once(&onceToken, ^{
-                NSError* __autoreleasing error = nil;
-                sIXIfRegex = [[NSRegularExpression alloc] initWithPattern:kIXIfRegexString
-                                                                  options:NSRegularExpressionDotMatchesLineSeparators
-                                                                    error:&error];
-                if( error )
-                    IX_LOG_ERROR(@"Critical Error!!! IF REGEX %@ invalid with error: %@.",kIXIfRegexString,[error description]);
-            });
-            
-            NSTextCheckingResult* conditionalMatch = [sIXIfRegex firstMatchInString:stringValue
-                                                                            options:0
-                                                                              range:NSMakeRange(0, [stringValue length])];
-            
-            NSUInteger rangeCount = [conditionalMatch numberOfRanges];
-            if( rangeCount > 2 )
-            {
-                conditionalProperty = [IXProperty propertyWithPropertyName:propertyName
-                                                                  rawValue:[stringValue substringWithRange:[conditionalMatch rangeAtIndex:2]]];
-                
-                [conditionalProperty setConditionalProperty:[IXProperty propertyWithPropertyName:nil
-                                                                                        rawValue:[stringValue substringWithRange:[conditionalMatch rangeAtIndex:1]]]];
+            NSArray* conditionalComponents = [stringValue componentsSeparatedByString:kIX_DOUBLE_COLON_SEPERATOR];
+            if (conditionalComponents.count > 1) {
+                NSString* conditionalStatement = [conditionalComponents[1] trimLeadingAndTrailingWhitespace];
+                NSString* valueIfTrue = [conditionalComponents[2] trimLeadingAndTrailingWhitespace];
+                NSString* valueIfFalse = (conditionalComponents.count == 4) ? [conditionalComponents[3] trimLeadingAndTrailingWhitespace] : nil;
+
+                conditionalProperty = [IXProperty propertyWithPropertyName:propertyName rawValue:valueIfTrue];
+                [conditionalProperty setConditionalProperty:[IXProperty propertyWithPropertyName:nil rawValue:conditionalStatement]];
+                if( [valueIfFalse length] > 0 ) {
+                    [conditionalProperty setElseProperty:[IXProperty propertyWithPropertyName:nil rawValue:valueIfFalse]];
+                }
             }
         }
     }
@@ -309,6 +297,7 @@ static NSString* const kIXShortCodesNSCodingKey = @"shortCodes";
     _propertyContainer = propertyContainer;
     
     [[self conditionalProperty] setPropertyContainer:_propertyContainer];
+    [[self elseProperty] setPropertyContainer:_propertyContainer];
     
     for( IXBaseShortCode *shortCode in [self shortCodes] )
     {

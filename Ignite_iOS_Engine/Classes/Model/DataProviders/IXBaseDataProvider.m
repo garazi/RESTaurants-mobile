@@ -30,6 +30,7 @@ NSString* IXBaseDataProviderDidUpdateNotification = @"IXBaseDataProviderDidUpdat
 IX_STATIC_CONST_STRING kIXDataBaseUrl = @"baseUrl";
 IX_STATIC_CONST_STRING kIXDataPath = @"pathSuffix";
 IX_STATIC_CONST_STRING kIXAutoLoad = @"autoLoad.enabled";
+IX_STATIC_CONST_STRING kIXAutoEncodeParams = @"autoEncodeParams.enabled";
 IX_STATIC_CONST_STRING kIXCacheID = @"cache.id";
 IX_STATIC_CONST_STRING kIXHTTPMethod = @"http.method";
 IX_STATIC_CONST_STRING kIXHTTPBody = @"http.body";
@@ -59,7 +60,7 @@ IX_STATIC_CONST_STRING kIXCachePolicyDefault = @"reloadIgnoringLocalCache";
 
 // IXBaseDataProvider Read-Only Properties
 IX_STATIC_CONST_STRING kIXRawDataResponse = @"response.raw";
-IX_STATIC_CONST_STRING kIXResponseHeaders = @"response.headers";
+// IX_STATIC_CONST_STRING kIXResponseHeaders = @"response.headers"; This is removed from BaseData provider and only implmeented in JSONDP.
 IX_STATIC_CONST_STRING kIXStatusCode = @"response.status.code";
 IX_STATIC_CONST_STRING kIXErrorMessage = @"response.error";
 
@@ -71,7 +72,7 @@ IX_STATIC_CONST_STRING kIXCookieURL = @"cookie.url"; // Parameter on deleteCooki
 // IXBaseDataProvider Events
 IX_STATIC_CONST_STRING kIXStarted = @"began";
 
-#warning These are not used?
+// TODO: These are not used?
 IX_STATIC_CONST_STRING kIXAuthSuccess = @"auth.success";
 IX_STATIC_CONST_STRING kIXAuthFail = @"auth.error";
 
@@ -95,6 +96,7 @@ IX_STATIC_CONST_STRING kIXFileAttachmentPropertiesNSCodingKey = @"fileAttachment
 @interface IXBaseDataProvider () <IXOAuthWebAuthViewControllerDelegate>
 
 @property (nonatomic,assign,getter = shouldAutoLoad) BOOL autoLoad;
+@property (nonatomic,assign,getter = shouldAutoEncodeParams) BOOL autoEncodeParams;
 @property (nonatomic,assign,getter = isPathLocal)    BOOL pathIsLocal;
 
 @property (nonatomic,copy) NSString* cacheID;
@@ -180,6 +182,7 @@ IX_STATIC_CONST_STRING kIXFileAttachmentPropertiesNSCodingKey = @"fileAttachment
     [self setHttpMethod:[[self propertyContainer] getStringPropertyValue:kIXHTTPMethod defaultValue:@"GET"]];
     [self setHttpBody:[[self propertyContainer] getStringPropertyValue:kIXHTTPBody defaultValue:nil]];
     [self setAutoLoad:[[self propertyContainer] getBoolPropertyValue:kIXAutoLoad defaultValue:NO]];
+    [self setAutoEncodeParams:[[self propertyContainer] getBoolPropertyValue:kIXAutoEncodeParams defaultValue:YES]];
     [self setCacheID:[[self propertyContainer] getStringPropertyValue:kIXCacheID defaultValue:nil]];
     [self setAcceptedContentType:[[self propertyContainer] getStringPropertyValue:kIXAcceptedContentType defaultValue:nil]];
     [self setDataBaseURL:[[self propertyContainer] getStringPropertyValue:kIXDataBaseUrl defaultValue:nil]];
@@ -244,10 +247,20 @@ IX_STATIC_CONST_STRING kIXFileAttachmentPropertiesNSCodingKey = @"fileAttachment
     {
         returnValue = [[self responseRawString] copy];
     }
-//    else if( [propertyName isEqualToString:kIXResponseHeaders] )
-//    {
-//        returnValue = [self responseHeaders];
-//    }
+// TODO: Remove this from JSON DP and implement here instead
+    /* This is removed from BaseData provider and only implmeented in JSONDP.
+    else if( [propertyName containsString:kIXResponseHeaders] )
+    {
+        @try {
+            NSString* responseHeader = [[[propertyName componentsSeparatedByString:kIX_PERIOD_SEPERATOR] lastObject] lowercaseString];
+            returnValue = [self responseHeaders][responseHeader];
+
+        }
+        @catch (NSException *exception) {
+            DDLogDebug(@"Tried to reference a response header object that didn't exist: %@", returnValue);
+        }
+    }
+     */
     else if( [propertyName isEqualToString:kIXStatusCode] )
     {
         returnValue = [NSString stringWithFormat:@"%li",(long)[self responseStatusCode]];
@@ -330,8 +343,8 @@ IX_STATIC_CONST_STRING kIXFileAttachmentPropertiesNSCodingKey = @"fileAttachment
         [[self actionContainer] executeActionsForEventNamed:[NSString stringWithFormat:@"%@%@",kIX_FAILED,locationSpecificEventSuffix]];
     }
     
-    [[self actionContainer] executeActionsForEventNamed:kIX_FINISHED];
-    [[self actionContainer] executeActionsForEventNamed:[NSString stringWithFormat:@"%@%@",kIX_FINISHED,locationSpecificEventSuffix]];
+    [[self actionContainer] executeActionsForEventNamed:kIX_DONE];
+    [[self actionContainer] executeActionsForEventNamed:[NSString stringWithFormat:@"%@%@",kIX_DONE,locationSpecificEventSuffix]];
 
     dispatch_async(dispatch_get_main_queue(),^{
         [[NSNotificationCenter defaultCenter] postNotificationName:IXBaseDataProviderDidUpdateNotification
@@ -363,11 +376,11 @@ IX_STATIC_CONST_STRING kIXFileAttachmentPropertiesNSCodingKey = @"fileAttachment
     NSDictionary* parameters = nil;
     if( [[self propertyContainer] getBoolPropertyValue:kIXParseParametsAsObject defaultValue:YES] )
     {
-        parameters = [[self requestParameterProperties] getAllPropertiesObjectValues];
+        parameters = [[self requestParameterProperties] getAllPropertiesObjectValues:[self shouldAutoEncodeParams]];
     }
     else
     {
-        parameters = [[self requestParameterProperties] getAllPropertiesStringValues];
+        parameters = [[self requestParameterProperties] getAllPropertiesStringValues:[self shouldAutoEncodeParams]];
     }
     
     NSString* imageControlRef = [[self fileAttachmentProperties] getStringPropertyValue:@"image.id" defaultValue:nil];
@@ -429,7 +442,7 @@ IX_STATIC_CONST_STRING kIXFileAttachmentPropertiesNSCodingKey = @"fileAttachment
         [request setHTTPBody:[[self httpBody] dataUsingEncoding:NSUTF8StringEncoding]];
     }
 
-    [request setAllHTTPHeaderFields:[[self requestHeaderProperties] getAllPropertiesStringValues]];
+    [request setAllHTTPHeaderFields:[[self requestHeaderProperties] getAllPropertiesStringValues:NO]];
     return request;
 }
 

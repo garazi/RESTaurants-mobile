@@ -10,6 +10,7 @@
 
 #import "IXLayout.h"
 #import "IXUITableViewCell.h"
+#import "UIImage+ResizeMagick.h"
 #import "IXCellBackgroundSwipeController.h"
 
 #import "UIScrollView+APParallaxHeader.h"
@@ -21,6 +22,10 @@ IX_STATIC_CONST_STRING kIXBackgroundSwipeWidth = @"swipe.w";
 
 IX_STATIC_CONST_STRING kIXImageParallax = @"parallaxImage";
 IX_STATIC_CONST_STRING kIXImageParallaxHeight = @"parallaxImage.h";
+IX_STATIC_CONST_STRING kIXImageParallaxWidth = @"parallaxImage.w";
+
+// IXImage Manipulation -- use a resizedImageByMagick mask for these
+IX_STATIC_CONST_STRING kIXParallaxImageResizeMask = @"parallaxImage.resizeMask";
 
 IX_STATIC_CONST_STRING kIXLayoutFlow = @"layoutFlow";
 IX_STATIC_CONST_STRING kIXLayoutFlowVertical = @"vertical";
@@ -82,9 +87,11 @@ IX_STATIC_CONST_STRING kIXCellIdentifier = @"IXUITableViewCell";
     
     if( [[self propertyContainer] propertyExistsForPropertyNamed:kIXImageParallax] )
     {
+        
         CGSize contentViewSize = [[self contentView] bounds].size;
         CGFloat parallaxHeight = [[self propertyContainer] getSizeValue:kIXImageParallaxHeight maximumSize:contentViewSize.height defaultValue:0.0f];
-        [[self tableView] addParallaxWithImage:[[[[self tableView] parallaxView] imageView] image] andHeight:parallaxHeight];
+        CGFloat parallaxWidth = [[self propertyContainer] getSizeValue:kIXImageParallaxWidth maximumSize:contentViewSize.width defaultValue:0.0f];
+        [[self tableView] addParallaxWithImage:_tableView.parallaxView.imageView.image withWidth:parallaxWidth andHeight:parallaxHeight];
     }
 }
 
@@ -103,10 +110,16 @@ IX_STATIC_CONST_STRING kIXCellIdentifier = @"IXUITableViewCell";
     [[self propertyContainer] getImageProperty:kIXImageParallax
                                   successBlock:^(UIImage *image) {
                                       
+                                      NSString* resizeDefault = [self.propertyContainer getStringPropertyValue:kIXParallaxImageResizeMask defaultValue:nil];
+                                      
+                                      if (resizeDefault)
+                                          image = [image resizedImageByMagick:resizeDefault];
+                                      
                                       CGSize contentViewSize = [[self contentView] bounds].size;
                                       CGFloat parallaxHeight = [[self propertyContainer] getSizeValue:kIXImageParallaxHeight maximumSize:contentViewSize.height defaultValue:0.0f];
+                                      CGFloat parallaxWidth = [[self propertyContainer] getSizeValue:kIXImageParallaxWidth maximumSize:contentViewSize.width defaultValue:0.0f];
                                       
-                                      [[weakSelf tableView] addParallaxWithImage:image andHeight:parallaxHeight];
+                                      [[weakSelf tableView] addParallaxWithImage:image withWidth:parallaxWidth andHeight:parallaxHeight];
                                       [[[weakSelf tableView] parallaxView] layoutIfNeeded];
                                       
                                   } failBlock:^(NSError *error) {

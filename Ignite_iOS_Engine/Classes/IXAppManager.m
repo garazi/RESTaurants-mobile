@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Apigee, Inc. All rights reserved.
 //
 
-#warning These warnings are really annoying.  We shouldnt use them for notes.  Use comments.  Warnings make it seem like something is wrong.  Dilutes the code base.  
-
 #import "IXAppManager.h"
 
 @import AVFoundation.AVAudioSession;
@@ -34,16 +32,17 @@
 #import "ApigeeDataClient.h"
 #import "ApigeeMonitoringOptions.h"
 #import "IXMMDrawerController.h"
+#import "MMDrawerVisualState.h"
 #import "Reachability.h"
 #import "RKLog.h"
 #import "SDWebImageManager.h"
 #import "IXLocationManager.h"
 
 // Top Level Containers
-IX_STATIC_CONST_STRING kIXAppActions = @"app.actions";
-IX_STATIC_CONST_STRING kIXAppAttributes = @"app.attributes";
-IX_STATIC_CONST_STRING kIXAppDataProviders = @"app.datasources";
-IX_STATIC_CONST_STRING kIXSessionDefaults = @"session.defaults";
+IX_STATIC_CONST_STRING kIXAppActions = @"$app.actions";
+IX_STATIC_CONST_STRING kIXAppAttributes = @"$app.attributes";
+IX_STATIC_CONST_STRING kIXAppDataProviders = @"$app.datasources";
+IX_STATIC_CONST_STRING kIXSessionDefaults = @"$session.defaults";
 
 // App Attributes
 IX_STATIC_CONST_STRING kIXAppMode = @"mode";
@@ -59,11 +58,20 @@ IX_STATIC_CONST_STRING kIXEnableRequestLogging = @"logging.datasource.enabled";
 IX_STATIC_CONST_STRING kIXEnableRemoteLogging = @"logging.remote.enabled";
 IX_STATIC_CONST_STRING kIXLocationAccuracy = @"location.accuracy";
 IX_STATIC_CONST_STRING kIXShowsNavigationBar = @"navigationBar.enabled";
-IX_STATIC_CONST_STRING kIXPreloadImages = @"preloadImages.enabled";
+IX_STATIC_CONST_STRING kIXPreloadImages = @"preloadImages";
+IX_STATIC_CONST_STRING kIXPreloadDrawers = @"preloadDrawers.enabled";
 IX_STATIC_CONST_STRING kIXApigeeOrgID = @"apigee.org";
 IX_STATIC_CONST_STRING kIXApigeeAppID = @"apigee.app";
 IX_STATIC_CONST_STRING kIXApigeeBaseURL = @"apigee.baseUrl";
 IX_STATIC_CONST_STRING kIXApigeePushNotifier = @"apigee.notifier";
+
+IX_STATIC_CONST_STRING kIXDrawerViewShadow = @"drawerController.shadow.enabled";
+IX_STATIC_CONST_STRING kIXDrawerViewAnimation = @"drawerController.animation";
+IX_STATIC_CONST_STRING kIXDrawerViewAnimationSlide = @"slide";
+IX_STATIC_CONST_STRING kIXDrawerViewAnimationSlideAndScale = @"slideAndScale";
+IX_STATIC_CONST_STRING kIXDrawerViewAnimationSwingingDoor = @"swingingDoor";
+IX_STATIC_CONST_STRING kIXDrawerViewAnimationParallax = @"parallax";
+IX_STATIC_CONST_STRING kIXDrawerViewAnimationParallaxFactor = @"drawerController.animation.parallaxFactor";
 
 IX_STATIC_CONST_STRING kIXRequestAccessPushAuto = @"requestAccess.push.auto"; // Should app automatically request access to push. If NO must use app function kIXRequestAccessPush to request push
 IX_STATIC_CONST_STRING kIXRequestAccessMicrophoneAuto = @"mic.autoRequest.enabled"; // Should app automatically request access to microphone. If NO must use app function kIXRequestAccessPush to request push
@@ -83,7 +91,7 @@ IX_STATIC_CONST_STRING kIXDestorySession = @"destroySession";
 IX_STATIC_CONST_STRING kIXToggleDrawerLeft = @"drawerController.l.toggle";
 IX_STATIC_CONST_STRING kIXToggleDrawerRight = @"drawerController.r.toggle";
 
-#warning These should be cleaned up and adjusted to drawerController.open.enable and drawerController.close.disable and drawerController.all.enable etc.
+// TODO: These should be cleaned up and adjusted to drawerController.open.enable and drawerController.close.disable and drawerController.all.enable etc.
 IX_STATIC_CONST_STRING kIXEnableDrawerPrefix = @"drawerController.enabled"; // Function name must have one of the following suffixes.
 IX_STATIC_CONST_STRING kIXDisableDrawerPrefix = @"drawerController.disable"; // Function name must have one of the following suffixes.
 IX_STATIC_CONST_STRING kIXEnableDisableDrawerOpenSuffix = @".open";
@@ -111,7 +119,9 @@ IX_STATIC_CONST_STRING kIXDeviceOSVersionMajor = @"os.version.major";
 
 // Non attribute constants
 IX_STATIC_CONST_STRING kIXAssetsBasePath = @"assets/";
-IX_STATIC_CONST_STRING kIXDefaultIndexPath = @"assets/_index.json";
+IX_STATIC_CONST_STRING kIXDefaultIndexPath = @"assets/app.json";
+// TODO: deprecate in future releases
+IX_STATIC_CONST_STRING kIXDefaultIndexPathOld = @"assets/_index.json";
 IX_STATIC_CONST_STRING kIXTokenStringFormat = @"%08x%08x%08x%08x%08x%08x%08x%08x";
 
 @interface IXAppManager () <IXLocationManagerDelegate>
@@ -153,6 +163,8 @@ IX_STATIC_CONST_STRING kIXTokenStringFormat = @"%08x%08x%08x%08x%08x%08x%08x%08x
     if( self )
     {
         _appIndexFilePath = [IXPathHandler localPathWithRelativeFilePath:kIXDefaultIndexPath];
+// TODO: deprecate in future releases
+        if (!_appIndexFilePath) _appIndexFilePath = [IXPathHandler localPathWithRelativeFilePath:kIXDefaultIndexPathOld];
         
         _appProperties = [[IXPropertyContainer alloc] init];
         _deviceProperties = [[IXPropertyContainer alloc] init];
@@ -227,6 +239,8 @@ IX_STATIC_CONST_STRING kIXTokenStringFormat = @"%08x%08x%08x%08x%08x%08x%08x%08x
 {
     IX_LOG_DEBUG(@"Push Notification Info : %@",[userInfo description]);
 
+    [_actionContainer executeActionsForEventNamed:kIXPushRecievedEvent];
+    
     IXBaseAction* action = [IXBaseAction actionWithRemoteNotificationInfo:userInfo];
     if( action )
     {
@@ -244,6 +258,8 @@ IX_STATIC_CONST_STRING kIXTokenStringFormat = @"%08x%08x%08x%08x%08x%08x%08x%08x
 -(BOOL)appDidOpenWithCustomURL:(NSURL *)customURL
 {
     IX_LOG_DEBUG(@"App opened with Custom URL : %@",[customURL absoluteString]);
+    
+    [_actionContainer executeActionsForEventNamed:kIXCustomURLSchemeOpened];
 
     IXBaseAction* action = [IXBaseAction actionWithCustomURLQueryParams:[customURL ix_parseQueryStringToParamsDict]];
     if( action )
@@ -407,6 +423,32 @@ IX_STATIC_CONST_STRING kIXTokenStringFormat = @"%08x%08x%08x%08x%08x%08x%08x%08x
         [self applyFunction:kIXRequestAccessLocation parameters:nil];
         [self applyFunction:kIXStartLocationTracking parameters:nil];
     }
+    
+    [[self drawerController] setShowsShadow:[[self appProperties] getBoolPropertyValue:kIXDrawerViewShadow defaultValue:YES] ];
+    
+    
+    
+    NSString* animation = [[self appProperties] getStringPropertyValue:kIXDrawerViewAnimation defaultValue:nil];
+    if( [animation length] ) {
+        
+        if ([animation isEqualToString:kIXDrawerViewAnimationSlide])
+        {
+            [[self drawerController] setDrawerVisualStateBlock: [MMDrawerVisualState slideVisualStateBlock]];
+        }
+        else if ([animation isEqualToString:kIXDrawerViewAnimationSlideAndScale])
+        {
+            [[self drawerController] setDrawerVisualStateBlock: [MMDrawerVisualState slideAndScaleVisualStateBlock]];
+        }
+        else if ([animation isEqualToString:kIXDrawerViewAnimationSwingingDoor])
+        {
+            [[self drawerController] setDrawerVisualStateBlock: [MMDrawerVisualState swingingDoorVisualStateBlock]];
+        }
+        else if ([animation isEqualToString:kIXDrawerViewAnimationParallax])
+        {
+            [[self drawerController] setDrawerVisualStateBlock: [MMDrawerVisualState parallaxVisualStateBlockWithParallaxFactor:[[self appProperties] getFloatPropertyValue:kIXDrawerViewAnimationParallaxFactor defaultValue:2] ]];
+        }
+    }
+    
 }
 
 -(void)loadApplicationDefaultView
@@ -428,7 +470,8 @@ IX_STATIC_CONST_STRING kIXTokenStringFormat = @"%08x%08x%08x%08x%08x%08x%08x%08x
                                                  [self showJSONAlertWithName:kIXDefaultView error:error];
                                              }
                                          }];
-    
+
+    BOOL preloadDrawers = [[self appProperties] getBoolPropertyValue:kIXPreloadDrawers defaultValue:NO];
     if( [[self appLeftDrawerViewPath] length] > 0 ) {
         [IXViewController createViewControllerWithPathToJSON:[self appLeftDrawerViewPath]
                                                    loadAsync:NO
@@ -440,6 +483,10 @@ IX_STATIC_CONST_STRING kIXTokenStringFormat = @"%08x%08x%08x%08x%08x%08x%08x%08x
                                                      [[self drawerController] setLeftDrawerViewController:viewController];
                                                      [[[self rootViewController] interactivePopGestureRecognizer] setEnabled:NO];
                                                      [[[self rootViewController] leftScreenPanGestureRecognizer] setEnabled:NO];
+
+                                                     if( preloadDrawers ) {
+                                                         [viewController viewWillAppear:YES];
+                                                     }
                                                  }
                                                  else
                                                  {
@@ -459,6 +506,10 @@ IX_STATIC_CONST_STRING kIXTokenStringFormat = @"%08x%08x%08x%08x%08x%08x%08x%08x
                                                      [[self drawerController] setRightDrawerViewController:viewController];
                                                      [[[self rootViewController] interactivePopGestureRecognizer] setEnabled:NO];
                                                      [[[self rootViewController] rightScreenPanGestureRecognizer] setEnabled:NO];
+
+                                                     if( preloadDrawers ) {
+                                                         [viewController viewWillAppear:YES];
+                                                     }
                                                  }
                                                  else
                                                  {
