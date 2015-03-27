@@ -1,206 +1,279 @@
 {
-    "$view": {
-        "actions": [],
+  "$view": {
+    "actions": [],
+    "attributes": {
+      "_id": "viewMenu",
+      "bg.color": "#000000",
+      "statusBar.style": "dark"
+    },
+    "controls": [
+      {
+        "_id": "layoutMain",
+        "_type": "Layout",
         "attributes": {
-            "_id": "viewMenu",
-            "bg.color": "#000000",
-            "statusBar.style": "dark"
+          "bg.color": "#ffffff",
+          "layoutType": "absolute",
+          "size.h": "100%",
+          "size.w": "100%",
+          "padding.bottom": 4
         },
-        "controls": [{
-            "_id": "layoutMain",
+        "controls": [
+          {
+            "_id": "layoutInput",
             "_type": "Layout",
             "attributes": {
-                "bg.color": "#ffffff",
-                "layoutType": "absolute",
-                "size.h": "100%",
-                "size.w": "100%",
-                "padding.bottom": 4
+              "layoutType": "absolute",
+              "margin.top": 22,
+              "size.h": 46,
+              "size.w": "{{[[$device.screen.w]] - 100}}"
             },
-            "controls": [{
-                "_id": "layoutInput",
+            "controls": [
+              {
+                "_id": "layoutSearch",
                 "_type": "Layout",
                 "attributes": {
-                    "layoutType": "absolute",
-                    "margin.top": 22,
-                    "size.h": 46,
-                    "size.w": "{{[[$device.screen.w]] - 100}}"
+                  "align.h": "center",
+                  "align.v": "middle",
+                  "layoutFlow": "horizontal",
+                  "layoutType": "absolute",
+                  "size.h": 38,
+                  "size.w": "{{[[$device.screen.w]] - 110}}",
+                  "border.size": 1,
+                  "border.color": "FF4300"
                 },
-                "controls": [{
-                    "_id": "layoutSearch",
-                    "_type": "Layout",
-                    "attributes": {
-                        "align.h": "center",
-                        "align.v": "middle",
-                        "layoutFlow": "horizontal",
-                        "layoutType": "absolute",
-                        "size.h": 38,
-                        "size.w": "{{[[$device.screen.w]] - 110}}",
-                        "border.size": 1,
-                        "border.color": "FF4300"
-                    },
-                    "controls": [{
-                        "_id": "inputSearch",
-                        "_type": "TextInput",
-                        "actions": [{
-                            "_type": "Modify",
-                            "attributes": {
-                                "_target": "$session"
-                            },
-                            "enabled": true,
-                            "on": "textChanged",
-                            "set": {
-                                "searchTerm": "[[$self.text]]"
-                            }
-                        }, {
-                            "_type": "Navigate",
-                            "attributes": {
-                                "to": "viewRestaurantList.json"
-                            },
-                            "enabled": true,
-                            "on": "returnKeyPressed"
-                        }, {
-                            "_type": "Function",
-                            "attributes": {
-                                "_target": "dataTest",
-                                "functionName": "modify_response"
-                            },
-                            "set": {
-                                "top_level_container": "entities",
-                                "parse_json_as_object": true,
-                                "modify.type": "append",
-                                "json_to_append": {
-                                    "term": "[[$self.text]]"
-                                }
-                            },
-                            "enabled": true,
-                            "on": "returnKeyPressed"
-                        }, {
-                            "_type": "Load",
-                            "attributes": {
-                                "_target": "tableviewTest"
-                            },
-                            "enabled": true,
-                            "on": "returnKeyPressed"
-                        }],
+                "controls": [
+                  {
+                    "_id": "inputSearch",
+                    "_type": "TextInput",
+                    "actions": [
+                      {
+                        "_type": "Modify",
                         "attributes": {
-                            "bg.color": "#ffffff",
-                            "clearOnFocus.enabled": true,
-                            "font": "HelveticaNeue-Light:18",
-                            "keyboard.appearance": "dark",
-                            "margin.left": 4,
-                            "padding.left": 8,
-                            "placeholder.text": "Enter a search term...",
-                            "size.h": "100%",
-                            "size.w": "{{[[$device.screen.w]] - 130}}"
+                          "_target": "$session"
+                        },
+                        "enabled": true,
+                        "on": "textChanged",
+                        "set": {
+                          "searchTerm": "[[$self.text]]"
                         }
-                    }, {
-                        "_id": "searchBtn",
-                        "_type": "Text",
-                        "actions": [{
-                            "_type": "Navigate",
-                            "attributes": {
-                                "to": "viewRestaurantList.json"
-                            },
-                            "enabled": true,
-                            "on": "touchUp"
-                        }, {
-                            "_type": "Function",
-                            "attributes": {
-                                "_target": "inputSearch",
-                                "functionName": "dismissKeyboard"
-                            },
-                            "enabled": true,
-                            "on": "touchUp"
-                        }],
+                      },
+                      {
+                        "_type": "Function",
                         "attributes": {
-                            "align.h": "right",
-                            "align.v": "middle",
-                            "color": "#FF4300",
-                            "font": "FontAwesome:20",
-                            "text": "fa-search",
-                            "layoutType": "float",
-                            "margin.left": 15,
-                            "padding.top": 4,
-                            "size.h": 28,
-                            "size.w": 28,
-                            "visible": true
-                        }
-                    }]
-                }]
-            }, {
-                "_id": "tableviewTest",
-                "_type": "TableView",
-                "attributes": {
-                    "cell.size.h": 30,
-                    "cell.size.w": "100%",
-                    "datasource.id": "dataTest",
-                    "data.basepath": "entities",
-                    "margin.top": 70,
-                    "size.w": "100%",
-                    "autofill.h": true,
-                    "separator.style": "none"
-                },
-                "controls": [{
-                    "_type": "Text",
+                          "_target": "dataSearchHistory",
+                          "functionName": "modify_response"
+                        },
+                        "set": {
+                          "top_level_container": "entities",
+                          "parse_json_as_object": true,
+                          "modify.type": "append",
+                          "json_to_append": {
+                            "term": "[[$self.text]]"
+                          }
+                        },
+                        "enabled": true,
+                        "on": "returnKeyPressed"
+                      },
+                      {
+                        "_type": "Function",
+                        "attributes": {
+                          "_target": "inputSearch",
+                          "functionName": "setText"
+                        },
+                        "set": {
+                          "text": ""
+                        },
+                        "enabled": true,
+                        "on": "returnKeyPressed"
+                      },
+                      {
+                        "_type": "Load",
+                        "attributes": {
+                          "_target": "tableviewSearchHistory"
+                        },
+                        "enabled": true,
+                        "on": "returnKeyPressed"
+                      },
+                      {
+                        "_type": "Navigate",
+                        "attributes": {
+                          "to": "viewRestaurantList.json"
+                        },
+                        "enabled": true,
+                        "on": "returnKeyPressed"
+                      }
+                    ],
                     "attributes": {
-                        "bg.color": "#ffffff",
-                        "color": "#6c6c6c",
-                        "font": "HelveticaNeue-Light:16",
-                        "sizeToFit.enabled": true,
-                        "margin.left": 15,
-                        "margin.right": 20,
-                        "text.align": "left",
-                        "align.v": "middle",
-                        "size.h": "100%",
-                        "size.w": "100%",
-                        "text": "[[dataRow.term]]"
+                      "bg.color": "#ffffff",
+                      "clearOnFocus.enabled": true,
+                      "font": "HelveticaNeue-Light:18",
+                      "keyboard.appearance": "dark",
+                      "dismissOnReturn.enabled": true,
+                      "margin.left": 4,
+                      "padding.left": 8,
+                      "placeholder.text": "Enter a search term...",
+                      "size.h": "100%",
+                      "size.w": "{{[[$device.screen.w]] - 130}}"
                     }
-                }, {
+                  },
+                  {
+                    "_id": "searchBtn",
                     "_type": "Text",
+                    "actions": [
+                      {
+                        "_type": "Navigate",
+                        "attributes": {
+                          "to": "viewRestaurantList.json"
+                        },
+                        "enabled": true,
+                        "on": "touchUp"
+                      },
+                      {
+                        "_type": "Function",
+                        "attributes": {
+                          "_target": "inputSearch",
+                          "functionName": "dismissKeyboard"
+                        },
+                        "enabled": true,
+                        "on": "touchUp"
+                      }
+                    ],
                     "attributes": {
-                      "color": "#FF4300",
-                      "font": "FontAwesome:16",
-                      "sizeToFit.enabled": true,
-                      "margin.left": 20,
-                      "margin.right": 15,
-                      "text.align": "right",
-                      "align.v": "middle",
                       "align.h": "right",
-                      "layoutType": "absolute",
-                      "text": "fa-minus-circle"
+                      "align.v": "middle",
+                      "color": "#FF4300",
+                      "font": "FontAwesome:20",
+                      "text": "fa-search",
+                      "layoutType": "float",
+                      "margin.left": 15,
+                      "padding.top": 4,
+                      "size.h": 28,
+                      "size.w": 28,
+                      "visible": true
                     }
-                    }]
-            }]
-        }],
-        "datasources": [{
-            "_id": "dataTest",
-            "_type": "JSON",
-            "actions": [{
-                "_type": "Alert",
-                "attributes": {
-                    "message": "[[$self.response.raw]]"
-                },
-                "enabled": false,
-                "on": "success,error"
-            }, {
-                "_type": "Refresh",
-                "attributes": {
-                    "_target": "tableviewTest"
-                },
-                "enabled": true,
-                "on": "success"
-            }, {
-                "_type": "Alert",
-                "attributes": {
-                    "title": "[[$self.response.raw]]"
-                },
-                "enabled": false,
-                "on": "success"
-            }],
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_id": "tableviewSearchHistory",
+            "_type": "TableView",
             "attributes": {
-                "autoLoad.enabled": true,
-                "baseUrl": "/searchHistory.json"
-            }
-        }]
-    }
+              "cell.size.h": 30,
+              "cell.size.w": "100%",
+              "datasource.id": "dataSearchHistory",
+              "data.basepath": "entities",
+              "margin.top": 80,
+              "size.w": "100%",
+              "autofill.h": true,
+              "separator.style": "none"
+            },
+            "controls": [
+              {
+                "_type": "Text",
+                "attributes": {
+                  "bg.color": "#ffffff",
+                  "color": "#6c6c6c",
+                  "font": "HelveticaNeue-Light:16",
+                  "sizeToFit.enabled": true,
+                  "margin.left": 15,
+                  "margin.right": 20,
+                  "text.align": "left",
+                  "align.v": "middle",
+                  "size.h": "100%",
+                  "size.w": "100%",
+                  "text": "[[dataRow.term]]"
+                },
+                "actions": [
+                  {
+                    "_type": "Function",
+                    "attributes": {
+                      "_target": "inputSearch",
+                      "functionName": "setText"
+                    },
+                    "set": {
+                      "text": "[[dataRow.term]]"
+                    },
+                    "enabled": true,
+                    "on": "touchUp"
+                  },
+                  {
+                        "_type": "Modify",
+                        "attributes": {
+                          "_target": "$session"
+                        },
+                        "enabled": true,
+                        "on": "touchUp",
+                        "set": {
+                          "searchTerm": "[[$self.text]]"
+                        }
+                      },
+                  {
+                        "_type": "Navigate",
+                        "attributes": {
+                          "to": "viewRestaurantList.json"
+                        },
+                        "enabled": true,
+                        "on": "touchUp"
+                      }
+                ]
+              },
+              {
+                "_type": "Text",
+                "attributes": {
+                  "color": "#FF4300",
+                  "font": "FontAwesome:16",
+                  "sizeToFit.enabled": true,
+                  "margin.left": 20,
+                  "margin.right": 15,
+                  "text.align": "right",
+                  "align.v": "middle",
+                  "align.h": "right",
+                  "layoutType": "absolute",
+                  "text": "fa-minus-circle"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "datasources": [
+      {
+        "_id": "dataSearchHistory",
+        "_type": "JSON",
+        "actions": [
+          {
+            "_type": "Alert",
+            "attributes": {
+              "message": "[[$self.response.raw]]"
+            },
+            "enabled": false,
+            "on": "success,error"
+          },
+          {
+            "_type": "Refresh",
+            "attributes": {
+              "_target": "tableviewSearchHistory"
+            },
+            "enabled": true,
+            "on": "success"
+          },
+          {
+            "_type": "Alert",
+            "attributes": {
+              "title": "[[$self.response.raw]]"
+            },
+            "enabled": false,
+            "on": "success"
+          }
+        ],
+        "attributes": {
+          "autoLoad.enabled": true,
+          "baseUrl": "/searchHistory.json"
+        }
+      }
+    ]
+  }
 }
