@@ -231,18 +231,18 @@
                             "top_level_container": "entities",
                             "modify.type": "delete",
                             "predicate.format": "%K CONTAINS[c] %@",
-                            "predicate.arguments": "term, [[dataRow.term]]"
+                            "predicate.arguments": "term,[[dataRow.term]]"
                         },
                         "enabled": true,
                         "on": "touchUp"
                     },{
-                            "_type": "Load",
-                            "attributes": {
-                                "_target": "tableviewSearchHistory"
-                            },
-                            "enabled": true,
-                            "on": "touchUp"
-                        }]
+                        "_type": "Load",
+                        "attributes": {
+                            "_target": "tableviewSearchHistory"
+                        },
+                        "enabled": "true",
+                        "on": "touchUp"
+                    }]
                 }]
             }]
         }],
