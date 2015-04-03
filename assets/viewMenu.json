@@ -173,14 +173,14 @@
             "_id": "tableviewSearchHistory",
             "_type": "TableView",
             "attributes": {
-              "cell.size.h": 30,
+              "cell.size.h": 40,
               "cell.size.w": "100%",
               "datasource.id": "dataSearchHistory",
               "data.basepath": "entities",
               "margin.top": 80,
-              "swipe.w": 50,
+              "swipe.w": 40,
               "swipe.slideIn.enabled": false,
-              "swipe.alpha.enabled": true,
+              "swipe.alpha.enabled": false,
               "size.w": "100%",
               "autofill.h": true,
               "separator.style": "none"
@@ -192,6 +192,7 @@
                   "align.v": "middle",
                   "size.w": 50,
                   "size.h": 50,
+                  "bg.color": "eeeeee",
                   "align.h": "right",
                   "layoutType": "absolute"
                 },
@@ -227,7 +228,8 @@
                       "color": "#FF4300",
                       "font": "FontAwesome:16",
                       "sizeToFit.enabled": true,
-                      "text.align": "right",
+                      "padding.left": 12,
+                      "text.align": "left",
                       "align.v": "middle",
                       "align.h": "center",
                       "layoutType": "absolute",
@@ -239,14 +241,23 @@
             ],
             "controls": [
               {
+                "_type": "Layout",
+                "attributes": {
+                  "align.v": "bottom",
+                  "size.w": "100%",
+                  "size.h": "100%",
+                  "bg.color": "ffffff",
+                  "layoutType": "absolute"
+                }
+              },
+              {
                 "_type": "Text",
                 "attributes": {
                   "bg.color": "#ffffff",
                   "color": "#6c6c6c",
                   "font": "HelveticaNeue-Light:16",
                   "sizeToFit.enabled": true,
-                  "margin.left": 15,
-                  "margin.right": 20,
+                  "padding.left": 15,
                   "text.align": "left",
                   "align.v": "middle",
                   "layoutType": "absolute",
@@ -286,6 +297,16 @@
                     "on": "touchUp"
                   }
                 ]
+              },
+              {
+                "_type": "Layout",
+                "attributes": {
+                  "align.v": "bottom",
+                  "size.w": "100%",
+                  "size.h": 1,
+                  "bg.color": "fafafa",
+                  "layoutType": "absolute"
+                }
               }
             ]
           }
