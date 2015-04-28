@@ -8,6 +8,14 @@
           "functionName": "location.beginTracking"
         },
         "on": "willEnterForeground"
+      },
+      {
+        "_type": "Function",
+        "attributes": {
+          "_target": "$app",
+          "functionName": "destroySession"
+        },
+        "on": "willTerminate"
       }
     ],
     "attributes": {

@@ -1,519 +1,461 @@
 {
-  "$view": {
-    "actions": [
-      {
-        "_type": "Function",
-        "attributes": {
-          "_target": "reviewTitle",
-          "functionName": "focus",
-          "delay": 0.75
-        },
-        "on": "didAppear"
-      }
-    ],
-    "attributes": {
-      "_id": "restaurantReview",
-      "bg.color": "#ffffff",
-      "statusBar.style": "dark"
-    },
-    "controls": [
-      {
-        "_id": "layoutHeader",
-        "_type": "Layout",
-        "attributes": {
-          "bg.color": "#ffffff",
-          "layoutType": "float",
-          "size.h": 70,
-          "size.w": "100%",
-          "position.t": 0
-        },
-        "controls": [
-          {
-            "_id": "layoutDivider",
-            "_type": "Layout",
+    "$view": {
+        "actions": [{
+            "_type": "Function",
             "attributes": {
-              "bg.color": "#FF4300",
-              "layoutType": "absolute",
-              "size.h": 1,
-              "size.w": "100%",
-              "align.v": "bottom"
-            }
-          },
-          {
-            "_id": "title",
-            "_type": "Text",
-            "attributes": {
-              "align.h": "center",
-              "align.v": "top",
-              "color": "#FF4300",
-              "font": "HelveticaNeue-Thin:26",
-              "layoutType": "float",
-              "margin.top": 20,
-              "size.h": 50,
-              "size.w": "100%",
-              "text": "Write A Review",
-              "text.align": "center"
-            }
-          },
-          {
-            "_id": "imageLeft",
-            "_type": "Text",
-            "actions": [
-              {
-                "_type": "Navigate",
-                "attributes": {
-                  "*animation.duration": 0.5,
-                  "*animation.type": "flip.l",
-                  "stackType": "pop"
-                },
-                "on": "touchUp"
-              }
-            ],
-            "attributes": {
-              "align.h": "left",
-              "align.v": "middle",
-              "color": "#FF4300",
-              "font": "FontAwesome:24",
-              "text": "fa-times",
-              "layoutType": "float",
-              "margin.left": 10,
-              "padding.top": 18,
-              "size.h": 44,
-              "size.w": 44,
-              "visible": true
-            }
-          }
-        ]
-      },
-      {
-        "_id": "layoutMain",
-        "_type": "Layout",
-        "attributes": {
-          "bg.color": "#ffffff",
-          "layoutType": "absolute",
-          "size.h": "100%",
-          "size.w": "100%"
-        },
-        "controls": [
-          {
-            "_id": "reviewForm",
-            "_type": "Layout",
-            "attributes": {
-              "size.h": "100%",
-              "padding.top": 70,
-              "padding": 10,
-              "size.w": "100%"
+                "_target": "reviewTitle",
+                "functionName": "focus",
+                "delay": 0.75
             },
-            "controls": [
-              {
-                "_id": "reviewTitle",
-                "_type": "TextInput",
-                "actions": [
-                  {
-                    "_type": "Modify",
-                    "attributes": {
-                      "_target": "$session"
-                    },
-                    "enabled": true,
-                    "on": "textChanged",
-                    "set": {
-                      "reviewTitle": "[[$self.text]]"
-                    }
-                  }
-                ],
-                "attributes": {
-                  "keyboardAdjustsScreen.enabled": false,
-                  "placeholder.text": "Give your review a title...",
-                  "margin.top": 10,
-                  "padding": 10,
-                  "size.h": 44,
-                  "size.w": "100%",
-                  "text.align": "left",
-                  "font": "HelveticaNeue-Thin:20",
-                  "bg.color": "#f0f0f0"
-                }
-              },
-              {
-                "_id": "reviewAuthor",
-                "_type": "TextInput",
-                "actions": [
-                  {
-                    "_type": "Modify",
-                    "attributes": {
-                      "_target": "$session"
-                    },
-                    "enabled": true,
-                    "on": "textChanged",
-                    "set": {
-                      "reviewAuthor": "[[$self.text]]"
-                    }
-                  }
-                ],
-                "attributes": {
-                  "keyboardAdjustsScreen.enabled": false,
-                  "keyboard.returnKey": "go",
-                  "placeholder.text": "Your name",
-                  "padding": 10,
-                  "size.h": 44,
-                  "margin.top": 10,
-                  "size.w": "100%",
-                  "text.align": "left",
-                  "font": "HelveticaNeue-Thin:20",
-                  "bg.color": "#f0f0f0"
-                }
-              },
-              {
-                "_id": "ratingLayout",
+            "on": "didAppear"
+        }],
+        "attributes": {
+            "_id": "restaurantReview",
+            "bg.color": "#ffffff",
+            "statusBar.style": "dark"
+        },
+        "controls": [{
+            "_id": "layoutHeader",
+            "_type": "Layout",
+            "attributes": {
+                "bg.color": "#ffffff",
+                "layoutType": "float",
+                "size.h": 70,
+                "size.w": "100%",
+                "position.t": 0
+            },
+            "controls": [{
+                "_id": "layoutDivider",
                 "_type": "Layout",
                 "attributes": {
-                  "visible": true,
-                  "size.w": "100%",
-                  "size.h": 50,
-                  "layoutFlow": "horizontal"
-                },
-                "controls": [
-                  {
-                    "_id": "ratingStarOne",
-                    "_type": "Text",
-                    "actions": [
-                      {
-                        "_type": "Modify",
-                        "attributes": {
-                          "_target": "ratingStarOne"
-                        },
-                        "set": {
-                          "color": "FF4300"
-                        },
-                        "on": "touchUp"
-                      },
-                      {
-                        "_type": "Modify",
-                        "attributes": {
-                          "_target": "ratingStarTwo,ratingStarThree,ratingStarFour,ratingStarFive"
-                        },
-                        "set": {
-                          "color": "f0f0f0"
-                        },
-                        "on": "touchUp"
-                      },
-                      {
-                        "_type": "Modify",
-                        "attributes": {
-                          "_target": "$session"
-                        },
-                        "set": {
-                          "userRating": 1
-                        },
-                        "on": "touchUp"
-                      }
-                    ],
-                    "attributes": {
-                      "color": "#f0f0f0",
-                      "font": "FontAwesome:26",
-                      "size.h": "100%",
-                      "size.w": "20%",
-                      "text": "fa-star",
-                      "text.align": "center"
-                    }
-                  },
-                  {
-                    "_id": "ratingStarTwo",
-                    "_type": "Text",
-                    "actions": [
-                      {
-                        "_type": "Modify",
-                        "attributes": {
-                          "_target": "ratingStarOne,ratingStarTwo"
-                        },
-                        "set": {
-                          "color": "FF4300"
-                        },
-                        "on": "touchUp"
-                      },
-                      {
-                        "_type": "Modify",
-                        "attributes": {
-                          "_target": "ratingStarThree,ratingStarFour,ratingStarFive"
-                        },
-                        "set": {
-                          "color": "f0f0f0"
-                        },
-                        "on": "touchUp"
-                      },
-                      {
-                        "_type": "Modify",
-                        "attributes": {
-                          "_target": "$session"
-                        },
-                        "set": {
-                          "userRating": 2
-                        },
-                        "on": "touchUp"
-                      }
-                    ],
-                    "attributes": {
-                      "color": "#f0f0f0",
-                      "font": "FontAwesome:26",
-                      "size.h": "100%",
-                      "size.w": "20%",
-                      "text": "fa-star",
-                      "text.align": "center"
-                    }
-                  },
-                  {
-                    "_id": "ratingStarThree",
-                    "_type": "Text",
-                    "actions": [
-                      {
-                        "_type": "Modify",
-                        "attributes": {
-                          "_target": "ratingStarOne,ratingStarTwo,ratingStarThree"
-                        },
-                        "set": {
-                          "color": "FF4300"
-                        },
-                        "on": "touchUp"
-                      },
-                      {
-                        "_type": "Modify",
-                        "attributes": {
-                          "_target": "ratingStarFour,ratingStarFive"
-                        },
-                        "set": {
-                          "color": "f0f0f0"
-                        },
-                        "on": "touchUp"
-                      },
-                      {
-                        "_type": "Modify",
-                        "attributes": {
-                          "_target": "$session"
-                        },
-                        "set": {
-                          "userRating": 3
-                        },
-                        "on": "touchUp"
-                      }
-                    ],
-                    "attributes": {
-                      "color": "#f0f0f0",
-                      "font": "FontAwesome:26",
-                      "size.h": "100%",
-                      "size.w": "20%",
-                      "text": "fa-star",
-                      "text.align": "center"
-                    }
-                  },
-                  {
-                    "_id": "ratingStarFour",
-                    "_type": "Text",
-                    "actions": [
-                      {
-                        "_type": "Modify",
-                        "attributes": {
-                          "_target": "ratingStarOne,ratingStarTwo,ratingStarThree,ratingStarFour"
-                        },
-                        "set": {
-                          "color": "FF4300"
-                        },
-                        "on": "touchUp"
-                      },
-                      {
-                        "_type": "Modify",
-                        "attributes": {
-                          "_target": "ratingStarFive"
-                        },
-                        "set": {
-                          "color": "f0f0f0"
-                        },
-                        "on": "touchUp"
-                      },
-                      {
-                        "_type": "Modify",
-                        "attributes": {
-                          "_target": "$session"
-                        },
-                        "set": {
-                          "userRating": 4
-                        },
-                        "on": "touchUp"
-                      }
-                    ],
-                    "attributes": {
-                      "color": "#f0f0f0",
-                      "font": "FontAwesome:26",
-                      "size.h": "100%",
-                      "size.w": "20%",
-                      "text": "fa-star",
-                      "text.align": "center"
-                    }
-                  },
-                  {
-                    "_id": "ratingStarFive",
-                    "_type": "Text",
-                    "actions": [
-                      {
-                        "_type": "Modify",
-                        "attributes": {
-                          "_target": "ratingStarOne,ratingStarTwo,ratingStarThree,ratingStarFour,ratingStarFive"
-                        },
-                        "set": {
-                          "color": "FF4300"
-                        },
-                        "on": "touchUp"
-                      },
-                      {
-                        "_type": "Modify",
-                        "attributes": {
-                          "_target": "$session"
-                        },
-                        "set": {
-                          "userRating": 5
-                        },
-                        "on": "touchUp"
-                      }
-                    ],
-                    "attributes": {
-                      "color": "#f0f0f0",
-                      "font": "FontAwesome:26",
-                      "size.h": "100%",
-                      "size.w": "20%",
-                      "text": "fa-star",
-                      "text.align": "center"
-                    }
-                  }
-                ]
-              },
-              {
-                "_id": "sliderTest",
-                "_type": "Slider",
-                "actions": [
-                  {
-                    "_type": "Modify",
-                    "attributes": {
-                      "_target": "$session"
-                    },
-                    "set": {
-                      "reviewRating": "{{parseInt([[$self.value]])}}"
-                    },
-                    "on": "valueChanged"
-                  },
-                  {
-                    "_type": "Function",
-                    "attributes": {
-                      "_target": "[[$self]]",
-                      "functionName": "setValue"
-                    },
-                    "set": {
-                      "value": "{{parseInt([[$self.value]])}}"
-                    },
-                    "on": "touchUp"
-                  },
-                  {
-                    "_type": "Refresh",
-                    "attributes": {
-                      "_target": "sliderTest"
-                    },
-                    "on": "touchUp"
-                  }
-                ],
-                "attributes": {
-                  "visible": false,
-                  "keyboardAdjustsScreen.enabled": false,
-                  "size.w": "100%",
-                  "value.max": 5,
-                  "value.min": 1,
-                  "bg.color": "#f0f0f0",
-                  "size.h": 50,
-                  "padding": 0,
-                  "margin.top": 10
+                    "bg.color": "#FF4300",
+                    "layoutType": "absolute",
+                    "size.h": 1,
+                    "size.w": "100%",
+                    "align.v": "bottom"
                 }
-              },
-              {
-                "_id": "reviewBody",
-                "_type": "TextInput",
-                "actions": [
-                  {
-                    "_type": "Modify",
-                    "attributes": {
-                      "_target": "$session"
-                    },
-                    "enabled": true,
-                    "on": "textChanged",
-                    "set": {
-                      "reviewBody": "[[$self.text]]"
-                    }
-                  }
-                ],
-                "attributes": {
-                  "keyboardAdjustsScreen.enabled": false,
-                  "keyboard.returnKey": "Done",
-                  "placeholder.text": "Write your review...",
-                  "padding": 10,
-                  "margin.top": 0,
-                  "size.h": 250,
-                  "size.w": "100%",
-                  "text.align": "left",
-                  "multiline.enabled": true,
-                  "margin.bottom": 10,
-                  "font": "HelveticaNeue-Thin:20",
-                  "bg.color": "#f0f0f0"
-                }
-              },
-              {
-                "_id": "btnSubmit",
+            }, {
+                "_id": "title",
                 "_type": "Text",
                 "attributes": {
-                  "align.h": "center",
-                  "color": "#FF4300",
-                  "font": "HelveticaNeue-Thin:26",
-                  "margin.top": 5,
-                  "size.h": 44,
-                  "size.w": "100%",
-                  "text": "Submit",
-                  "text.align": "center"
-                },
-                "actions": [
-                  {
-                    "_type": "Refresh",
-                    "attributes": {
-                      "_target": "dataReviewPost"
-                    },
-                    "enabled": true,
-                    "on": "touchUp"
-                  },
-                  {
+                    "align.h": "center",
+                    "align.v": "top",
+                    "color": "#FF4300",
+                    "font": "HelveticaNeue-Thin:26",
+                    "layoutType": "float",
+                    "margin.top": 20,
+                    "size.h": 50,
+                    "size.w": "100%",
+                    "text": "Write A Review",
+                    "text.align": "center"
+                }
+            }, {
+                "_id": "imageLeft",
+                "_type": "Text",
+                "actions": [{
                     "_type": "Navigate",
                     "attributes": {
-                      "*animation.duration": 0.5,
-                      "*animation.type": "flip.l",
-                      "stackType": "pop"
+                        "*animation.duration": 0.5,
+                        "*animation.type": "flip.l",
+                        "*to": "viewRestaurantDetail.json",
+                        "stackType": "pop",
+                        "pop.to": "restaurantDetail"
                     },
                     "on": "touchUp"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "datasources": [
-      {
-        "_id": "dataReviewPost",
-        "_type": "JSON",
-        "actions": [],
-        "headers": {
-          "Content-Type": "application/json"
-        },
-        "attributes": {
-          "autoLoad.enabled": false,
-          "baseUrl": "http://grewis-test.apigee.net",
-          "pathSuffix": "/api-workshop-v2/reviews",
-          "http.method": "POST",
-          "http.body": "{\"title\": \"[[$session.reviewTitle]]\",\"restID\":[[$session.restID]],\"reviewer\": \"[[$session.reviewAuthor]]\",\"rating\":[[$session.userRating]],\"body\": \"[[$session.reviewBody]]\"}"
-        }
-      }
-    ]
-  }
+                }],
+                "attributes": {
+                    "align.h": "left",
+                    "align.v": "middle",
+                    "color": "#FF4300",
+                    "font": "FontAwesome:24",
+                    "text": "fa-times",
+                    "layoutType": "float",
+                    "margin.left": 10,
+                    "padding.top": 18,
+                    "size.h": 44,
+                    "size.w": 44,
+                    "visible": true
+                }
+            }]
+        }, {
+            "_id": "layoutMain",
+            "_type": "Layout",
+            "attributes": {
+                "bg.color": "#ffffff",
+                "layoutType": "absolute",
+                "size.h": "100%",
+                "size.w": "100%"
+            },
+            "controls": [{
+                "_id": "reviewForm",
+                "_type": "Layout",
+                "attributes": {
+                    "size.h": "100%",
+                    "padding.top": 70,
+                    "padding": 10,
+                    "size.w": "100%"
+                },
+                "controls": [{
+                    "_id": "reviewTitle",
+                    "_type": "TextInput",
+                    "actions": [{
+                        "_type": "Modify",
+                        "attributes": {
+                            "_target": "$session"
+                        },
+                        "enabled": true,
+                        "on": "textChanged",
+                        "set": {
+                            "reviewTitle": "[[$self.text]]"
+                        }
+                    }],
+                    "attributes": {
+                        "keyboardAdjustsScreen.enabled": false,
+                        "placeholder.text": "Give your review a title...",
+                        "margin.top": 10,
+                        "padding": 10,
+                        "size.h": 44,
+                        "size.w": "100%",
+                        "text.align": "left",
+                        "font": "HelveticaNeue-Thin:20",
+                        "bg.color": "#f0f0f0"
+                    }
+                }, {
+                    "_id": "reviewAuthor",
+                    "_type": "TextInput",
+                    "actions": [{
+                        "_type": "Modify",
+                        "attributes": {
+                            "_target": "$session"
+                        },
+                        "enabled": true,
+                        "on": "textChanged",
+                        "set": {
+                            "reviewAuthor": "[[$self.text]]"
+                        }
+                    }],
+                    "attributes": {
+                        "keyboardAdjustsScreen.enabled": false,
+                        "keyboard.returnKey": "go",
+                        "placeholder.text": "Your name",
+                        "padding": 10,
+                        "size.h": 44,
+                        "margin.top": 10,
+                        "size.w": "100%",
+                        "text.align": "left",
+                        "font": "HelveticaNeue-Thin:20",
+                        "bg.color": "#f0f0f0"
+                    }
+                }, {
+                    "_id": "ratingLayout",
+                    "_type": "Layout",
+                    "attributes": {
+                        "visible": true,
+                        "size.w": "100%",
+                        "size.h": 50,
+                        "layoutFlow": "horizontal"
+                    },
+                    "controls": [{
+                        "_id": "ratingStarOne",
+                        "_type": "Text",
+                        "actions": [{
+                            "_type": "Modify",
+                            "attributes": {
+                                "_target": "ratingStarOne"
+                            },
+                            "set": {
+                                "color": "FF4300"
+                            },
+                            "on": "touchUp"
+                        }, {
+                            "_type": "Modify",
+                            "attributes": {
+                                "_target": "ratingStarTwo,ratingStarThree,ratingStarFour,ratingStarFive"
+                            },
+                            "set": {
+                                "color": "f0f0f0"
+                            },
+                            "on": "touchUp"
+                        }, {
+                            "_type": "Modify",
+                            "attributes": {
+                                "_target": "$session"
+                            },
+                            "set": {
+                                "userRating": 1
+                            },
+                            "on": "touchUp"
+                        }],
+                        "attributes": {
+                            "color": "#f0f0f0",
+                            "font": "FontAwesome:26",
+                            "size.h": "100%",
+                            "size.w": "20%",
+                            "text": "fa-star",
+                            "text.align": "center"
+                        }
+                    }, {
+                        "_id": "ratingStarTwo",
+                        "_type": "Text",
+                        "actions": [{
+                            "_type": "Modify",
+                            "attributes": {
+                                "_target": "ratingStarOne,ratingStarTwo"
+                            },
+                            "set": {
+                                "color": "FF4300"
+                            },
+                            "on": "touchUp"
+                        }, {
+                            "_type": "Modify",
+                            "attributes": {
+                                "_target": "ratingStarThree,ratingStarFour,ratingStarFive"
+                            },
+                            "set": {
+                                "color": "f0f0f0"
+                            },
+                            "on": "touchUp"
+                        }, {
+                            "_type": "Modify",
+                            "attributes": {
+                                "_target": "$session"
+                            },
+                            "set": {
+                                "userRating": 2
+                            },
+                            "on": "touchUp"
+                        }],
+                        "attributes": {
+                            "color": "#f0f0f0",
+                            "font": "FontAwesome:26",
+                            "size.h": "100%",
+                            "size.w": "20%",
+                            "text": "fa-star",
+                            "text.align": "center"
+                        }
+                    }, {
+                        "_id": "ratingStarThree",
+                        "_type": "Text",
+                        "actions": [{
+                            "_type": "Modify",
+                            "attributes": {
+                                "_target": "ratingStarOne,ratingStarTwo,ratingStarThree"
+                            },
+                            "set": {
+                                "color": "FF4300"
+                            },
+                            "on": "touchUp"
+                        }, {
+                            "_type": "Modify",
+                            "attributes": {
+                                "_target": "ratingStarFour,ratingStarFive"
+                            },
+                            "set": {
+                                "color": "f0f0f0"
+                            },
+                            "on": "touchUp"
+                        }, {
+                            "_type": "Modify",
+                            "attributes": {
+                                "_target": "$session"
+                            },
+                            "set": {
+                                "userRating": 3
+                            },
+                            "on": "touchUp"
+                        }],
+                        "attributes": {
+                            "color": "#f0f0f0",
+                            "font": "FontAwesome:26",
+                            "size.h": "100%",
+                            "size.w": "20%",
+                            "text": "fa-star",
+                            "text.align": "center"
+                        }
+                    }, {
+                        "_id": "ratingStarFour",
+                        "_type": "Text",
+                        "actions": [{
+                            "_type": "Modify",
+                            "attributes": {
+                                "_target": "ratingStarOne,ratingStarTwo,ratingStarThree,ratingStarFour"
+                            },
+                            "set": {
+                                "color": "FF4300"
+                            },
+                            "on": "touchUp"
+                        }, {
+                            "_type": "Modify",
+                            "attributes": {
+                                "_target": "ratingStarFive"
+                            },
+                            "set": {
+                                "color": "f0f0f0"
+                            },
+                            "on": "touchUp"
+                        }, {
+                            "_type": "Modify",
+                            "attributes": {
+                                "_target": "$session"
+                            },
+                            "set": {
+                                "userRating": 4
+                            },
+                            "on": "touchUp"
+                        }],
+                        "attributes": {
+                            "color": "#f0f0f0",
+                            "font": "FontAwesome:26",
+                            "size.h": "100%",
+                            "size.w": "20%",
+                            "text": "fa-star",
+                            "text.align": "center"
+                        }
+                    }, {
+                        "_id": "ratingStarFive",
+                        "_type": "Text",
+                        "actions": [{
+                            "_type": "Modify",
+                            "attributes": {
+                                "_target": "ratingStarOne,ratingStarTwo,ratingStarThree,ratingStarFour,ratingStarFive"
+                            },
+                            "set": {
+                                "color": "FF4300"
+                            },
+                            "on": "touchUp"
+                        }, {
+                            "_type": "Modify",
+                            "attributes": {
+                                "_target": "$session"
+                            },
+                            "set": {
+                                "userRating": 5
+                            },
+                            "on": "touchUp"
+                        }],
+                        "attributes": {
+                            "color": "#f0f0f0",
+                            "font": "FontAwesome:26",
+                            "size.h": "100%",
+                            "size.w": "20%",
+                            "text": "fa-star",
+                            "text.align": "center"
+                        }
+                    }]
+                }, {
+                    "_id": "sliderTest",
+                    "_type": "Slider",
+                    "actions": [{
+                        "_type": "Modify",
+                        "attributes": {
+                            "_target": "$session"
+                        },
+                        "set": {
+                            "reviewRating": "{{parseInt([[$self.value]])}}"
+                        },
+                        "on": "valueChanged"
+                    }, {
+                        "_type": "Function",
+                        "attributes": {
+                            "_target": "[[$self]]",
+                            "functionName": "setValue"
+                        },
+                        "set": {
+                            "value": "{{parseInt([[$self.value]])}}"
+                        },
+                        "on": "touchUp"
+                    }, {
+                        "_type": "Refresh",
+                        "attributes": {
+                            "_target": "sliderTest"
+                        },
+                        "on": "touchUp"
+                    }],
+                    "attributes": {
+                        "visible": false,
+                        "keyboardAdjustsScreen.enabled": false,
+                        "size.w": "100%",
+                        "value.max": 5,
+                        "value.min": 1,
+                        "bg.color": "#f0f0f0",
+                        "size.h": 50,
+                        "padding": 0,
+                        "margin.top": 10
+                    }
+                }, {
+                    "_id": "reviewBody",
+                    "_type": "TextInput",
+                    "actions": [{
+                        "_type": "Modify",
+                        "attributes": {
+                            "_target": "$session"
+                        },
+                        "enabled": true,
+                        "on": "textChanged",
+                        "set": {
+                            "reviewBody": "[[$self.text]]"
+                        }
+                    }],
+                    "attributes": {
+                        "keyboardAdjustsScreen.enabled": false,
+                        "keyboard.returnKey": "Done",
+                        "placeholder.text": "Write your review...",
+                        "padding": 10,
+                        "margin.top": 0,
+                        "size.h": 250,
+                        "size.w": "100%",
+                        "text.align": "left",
+                        "multiline.enabled": true,
+                        "margin.bottom": 10,
+                        "font": "HelveticaNeue-Thin:20",
+                        "bg.color": "#f0f0f0"
+                    }
+                }, {
+                    "_id": "btnSubmit",
+                    "_type": "Text",
+                    "attributes": {
+                        "align.h": "center",
+                        "color": "#FF4300",
+                        "font": "HelveticaNeue-Thin:26",
+                        "margin.top": 5,
+                        "size.h": 44,
+                        "size.w": "100%",
+                        "text": "Submit",
+                        "text.align": "center"
+                    },
+                    "actions": [{
+                        "_type": "Refresh",
+                        "attributes": {
+                            "_target": "dataReviewPost"
+                        },
+                        "enabled": true,
+                        "on": "touchUp"
+                    }, {
+                        "_type": "Navigate",
+                        "attributes": {
+                            "*animation.duration": 0.5,
+                            "*animation.type": "flip.l",
+                            "stackType": "pop"
+                        },
+                        "on": "touchUp"
+                    }]
+                }]
+            }]
+        }],
+        "datasources": [{
+            "_id": "dataReviewPost",
+            "_type": "JSON",
+            "actions": [],
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "attributes": {
+                "autoLoad.enabled": false,
+                "baseUrl": "http://grewis-test.apigee.net",
+                "pathSuffix": "/api-workshop-v2/reviews",
+                "http.method": "POST",
+                "http.body": "{\"title\": \"[[$session.reviewTitle]]\",\"restID\":[[$session.restID]],\"reviewer\": \"[[$session.reviewAuthor]]\",\"rating\":[[$session.userRating]],\"body\": \"[[$session.reviewBody]]\"}"
+            }
+        }]
+    }
 }

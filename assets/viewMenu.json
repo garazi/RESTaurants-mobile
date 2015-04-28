@@ -144,6 +144,23 @@
                       {
                         "_type": "Function",
                         "attributes": {
+                          "_target": "dataSearchHistory",
+                          "functionName": "modify_response"
+                        },
+                        "set": {
+                          "top_level_container": "entities",
+                          "parse_json_as_object": true,
+                          "modify.type": "append",
+                          "json_to_append": {
+                            "term": "[[inputSearch.text]]"
+                          }
+                        },
+                        "enabled": true,
+                        "on": "touchUp"
+                      },
+                      {
+                        "_type": "Function",
+                        "attributes": {
                           "_target": "inputSearch",
                           "functionName": "dismissKeyboard"
                         },

@@ -261,7 +261,9 @@
         "attributes": {
           "autoLoad.enabled": false,
           "baseUrl": "http://grewis-test.apigee.net",
+          "*baseUrl": "http://api.usergrid.com",
           "pathSuffix": "/api-mobile-app/yelp?term=[[$session.searchTerm]]&ll=[[$device.location.lat]],[[$device.location.long]]",
+          "*pathSuffix": "/grewis/sandbox/restaurants",
           "http_method": "GET"
         },
         "parameters": {

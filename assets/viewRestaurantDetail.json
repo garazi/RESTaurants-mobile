@@ -224,7 +224,12 @@
                                 "*stackType": "push",
                                 "*animation.duration": 0.5,
                                 "*animation.type": "flip.r",
-                                "to": "viewRestaurantReview.json"
+                                "*to": "viewRestaurantReview.json",
+                                "*to": "viewLogin.json",
+                                "to": [
+                                    "if :: [[$session.access_token:length]] > 0 :: viewRestaurantReview.json",
+                                    "if :: [[$session.access_token:length]] == 0 :: viewLogin.json"
+                                ] 
                             },
                             "on": "touchUp"
                         }],
@@ -296,6 +301,7 @@
                                 "font": "HelveticaNeue-Light:14",
                                 "margin.top": 10,
                                 "text": "[[dataRow.title]]",
+                                "size.w": "100%",
                                 "padding.right": [
                                 "if :: [[dataRow.rating]] == 1 :: 20",
                                 "if :: [[dataRow.rating]] == 2 :: 35",
