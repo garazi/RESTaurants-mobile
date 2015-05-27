@@ -1,275 +1,232 @@
 {
-  "$view": {
-    "actions": [
-      {
-        "_type": "Function",
+    "$view": {
+        "actions": [{
+            "_type": "Function",
+            "attributes": {
+                "_target": "$app",
+                "functionName": "location.auth.request"
+            },
+            "on": "didAppear"
+        }, {
+            "_type": "Refresh",
+            "attributes": {
+                "_target": "$session"
+            },
+            "set": {
+                "searchTerm": [
+                    "if :: [[$session.searchTerm]] == null :: restaurants",
+                    "if :: [[$session.searchTerm]] !== null :: [[$session.searchTerm]]"
+                ]
+            }
+        }, {
+            "_type": "Refresh",
+            "attributes": {
+                "_target": "dataRestaurants"
+            },
+            "enabled": true,
+            "on": "didAppear"
+        }],
         "attributes": {
-          "_target": "$app",
-          "functionName": "location.auth.request"
+            "_id": "restaurantList",
+            "bg.color": "#ffffff",
+            "statusBar.style": "dark"
         },
-        "on": "didAppear"
-      },
-      {
-        "_type": "Refresh",
-        "attributes": {
-          "_target": "$session"
-        },
-        "set": {
-          "searchTerm": [
-            "if :: [[$session.searchTerm]] == null :: restaurants",
-            "if :: [[$session.searchTerm]] !== null :: [[$session.searchTerm]]"
-          ]
-        }
-      },
-      {
-        "_type": "Refresh",
-        "attributes": {
-          "_target": "dataRestaurants"
-        },
-        "enabled": true,
-        "on": "didAppear"
-      },
-      {
-        "_type": "Refresh",
-        "attributes": {
-          "_target": "dataSearchHistoryAppend"
-        },
-        "on": "didAppear"
-      }
-    ],
-    "attributes": {
-      "_id": "restaurantList",
-      "bg.color": "#ffffff",
-      "statusBar.style": "dark"
-    },
-    "controls": [
-      {
-        "_id": "layoutMain",
-        "_type": "Layout",
-        "attributes": {
-          "bg.color": "#ffffff",
-          "layoutType": "absolute",
-          "size.h": "100%",
-          "size.w": "100%"
-        },
-        "controls": [
-          {
-            "_id": "layoutHeader",
+        "controls": [{
+            "_id": "layoutMain",
             "_type": "Layout",
             "attributes": {
-              "bg.color": "#ffffff",
-              "layoutType": "absolute",
-              "size.h": 70,
-              "size.w": "100%"
+                "bg.color": "#ffffff",
+                "layoutType": "absolute",
+                "size.h": "100%",
+                "size.w": "100%"
             },
-            "controls": [
-              {
-                "_id": "layoutDivider",
+            "controls": [{
+                "_id": "layoutHeader",
                 "_type": "Layout",
                 "attributes": {
-                  "bg.color": "#FF4300",
-                  "layoutType": "absolute",
-                  "size.h": 1,
-                  "size.w": "100%",
-                  "align.v": "bottom"
-                }
-              },
-              {
-                "_id": "title",
-                "_type": "Text",
-                "attributes": {
-                  "align.h": "center",
-                  "align.v": "top",
-                  "color": "#FF4300",
-                  "font": "HelveticaNeue-Thin:26",
-                  "layoutType": "float",
-                  "margin.top": 20,
-                  "size.h": 50,
-                  "size.w": "100%",
-                  "text": "RESTaurants",
-                  "text.align": "center"
-                }
-              },
-              {
-                "_id": "menuLeft",
-                "_type": "Text",
-                "actions": [
-                  {
-                    "_type": "Function",
-                    "attributes": {
-                      "_target": "$app",
-                      "functionName": "drawerController.l.toggle"
-                    },
-                    "on": "touchUp"
-                  }
-                ],
-                "attributes": {
-                  "align.h": "left",
-                  "align.v": "middle",
-                  "color": "#FF4300",
-                  "font": "FontAwesome:18",
-                  "text": "fa-bars",
-                  "layoutType": "float",
-                  "margin.left": 15,
-                  "padding.top": 14,
-                  "size.h": 28,
-                  "size.w": 28,
-                  "visible": true
-                }
-              }
-            ]
-          },
-          {
-            "_id": "collectionRestaurants",
-            "_type": "Collection",
-            "attributes": {
-              "autofill.w": true,
-              "cell.size.h": 40,
-              "cell.size.w": "100%",
-              "datasource.id": "dataRestaurants",
-              "data.basepath": "entities",
-              "enabled": true,
-              "autofill.h": true,
-              "margin.top": 70,
-              "separator.style": "default",
-              "text.align": "left",
-              "pullToRefresh.enabled": true
-            },
-            "actions": [
-              {
-                "_type": "Refresh",
-                "attributes": {
-                  "_target": "[[$self.datasource.id]]"
+                    "bg.color": "#ffffff",
+                    "layoutType": "absolute",
+                    "size.h": 70,
+                    "size.w": "100%"
                 },
-                "on": "pullToRefresh"
-              }
-            ],
-            "controls": [
-              {
-                "_id": "layoutRestaurantList",
-                "_type": "Layout",
-                "attributes": {
-                  "align.h": "center",
-                  "align.v": "middle",
-                  "layoutType": "absolute",
-                  "bg.color": "#ffffff",
-                  "padding": 75,
-                  "padding.left": 60,
-                  "padding.right": 60,
-                  "padding.top": 145,
-                  "size.h": "100%",
-                  "size.w": "100%"
-                },
-                "actions": [
-                  {
-                    "_type": "Modify",
-                    "attributes": {
-                      "_target": "$session"
-                    },
-                    "on": "touchUp",
-                    "set": {
-                      "restaurantName": "[[dataRow.name]]",
-                      "restID": "[[dataRow.restID]]",
-                      "restAddr": "[[dataRow.address]]",
-                      "restCity": "[[dataRow.city]], [[dataRow.state]]",
-                      "restPhone": "[[dataRow.phone]]",
-                      "restLat": "[[dataRow.location.latitude]]",
-                      "restLon": "[[dataRow.location.longitude]]",
-                      "restRate": "[[dataRow.rating]]"
-                    }
-                  },
-                  {
-                    "_type": "Navigate",
-                    "attributes": {
-                      "1nav_animation_duration": 0,
-                      "1nav_animation_type": "crossDissolve",
-                      "1nav_stack_type": "push",
-                      "to": "viewRestaurantDetail.json"
-                    },
-                    "on": "touchUp"
-                  }
-                ],
-                "controls": [
-                  {
+                "controls": [{
                     "_id": "layoutDivider",
                     "_type": "Layout",
                     "attributes": {
-                      "bg.color": "#CCCCCC",
-                      "layoutType": "absolute",
-                      "size.h": 1,
-                      "size.w": "100%",
-                      "align.v": "bottom"
+                        "bg.color": "#FF4300",
+                        "layoutType": "absolute",
+                        "size.h": 1,
+                        "size.w": "100%",
+                        "align.v": "bottom"
                     }
-                  },
-                  {
+                }, {
+                    "_id": "title",
                     "_type": "Text",
                     "attributes": {
-                      "color": "#6c6c6c",
-                      "font": "HelveticaNeue-Light:16",
-                      "sizeToFit.enabled": true,
-                      "margin.left": 15,
-                      "margin.right": 20,
-                      "text.align": "left",
-                      "align.v": "middle",
-                      "layoutType": "absolute",
-                      "text": "[[dataRow.name]]"
+                        "align.h": "center",
+                        "align.v": "top",
+                        "color": "#FF4300",
+                        "font": "HelveticaNeue-Thin:26",
+                        "layoutType": "float",
+                        "margin.top": 20,
+                        "size.h": 50,
+                        "size.w": "100%",
+                        "text": "RESTaurants",
+                        "text.align": "center"
                     }
-                  },
-                  {
+                }, {
+                    "_id": "menuLeft",
                     "_type": "Text",
+                    "actions": [{
+                        "_type": "Function",
+                        "attributes": {
+                            "_target": "$app",
+                            "functionName": "drawer.l.toggle"
+                        },
+                        "on": "touchUp"
+                    }],
                     "attributes": {
-                      "color": "#FF4300",
-                      "font": "FontAwesome:18",
-                      "sizeToFit.enabled": true,
-                      "margin.left": 20,
-                      "margin.right": 15,
-                      "text.align": "left",
-                      "align.v": "middle",
-                      "align.h": "right",
-                      "layoutType": "absolute",
-                      "text": "fa-angle-right"
+                        "align.h": "left",
+                        "align.v": "middle",
+                        "color": "#FF4300",
+                        "font": "FontAwesome:18",
+                        "text": "fa-bars",
+                        "layoutType": "float",
+                        "margin.left": 15,
+                        "padding.top": 14,
+                        "size.h": 28,
+                        "size.w": 28,
+                        "visible": true
                     }
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "datasources": [
-      {
-        "_id": "dataRestaurants",
-        "_type": "JSON",
-        "actions": [
-          {
-            "_type": "Refresh",
+                }]
+            }, {
+                "_id": "collectionRestaurants",
+                "_type": "Collection",
+                "attributes": {
+                    "autofill.w": true,
+                    "cell.size.h": 40,
+                    "cell.size.w": "100%",
+                    "datasource.id": "dataRestaurants",
+                    "data.basepath": "entities",
+                    "enabled": true,
+                    "autofill.h": true,
+                    "margin.top": 70,
+                    "separator.style": "default",
+                    "text.align": "left",
+                    "pullToRefresh.enabled": true
+                },
+                "actions": [{
+                    "_type": "Refresh",
+                    "attributes": {
+                        "_target": "[[$self.datasource.id]]"
+                    },
+                    "on": "pullToRefresh"
+                }],
+                "controls": [{
+                    "_id": "layoutRestaurantList",
+                    "_type": "Layout",
+                    "attributes": {
+                        "align.h": "center",
+                        "align.v": "middle",
+                        "layoutType": "absolute",
+                        "bg.color": "#ffffff",
+                        "padding": 75,
+                        "padding.left": 60,
+                        "padding.right": 60,
+                        "padding.top": 145,
+                        "size.h": "100%",
+                        "size.w": "100%"
+                    },
+                    "actions": [{
+                        "_type": "Modify",
+                        "attributes": {
+                            "_target": "$session"
+                        },
+                        "on": "touchUp",
+                        "set": {
+                            "restaurantName": "[[$row.name]]",
+                            "restID": "[[$row.restID]]",
+                            "restAddr": "[[$row.address]]",
+                            "restCity": "[[$row.city]], [[$row.state]]",
+                            "restPhone": "[[$row.phone]]",
+                            "restLat": "[[$row.location.latitude]]",
+                            "restLon": "[[$row.location.longitude]]",
+                            "restRate": "[[$row.rating]]"
+                        }
+                    }, {
+                        "_type": "Navigate",
+                        "attributes": {
+                            "1nav_animation_duration": 0,
+                            "1nav_animation_type": "crossDissolve",
+                            "1nav_stack_type": "push",
+                            "to": "viewRestaurantDetail.json"
+                        },
+                        "on": "touchUp"
+                    }],
+                    "controls": [{
+                        "_id": "layoutDivider",
+                        "_type": "Layout",
+                        "attributes": {
+                            "bg.color": "#CCCCCC",
+                            "layoutType": "absolute",
+                            "size.h": 1,
+                            "size.w": "100%",
+                            "align.v": "bottom"
+                        }
+                    }, {
+                        "_type": "Text",
+                        "attributes": {
+                            "color": "#6c6c6c",
+                            "font": "HelveticaNeue-Light:16",
+                            "sizeToFit.enabled": true,
+                            "margin.left": 15,
+                            "margin.right": 20,
+                            "text.align": "left",
+                            "align.v": "middle",
+                            "layoutType": "absolute",
+                            "text": "[[$row.name]]"
+                        }
+                    }, {
+                        "_type": "Text",
+                        "attributes": {
+                            "color": "#FF4300",
+                            "font": "FontAwesome:18",
+                            "sizeToFit.enabled": true,
+                            "margin.left": 20,
+                            "margin.right": 15,
+                            "text.align": "left",
+                            "align.v": "middle",
+                            "align.h": "right",
+                            "layoutType": "absolute",
+                            "text": "fa-angle-right"
+                        }
+                    }]
+                }]
+            }]
+        }],
+        "datasources": [{
+            "_id": "dataRestaurants",
+            "_type": "HTTP",
+            "actions": [{
+                "_type": "Refresh",
+                "attributes": {
+                    "_target": "collectionRestaurants,layoutRestaurantList"
+                },
+                "on": "success"
+            }, {
+                "_type": "Function",
+                "attributes": {
+                    "_target": "collectionRestaurants",
+                    "functionName": "pullToRefresh.end"
+                },
+                "on": "success"
+            }],
             "attributes": {
-              "_target": "collectionRestaurants,layoutRestaurantList"
-            },
-            "on": "success"
-          },
-          {
-            "_type": "Function",
-            "attributes": {
-              "_target": "collectionRestaurants",
-              "functionName": "pullToRefresh.end"
-            },
-            "on": "success"
-          }
-        ],
-        "attributes": {
-          "autoLoad.enabled": false,
-          "baseUrl": "http://grewis-test.apigee.net",
-          "*baseUrl": "http://api.usergrid.com",
-          "pathSuffix": "/api-mobile-app/yelp?term=[[$session.searchTerm]]&ll=[[$device.location.lat]],[[$device.location.long]]",
-          "*pathSuffix": "/grewis/sandbox/restaurants",
-          "http_method": "GET"
-        },
-        "parameters": {
-          "client_id": "e3363508f9e449ea88a73b70ff7107bc"
-        }
-      }
-    ]
-  }
+                "autoLoad.enabled": false,
+                "url": "http://grewis-test.apigee.net/api-mobile-app/yelp?term=[[$session.searchTerm]]&ll=[[$device.location.lat]],[[$device.location.long]]",
+                "*url": "http://api.usergrid.com/grewis/sandbox/restaurants",
+                "method": "GET"
+            }
+        }]
+    }
 }

@@ -17,8 +17,8 @@
             "_type": "Layout",
             "attributes": {
                 "bg.color": "#000000",
-                "layoutType": "absolute",
                 "layoutFlow": "vertical",
+                "layoutType": "absolute",
                 "size.h": "100%",
                 "size.w": "100%"
             },
@@ -48,10 +48,10 @@
                         "color": "#FF4300",
                         "font": "HelveticaNeue-Thin:24",
                         "layoutType": "absolute",
-                        "padding.top": 20,
                         "padding.left": 30,
                         "padding.right": 30,
-                        "size.h": 50,
+                        "padding.top": 20,
+                        "*size.h": 50,
                         "sizeToFit.enabled": true,
                         "text": "[[$session.restaurantName]]",
                         "text.align": "center"
@@ -71,12 +71,12 @@
                         "align.v": "middle",
                         "color": "#FF4300",
                         "font": "FontAwesome:28",
-                        "text": "fa-angle-left",
                         "layoutType": "float",
                         "margin.left": 10,
                         "padding.top": 10,
                         "size.h": 28,
                         "size.w": 28,
+                        "text": "fa-angle-left",
                         "visible": true
                     }
                 }]
@@ -87,8 +87,8 @@
                     "align.h": "center",
                     "align.v": "top",
                     "autofill.h": true,
-                    "layoutType": "absolute",
                     "bg.color": "#ffffff",
+                    "layoutType": "absolute",
                     "margin.top": 70,
                     "size.w": "100%"
                 },
@@ -126,8 +126,8 @@
                             "color": "#FF4300",
                             "font": "HelveticaNeue-Thin:16",
                             "layoutType": "absolute",
-                            "padding.top": 0,
                             "margin.top": 20,
+                            "padding.top": 0,
                             "size.h": 50,
                             "sizeToFit.enabled": true,
                             "text": "[[$session.restCity]]",
@@ -142,8 +142,8 @@
                             "color": "#FF4300",
                             "font": "HelveticaNeue-Thin:14",
                             "layoutType": "absolute",
-                            "padding.top": 0,
                             "margin.top": 40,
+                            "padding.top": 0,
                             "size.h": 50,
                             "sizeToFit.enabled": true,
                             "text": "[[$session.restPhone]]",
@@ -162,16 +162,16 @@
                     }],
                     "attributes": {
                         "animatePinDrop.enabled": true,
+                        "margin.bottom": 75,
+                        "margin.top": 75,
                         "pin": {
                             "lat": "[[$session.restLat]]",
                             "long": "[[$session.restLon]]",
                             "subtitle": "[[$session.restAddr]]",
                             "title": "[[$session.restaurantName]]"
                         },
-                        "margin.top": 75,
-                        "margin.bottom": 75,
-                        "size.w": "100%",
                         "size.h": 200,
+                        "size.w": "100%",
                         "userLocation.enabled": true,
                         "zoomLevel": 12
                     }
@@ -181,15 +181,15 @@
                 "_type": "Layout",
                 "attributes": {
                     "align.h": "center",
+                    "autofill.h": true,
                     "layoutType": "relative",
                     "margin.top": 350,
-                    "size.w": "100%",
                     "padding.left": 5,
                     "padding.right": 5,
-                    "autofill.h": true
+                    "size.w": "100%"
                 },
                 "controls": [{
-                    "_id": "layoutHeader",
+                    "_id": "layoutReviewsHeader",
                     "_type": "Layout",
                     "attributes": {
                         "bg.color": "#ffffff",
@@ -221,15 +221,14 @@
                         "actions": [{
                             "_type": "Navigate",
                             "attributes": {
-                                "*stackType": "push",
                                 "*animation.duration": 0.5,
                                 "*animation.type": "flip.r",
-                                "*to": "viewRestaurantReview.json",
-                                "*to": "viewLogin.json",
+                                "*stackType": "push",
+                                "**to": "viewRestaurantReview.json",
                                 "to": [
                                     "if :: [[$session.access_token:length]] > 0 :: viewRestaurantReview.json",
                                     "if :: [[$session.access_token:length]] == 0 :: viewLogin.json"
-                                ] 
+                                ]
                             },
                             "on": "touchUp"
                         }],
@@ -238,12 +237,12 @@
                             "align.v": "top",
                             "color": "#FF4300",
                             "font": "FontAwesome:20",
-                            "text": "fa-pencil",
                             "layoutType": "float",
                             "margin.right": 10,
                             "padding.top": 0,
                             "size.h": 44,
                             "size.w": 44,
+                            "text": "fa-pencil",
                             "text.align": "right",
                             "visible": true
                         }
@@ -263,10 +262,10 @@
                     "_type": "Text",
                     "attributes": {
                         "align.h": "left",
-                        "size.w": "100%",
+                        "font": "HelveticaNeue-Thin:16",
                         "margin.top": 40,
                         "padding.left": 5,
-                        "font": "HelveticaNeue-Thin:16",
+                        "size.w": "100%",
                         "text": "Be the first to write a Review",
                         "text.align": "left",
                         "visible": false
@@ -275,23 +274,25 @@
                     "_id": "tableviewReviews",
                     "_type": "TableView",
                     "attributes": {
+                        "**cell.size.h": 50,
+                        "autofill.h": true,
                         "autofill.w": true,
-                        "*cell.size.h": 30,
                         "cell.size.w": "100%",
                         "datasource.id": "dataReviews",
-                        "data.basepath": "reviews.0.entities",
+                        "data.basepath": "entities",
                         "enabled": true,
-                        "autofill.h": true,
                         "margin.top": 40,
                         "separator.style": "none",
-                        "visible": false
+                        "visible": true
                     },
                     "controls": [{
                         "_id": "reviewLayout",
                         "_type": "Layout",
                         "attributes": {
-                            "size.w": 320,
-                            "padding": 5
+                            "padding.left": 5,
+                            "padding.right":5,
+                            "padding.bottom": 15,
+                            "size.w": "100%",
                         },
                         "controls": [{
                             "_id": "reviewTitle",
@@ -300,15 +301,16 @@
                                 "color": "#6c6c6c",
                                 "font": "HelveticaNeue-Light:14",
                                 "margin.top": 10,
-                                "text": "[[dataRow.title]]",
-                                "size.w": "100%",
                                 "padding.right": [
-                                "if :: [[dataRow.rating]] == 1 :: 20",
-                                "if :: [[dataRow.rating]] == 2 :: 35",
-                                "if :: [[dataRow.rating]] == 3 :: 50",
-                                "if :: [[dataRow.rating]] == 4 :: 65",
-                                "if :: [[dataRow.rating]] == 5 :: 80"
-                                ]
+                                    "if :: [[$row.rating]] == 1 :: 20",
+                                    "if :: [[$row.rating]] == 2 :: 35",
+                                    "if :: [[$row.rating]] == 3 :: 50",
+                                    "if :: [[$row.rating]] == 4 :: 65",
+                                    "if :: [[$row.rating]] == 5 :: 80"
+                                ],
+                                "*size.h": "100%",
+                                "size.w": "100%",
+                                "text": "[[$row.title]]"
                             }
                         }, {
                             "_id": "ratingStarOne",
@@ -318,12 +320,12 @@
                                 "align.v": "top",
                                 "color": "#FF4300",
                                 "font": "FontAwesome:12",
-                                "text": "fa-star",
-                                "text.align": "right",
                                 "layoutType": "float",
-                                "margin.top": 18,
-                                "margin.right": 15,
-                                "padding.top": 0
+                                "margin.right": 5,
+                                "margin.top": 13,
+                                "padding.top": 0,
+                                "text": "fa-star",
+                                "text.align": "right"
                             }
                         }, {
                             "_id": "ratingStarTwo",
@@ -333,15 +335,15 @@
                                 "align.v": "top",
                                 "color": "#FF4300",
                                 "font": "FontAwesome:12",
+                                "layoutType": "float",
+                                "margin.right": 20,
+                                "margin.top": 13,
+                                "padding.top": 0,
                                 "text": "fa-star",
                                 "text.align": "right",
-                                "layoutType": "float",
-                                "margin.top": 18,
-                                "margin.right": 30,
-                                "padding.top": 0,
                                 "visible": [
-                                    "if :: [[dataRow.rating]] >== 2 :: true",
-                                    "if :: [[dataRow.rating]] < 2 :: false"
+                                    "if :: [[$row.rating]] >== 2 :: true",
+                                    "if :: [[$row.rating]] < 2 :: false"
                                 ]
                             }
                         }, {
@@ -352,15 +354,15 @@
                                 "align.v": "top",
                                 "color": "#FF4300",
                                 "font": "FontAwesome:12",
+                                "layoutType": "float",
+                                "margin.right": 35,
+                                "margin.top": 13,
+                                "padding.top": 0,
                                 "text": "fa-star",
                                 "text.align": "right",
-                                "layoutType": "float",
-                                "margin.top": 18,
-                                "margin.right": 45,
-                                "padding.top": 0,
                                 "visible": [
-                                    "if :: [[dataRow.rating]] >== 3 :: true",
-                                    "if :: [[dataRow.rating]] < 3 :: false"
+                                    "if :: [[$row.rating]] >== 3 :: true",
+                                    "if :: [[$row.rating]] < 3 :: false"
                                 ]
                             }
                         }, {
@@ -371,15 +373,15 @@
                                 "align.v": "top",
                                 "color": "#FF4300",
                                 "font": "FontAwesome:12",
+                                "layoutType": "float",
+                                "margin.right": 50,
+                                "margin.top": 13,
+                                "padding.top": 0,
                                 "text": "fa-star",
                                 "text.align": "right",
-                                "layoutType": "float",
-                                "margin.top": 18,
-                                "margin.right": 60,
-                                "padding.top": 0,
                                 "visible": [
-                                    "if :: [[dataRow.rating]] >== 4 :: true",
-                                    "if :: [[dataRow.rating]] < 4 :: false"
+                                    "if :: [[$row.rating]] >== 4 :: true",
+                                    "if :: [[$row.rating]] < 4 :: false"
                                 ]
                             }
                         }, {
@@ -390,15 +392,15 @@
                                 "align.v": "top",
                                 "color": "#FF4300",
                                 "font": "FontAwesome:12",
+                                "layoutType": "float",
+                                "margin.right": 65,
+                                "margin.top": 13,
+                                "padding.top": 0,
                                 "text": "fa-star",
                                 "text.align": "right",
-                                "layoutType": "float",
-                                "margin.top": 18,
-                                "margin.right": 75,
-                                "padding.top": 0,
                                 "visible": [
-                                    "if :: [[dataRow.rating]] == 5 :: true",
-                                    "if :: [[dataRow.rating]] < 5 :: false"
+                                    "if :: [[$row.rating]] == 5 :: true",
+                                    "if :: [[$row.rating]] < 5 :: false"
                                 ]
                             }
                         }, {
@@ -406,20 +408,20 @@
                             "_type": "Text",
                             "attributes": {
                                 "color": "#6c6c6c",
-                                "font": "HelveticaNeue-LightItalic:11",
-                                "margin.top": 2,
-                                "text": "[[dataRow.reviewer]]"
+                                "font": "HelveticaNeue-LightItalic:12",
+                                "*margin.top": 2,
+                                "text": "[[$row.reviewer]]"
                             }
                         }, {
                             "_id": "reviewBody",
                             "_type": "Text",
                             "attributes": {
                                 "color": "#6c6c6c",
-                                "font": "HelveticaNeue-Light:11",
-                                "margin.top": 2,
+                                "font": "HelveticaNeue-Light:12",
                                 "padding.right": 5,
+                                "margin.bottom": 2,
                                 "size.w": "100%",
-                                "text": "[[dataRow.body]]"
+                                "text": "[[$row.body]]"
                             }
                         }]
                     }]
@@ -457,7 +459,7 @@
         }],
         "datasources": [{
             "_id": "dataReviews",
-            "_type": "JSON",
+            "_type": "HTTP",
             "actions": [{
                 "_type": "Modify",
                 "attributes": {
@@ -469,48 +471,46 @@
                 }
             }, {
                 "_type": "Modify",
+                "actions": [{
+                    "_type": "Refresh",
+                    "attributes": {
+                        "_target": "layoutReviews"
+                    },
+                    "on": "finished"
+                }],
                 "attributes": {
                     "_target": "tableviewReviews"
                 },
                 "on": "success",
                 "set": {
                     "visible": [
-                        "if :: [[dataReviews.reviews.0.count]] > 0 :: true",
-                        "if :: [[dataReviews.reviews.0.count]] == 0 :: false"
+                        "if :: [[dataReviews.response.body.count]] > 0 :: true :: false"
                     ]
-                },
+                }
+            }, {
+                "_type": "Modify",
                 "actions": [{
                     "_type": "Refresh",
                     "attributes": {
                         "_target": "layoutReviews"
                     },
                     "on": "success"
-                }]
-            }, {
-                "_type": "Modify",
+                }],
                 "attributes": {
                     "_target": "noReviewsText"
                 },
                 "on": "success",
                 "set": {
                     "visible": [
-                        "if :: [[dataReviews.reviews.0.count]] > 0 :: false",
-                        "if :: [[dataReviews.reviews.0.count]] == 0 :: true"
+                        "if :: [[dataReviews.response.body.count]] > 0 :: false :: true"
                     ]
-                },
-                "actions": [{
-                    "_type": "Refresh",
-                    "attributes": {
-                        "_target": "layoutReviews"
-                    },
-                    "on": "success"
-                }]
+                }
             }],
             "attributes": {
                 "autoLoad.enabled": true,
-                "baseUrl": "http://grewis-test.apigee.net",
-                "pathSuffix": "/api-workshop-v2/restaurants/[[$session.restID]]",
-                "http_method": "GET"
+                "method": "GET",
+                "url": "http://localhost:10010/restaurants/[[$session.restID]]/reviews"
+
             }
         }]
     }

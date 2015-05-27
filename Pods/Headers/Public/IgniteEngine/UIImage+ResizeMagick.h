@@ -1,0 +1,1 @@
+../../../IgniteEngine/Classes/Model/Utilities/UIImage+ResizeMagick.h

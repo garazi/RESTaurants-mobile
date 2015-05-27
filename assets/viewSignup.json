@@ -174,7 +174,7 @@
         }],
         "datasources": [{
             "_id": "dataAuth",
-            "_type": "JSON",
+            "_type": "HTTP",
             "actions": [{
                 "_type": "Modify",
                 "attributes": {
@@ -195,9 +195,8 @@
             }],
             "attributes": {
                 "autoLoad.enabled": false,
-                "baseUrl": "https://api.usergrid.com",
-                "pathSuffix": "/grewis/sandbox/token",
-                "http.method": "POST"
+                "url": "https://api.usergrid.com/grewis/sandbox/token",
+                "method": "POST"
             },
             "parameters": {
                 "grant_type": "password",

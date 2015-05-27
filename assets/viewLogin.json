@@ -81,17 +81,7 @@
             "controls": [{
                 "_id": "inputUsername",
                 "_type": "TextInput",
-                "actions": [{
-                    "_type": "Modify",
-                    "attributes": {
-                        "_target": "$session"
-                    },
-                    "enabled": true,
-                    "on": "textChanged",
-                    "set": {
-                        "reviewTitle": "[[$self.text]]"
-                    }
-                }],
+                "actions": [],
                 "attributes": {
                     "keyboardAdjustsScreen.enabled": false,
                     "placeholder.text": "Your username",
@@ -106,17 +96,7 @@
             }, {
                 "_id": "inputPassword",
                 "_type": "TextInput",
-                "actions": [{
-                    "_type": "Modify",
-                    "attributes": {
-                        "_target": "$session"
-                    },
-                    "enabled": true,
-                    "on": "textChanged",
-                    "set": {
-                        "reviewTitle": "[[$self.text]]"
-                    }
-                }],
+                "actions": [],
                 "attributes": {
                     "keyboardAdjustsScreen.enabled": false,
                     "placeholder.text": "Your password",
@@ -174,14 +154,14 @@
         }],
         "datasources": [{
             "_id": "dataAuth",
-            "_type": "JSON",
+            "_type": "HTTP",
             "actions": [{
                 "_type": "Modify",
                 "attributes": {
                     "_target": "$session"
                 },
                 "set": {
-                    "access_token": "[[dataAuth.access_token]]"
+                    "access_token": "[[$self.response.body.access_token]]"
                 },
                 "enabled": true,
                 "on": "success"
@@ -195,15 +175,15 @@
             }],
             "attributes": {
                 "autoLoad.enabled": false,
-                "baseUrl": "https://api.usergrid.com",
-                "pathSuffix": "/grewis/sandbox/token",
-                "http.method": "POST"
-            },
-            "parameters": {
-                "grant_type": "password",
-                "username": "[[inputUsername.text]]",
-                "password": "[[inputPassword.text]]"
+                "url": "https://api.usergrid.com/grewis/sandbox/token",
+                "method": "POST",
+                "body": {
+                    "grant_type": "password",
+                    "username": "[[inputUsername.text]]",
+                    "password": "[[inputPassword.text]]"
+                }
             }
+
 
         }]
     }

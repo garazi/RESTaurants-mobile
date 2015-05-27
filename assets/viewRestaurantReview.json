@@ -1,14 +1,6 @@
 {
     "$view": {
-        "actions": [{
-            "_type": "Function",
-            "attributes": {
-                "_target": "reviewTitle",
-                "functionName": "focus",
-                "delay": 0.75
-            },
-            "on": "didAppear"
-        }],
+        "actions": [],
         "attributes": {
             "_id": "restaurantReview",
             "bg.color": "#ffffff",
@@ -343,46 +335,6 @@
                         }
                     }]
                 }, {
-                    "_id": "sliderTest",
-                    "_type": "Slider",
-                    "actions": [{
-                        "_type": "Modify",
-                        "attributes": {
-                            "_target": "$session"
-                        },
-                        "set": {
-                            "reviewRating": "{{parseInt([[$self.value]])}}"
-                        },
-                        "on": "valueChanged"
-                    }, {
-                        "_type": "Function",
-                        "attributes": {
-                            "_target": "[[$self]]",
-                            "functionName": "setValue"
-                        },
-                        "set": {
-                            "value": "{{parseInt([[$self.value]])}}"
-                        },
-                        "on": "touchUp"
-                    }, {
-                        "_type": "Refresh",
-                        "attributes": {
-                            "_target": "sliderTest"
-                        },
-                        "on": "touchUp"
-                    }],
-                    "attributes": {
-                        "visible": false,
-                        "keyboardAdjustsScreen.enabled": false,
-                        "size.w": "100%",
-                        "value.max": 5,
-                        "value.min": 1,
-                        "bg.color": "#f0f0f0",
-                        "size.h": 50,
-                        "padding": 0,
-                        "margin.top": 10
-                    }
-                }, {
                     "_id": "reviewBody",
                     "_type": "TextInput",
                     "actions": [{
@@ -444,17 +396,16 @@
         }],
         "datasources": [{
             "_id": "dataReviewPost",
-            "_type": "JSON",
+            "_type": "HTTP",
             "actions": [],
-            "headers": {
-                "Content-Type": "application/json"
-            },
             "attributes": {
                 "autoLoad.enabled": false,
-                "baseUrl": "http://grewis-test.apigee.net",
-                "pathSuffix": "/api-workshop-v2/reviews",
-                "http.method": "POST",
-                "http.body": "{\"title\": \"[[$session.reviewTitle]]\",\"restID\":[[$session.restID]],\"reviewer\": \"[[$session.reviewAuthor]]\",\"rating\":[[$session.userRating]],\"body\": \"[[$session.reviewBody]]\"}"
+                "url": "http://grewis-test.apigee.net/api-workshop-v2/reviews",
+                "method": "POST",
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "body": "{\"title\": \"[[$session.reviewTitle]]\",\"restID\":[[$session.restID]],\"reviewer\": \"[[$session.reviewAuthor]]\",\"rating\":[[$session.userRating]],\"body\": \"[[$session.reviewBody]]\"}"
             }
         }]
     }

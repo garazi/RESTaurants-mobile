@@ -1,0 +1,45 @@
+{
+    "$app": {
+        "actions": [{
+            "_type": "Function",
+            "attributes": {
+                "_target": "$app",
+                "functionName": "location.beginTracking"
+            },
+            "on": "didBecomeActive, willEnterForeground"
+        }, {
+            "_type": "Function",
+            "attributes": {
+                "_target": "$app",
+                "functionName": "location.endTracking"
+            },
+            "on": "didEnterBackground"
+        }, {
+            "_type": "Function",
+            "attributes": {
+                "_target": "$app",
+                "functionName": "destroySession"
+            },
+            "on": "willTerminate"
+        }],
+        "attributes": {
+            "view.index": "viewRestaurantList.json",
+            "debug.layout.enabled": false,
+            "logging.datasource.enabled": true,
+            "logging.level": "verbose",
+            "mode": "verbose",
+            "navigationBar.enabled": false,
+            "apigee.org": "grewis",
+            "apigee.app": "sandbox",
+            "drawer.animation": "slide",
+            "drawer.animation.parallaxFactor": 2,
+            "drawer.l.max.w": "{{[[$device.screen.w]] - 100}}",
+            "drawer.l.url": "viewMenu.json",
+            "drawer.shadow.enabled": true
+        },
+        "$session.defaults": {
+            "searchTerm": "restaurants"
+        },
+        "datasources": []
+    }
+}
