@@ -106,7 +106,8 @@
                     "size.w": "100%",
                     "text.align": "left",
                     "font": "HelveticaNeue-Thin:20",
-                    "bg.color": "#f0f0f0"
+                    "bg.color": "#f0f0f0",
+                    "format": "password"
                 }
             }, {
                 "_id": "btnLogin",

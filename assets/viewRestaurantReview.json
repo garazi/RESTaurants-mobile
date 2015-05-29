@@ -68,6 +68,39 @@
                     "size.w": 44,
                     "visible": true
                 }
+            }, {
+                "_id": "imageRight",
+                "_type": "Text",
+                "actions": [{
+                    "_type": "Modify",
+                    "attributes": {
+                        "_target": "layoutCamera"
+                    },
+                    "set": {
+                        "visible": true
+                    },
+                    "on": "touchUp"
+                }, {
+                    "_type": "Function",
+                    "attributes": {
+                        "_target": "cameraTest",
+                        "functionName": "restart"
+                    },
+                    "on": "touchUp"
+                }],
+                "attributes": {
+                    "align.h": "right",
+                    "align.v": "middle",
+                    "color": "#FF4300",
+                    "font": "FontAwesome:22",
+                    "text": "fa-camera",
+                    "layoutType": "float",
+                    "margin.right": 0,
+                    "padding.top": 18,
+                    "size.h": 44,
+                    "size.w": 44,
+                    "visible": true
+                }
             }]
         }, {
             "_id": "layoutMain",
@@ -392,6 +425,54 @@
                         "on": "touchUp"
                     }]
                 }]
+            }]
+        }, {
+            "_id": "layoutCamera",
+            "_type": "Layout",
+            "attributes": {
+                "align.h": "center",
+                "align.v": "middle",
+                "layoutType": "absolute",
+                "size.h": "100%",
+                "size.w": "100%",
+                "visible": false
+            },
+            "controls": [{
+                "_id": "cameraTest",
+                "_type": "Camera",
+                "actions": [{
+                    "_type": "Modify",
+                    "attributes": {
+                        "_target": "layoutCamera"
+                    },
+                    "set": {
+                        "visible": false
+                    },
+                    "on": "didSaveImage"
+                }],
+                "attributes": {
+                    "camera": "rear",
+                    "size.h": "100%",
+                    "size.w": "100%"
+                }
+            }, {
+                "_id": "circleControl",
+                "_type": "Circle",
+                "actions": [{
+                    "_type": "Function",
+                    "attributes": {
+                        "_target": "cameraTest",
+                        "functionName": "capture"
+                    },
+                    "on": "touchUp"
+                }],
+                "attributes": {
+                    "align.h": "center",
+                    "align.v": "bottom",
+                    "color": "#f0f0f0",
+                    "layoutType": "absolute",
+                    "size": 50
+                }
             }]
         }],
         "datasources": [{

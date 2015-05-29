@@ -24,6 +24,7 @@
         }],
         "attributes": {
             "view.index": "viewRestaurantList.json",
+            "**view.index": "view.json",
             "debug.layout.enabled": false,
             "logging.datasource.enabled": true,
             "logging.level": "verbose",

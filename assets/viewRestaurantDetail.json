@@ -34,14 +34,7 @@
                 "controls": [{
                     "_id": "headerTitle",
                     "_type": "Text",
-                    "actions": [{
-                        "_type": "Function",
-                        "attributes": {
-                            "_target": "actionSheetTest",
-                            "functionName": "present"
-                        },
-                        "on": "touchUp"
-                    }],
+                    "actions": [],
                     "attributes": {
                         "align.h": "center",
                         "align.v": "middle",
@@ -92,6 +85,7 @@
                     "margin.top": 70,
                     "size.w": "100%"
                 },
+
                 "controls": [{
                     "_id": "layoutInfo",
                     "_type": "Layout",
@@ -102,6 +96,14 @@
                         "size.h": "50%",
                         "size.w": "100%"
                     },
+                    "actions":[{
+                        "_type": "Function",
+                        "attributes": {
+                            "_target": "actionSheetTest",
+                            "functionName": "present"
+                        },
+                        "on": "touchUp"
+                    }],
                     "controls": [{
                         "_id": "restAddr",
                         "_type": "Text",
@@ -292,7 +294,7 @@
                             "padding.left": 5,
                             "padding.right":5,
                             "padding.bottom": 15,
-                            "size.w": "100%",
+                            "size.w": "100%"
                         },
                         "controls": [{
                             "_id": "reviewTitle",
@@ -509,7 +511,8 @@
             "attributes": {
                 "autoLoad.enabled": true,
                 "method": "GET",
-                "url": "http://localhost:10010/restaurants/[[$session.restID]]/reviews"
+                "**url": "http://localhost:10010/restaurants/[[$session.restID]]/reviews",
+                "url": "http://grewis-test.apigee.net/IX-api/restaurants/[[$session.restID]]/reviews"
 
             }
         }]

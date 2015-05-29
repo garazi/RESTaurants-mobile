@@ -189,7 +189,7 @@
                 "_type": "Navigate",
                 "attributes": {
                     "stackType": "push",
-                    "to": "viewRestaurantReview.json",
+                    "to": "viewRestaurantReview.json"
                 },
                 "on": "success"
             }],
