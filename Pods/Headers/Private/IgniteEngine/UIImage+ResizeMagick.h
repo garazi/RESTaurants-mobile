@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Utilities/UIImage+ResizeMagick.h
+../../../IgniteEngine/IgniteEngine/Categories/UIImage+ResizeMagick.h

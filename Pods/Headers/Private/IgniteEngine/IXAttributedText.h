@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Controls/IXAttributedText.h
+../../../IgniteEngine/IgniteEngine/Controls/IXAttributedText.h

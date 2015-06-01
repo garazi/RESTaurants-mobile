@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/BaseObjects/IXBaseDataProviderConfig.h
+../../../IgniteEngine/IgniteEngine/Core/IXBaseDataProviderConfig.h

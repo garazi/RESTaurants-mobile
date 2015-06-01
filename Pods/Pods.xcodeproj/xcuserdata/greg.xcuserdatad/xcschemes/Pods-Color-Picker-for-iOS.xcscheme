@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3115A05C0C2E1D057109EC69"
+               BlueprintIdentifier = "70AD07EFBCD0DAC2A21002C1"
                BuildableName = "libPods-Color-Picker-for-iOS.a"
                BlueprintName = "Pods-Color-Picker-for-iOS"
                ReferencedContainer = "container:Pods.xcodeproj">

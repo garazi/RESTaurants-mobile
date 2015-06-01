@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/View/IXCustomNavPushPopTransition.h
+../../../IgniteEngine/IgniteEngine/Utilities/IXCustomNavPushPopTransition.h

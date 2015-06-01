@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Categories/UIImageView+IXAdditions.h
+../../../IgniteEngine/IgniteEngine/Categories/UIImageView+IXAdditions.h

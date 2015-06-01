@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Controls/IXActivityIndicator.h
+../../../IgniteEngine/IgniteEngine/Controls/IXActivityIndicator.h

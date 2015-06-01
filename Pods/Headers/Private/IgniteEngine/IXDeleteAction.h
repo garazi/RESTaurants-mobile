@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Actions/IXDeleteAction.h
+../../../IgniteEngine/IgniteEngine/Actions/IXDeleteAction.h

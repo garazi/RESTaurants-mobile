@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Actions/IXRefreshAction.h
+../../../IgniteEngine/IgniteEngine/Actions/IXRefreshAction.h

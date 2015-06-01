@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Utilities/IXHTTPResponse.h
+../../../IgniteEngine/IgniteEngine/Utilities/IXHTTPResponse.h

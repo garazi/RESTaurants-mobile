@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Controls/IXCollection.h
+../../../IgniteEngine/IgniteEngine/Controls/IXCollection.h

@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/View/IXOAuthWebAuthViewController.h
+../../../IgniteEngine/IgniteEngine/Controllers/IXOAuthWebAuthViewController.h

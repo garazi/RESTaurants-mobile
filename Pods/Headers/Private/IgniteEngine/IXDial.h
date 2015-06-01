@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Controls/IXDial.h
+../../../IgniteEngine/IgniteEngine/Controls/IXDial.h

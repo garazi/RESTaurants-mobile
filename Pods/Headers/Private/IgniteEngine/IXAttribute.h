@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Attributes/IXAttribute.h
+../../../IgniteEngine/IgniteEngine/Attributes/IXAttribute.h

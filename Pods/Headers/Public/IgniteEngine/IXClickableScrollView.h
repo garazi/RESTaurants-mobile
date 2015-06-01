@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/View/IXClickableScrollView.h
+../../../IgniteEngine/IgniteEngine/Views/IXClickableScrollView.h

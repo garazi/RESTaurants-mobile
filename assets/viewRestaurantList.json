@@ -224,7 +224,6 @@
             "attributes": {
                 "autoLoad.enabled": false,
                 "url": "http://grewis-test.apigee.net/api-mobile-app/yelp?term=[[$session.searchTerm]]&ll=[[$device.location.lat]],[[$device.location.long]]",
-                "*url": "http://api.usergrid.com/grewis/sandbox/restaurants",
                 "method": "GET"
             }
         }]

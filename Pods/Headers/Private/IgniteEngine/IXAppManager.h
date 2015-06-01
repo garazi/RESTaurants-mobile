@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/IXAppManager.h
+../../../IgniteEngine/IgniteEngine/Core/IXAppManager.h

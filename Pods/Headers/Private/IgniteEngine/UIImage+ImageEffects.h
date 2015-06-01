@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Categories/UIImage+ImageEffects.h
+../../../IgniteEngine/IgniteEngine/Categories/UIImage+ImageEffects.h

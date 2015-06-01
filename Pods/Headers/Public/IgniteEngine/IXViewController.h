@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/View/IXViewController.h
+../../../IgniteEngine/IgniteEngine/Controllers/IXViewController.h

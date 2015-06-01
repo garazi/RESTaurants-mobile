@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Utilities/IXSize.h
+../../../IgniteEngine/IgniteEngine/Utilities/IXSize.h

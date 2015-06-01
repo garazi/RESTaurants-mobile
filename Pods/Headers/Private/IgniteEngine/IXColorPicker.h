@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Controls/IXColorPicker.h
+../../../IgniteEngine/IgniteEngine/Controls/IXColorPicker.h

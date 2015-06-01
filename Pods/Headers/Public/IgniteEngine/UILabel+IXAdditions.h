@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Categories/UILabel+IXAdditions.h
+../../../IgniteEngine/IgniteEngine/Categories/UILabel+IXAdditions.h

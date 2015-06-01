@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Controls/IXToggle.h
+../../../IgniteEngine/IgniteEngine/Controls/IXToggle.h

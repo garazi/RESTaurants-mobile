@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Controls/IXImage.h
+../../../IgniteEngine/IgniteEngine/Controls/IXImage.h

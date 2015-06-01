@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Actions/IXLogAction.h
+../../../IgniteEngine/IgniteEngine/Actions/IXLogAction.h

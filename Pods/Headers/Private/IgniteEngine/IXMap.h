@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Controls/IXMap.h
+../../../IgniteEngine/IgniteEngine/Controls/IXMap.h

@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Utilities/IXCellBackgroundSwipeController.h
+../../../IgniteEngine/IgniteEngine/Controllers/IXCellBackgroundSwipeController.h

@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Utilities/IXAssetManager.h
+../../../IgniteEngine/IgniteEngine/Utilities/IXAssetManager.h

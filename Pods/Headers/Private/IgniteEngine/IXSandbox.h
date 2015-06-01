@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/IXSandbox.h
+../../../IgniteEngine/IgniteEngine/Core/IXSandbox.h

@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Utilities/IXPathHandler.h
+../../../IgniteEngine/IgniteEngine/Utilities/IXPathHandler.h

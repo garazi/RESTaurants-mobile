@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/IXWindow.h
+../../../IgniteEngine/IgniteEngine/Core/IXWindow.h

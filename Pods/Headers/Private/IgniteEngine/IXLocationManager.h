@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Utilities/IXLocationManager.h
+../../../IgniteEngine/IgniteEngine/Utilities/IXLocationManager.h

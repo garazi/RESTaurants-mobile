@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Controls/IXBrowser.h
+../../../IgniteEngine/IgniteEngine/Controls/IXBrowser.h

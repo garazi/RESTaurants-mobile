@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Utilities/IXLogger.h
+../../../IgniteEngine/IgniteEngine/Utilities/IXLogger.h

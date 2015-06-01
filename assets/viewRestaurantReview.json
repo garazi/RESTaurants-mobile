@@ -84,7 +84,7 @@
                     "_type": "Function",
                     "attributes": {
                         "_target": "cameraTest",
-                        "functionName": "restart"
+                        "functionName": "present"
                     },
                     "on": "touchUp"
                 }],
@@ -439,39 +439,23 @@
             },
             "controls": [{
                 "_id": "cameraTest",
-                "_type": "Camera",
-                "actions": [{
-                    "_type": "Modify",
-                    "attributes": {
-                        "_target": "layoutCamera"
-                    },
-                    "set": {
-                        "visible": false
-                    },
-                    "on": "didSaveImage"
-                }],
+                "_type": "MediaPicker",
+                "actions": [{"_type": "Function",
                 "attributes": {
-                    "camera": "rear",
-                    "size.h": "100%",
-                    "size.w": "100%"
-                }
-            }, {
-                "_id": "circleControl",
-                "_type": "Circle",
-                "actions": [{
-                    "_type": "Function",
-                    "attributes": {
                         "_target": "cameraTest",
-                        "functionName": "capture"
+                        "functionName": "dismiss"
+                    }, "on": "success"},
+                {
+                    "_type": "Alert",
+                    "attributes": {
+                        "title": "Loaded media at [[$self.selectedMedia]]"
                     },
-                    "on": "touchUp"
+                    "on": "success"
                 }],
                 "attributes": {
-                    "align.h": "center",
-                    "align.v": "bottom",
-                    "color": "#f0f0f0",
-                    "layoutType": "absolute",
-                    "size": 50
+                    "camera": "front",
+                    "cameraControls.enabled": true,
+                    "source": "camera"
                 }
             }]
         }],
@@ -481,12 +465,17 @@
             "actions": [],
             "attributes": {
                 "autoLoad.enabled": false,
-                "url": "http://grewis-test.apigee.net/api-workshop-v2/reviews",
+                "url": "http://grewis-test.apigee.net/IX-api/[[$app.apigee.org]]/reviews",
                 "method": "POST",
-                "headers": {
-                    "Content-Type": "application/json"
-                },
-                "body": "{\"title\": \"[[$session.reviewTitle]]\",\"restID\":[[$session.restID]],\"reviewer\": \"[[$session.reviewAuthor]]\",\"rating\":[[$session.userRating]],\"body\": \"[[$session.reviewBody]]\"}"
+                "requestType": "json",
+                "deriveValueTypes.enabled": true,
+                "body": {
+                    "title": "[[$session.reviewTitle]]",
+                    "restID": "[[$session.restID]]",
+                    "reviewer": "[[$session.reviewAuthor]]",
+                    "rating": "[[$session.userRating]]",
+                    "body": "[[$session.reviewBody]]"
+                }
             }
         }]
     }

@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Categories/NSDictionary+IXAdditions.h
+../../../IgniteEngine/IgniteEngine/Categories/NSDictionary+IXAdditions.h

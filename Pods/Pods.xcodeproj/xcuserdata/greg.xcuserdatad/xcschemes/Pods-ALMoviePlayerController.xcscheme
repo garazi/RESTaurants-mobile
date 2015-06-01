@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1A257B522E116DA08A878D21"
+               BlueprintIdentifier = "11D68E66F177884EC29CFFA8"
                BuildableName = "libPods-ALMoviePlayerController.a"
                BlueprintName = "Pods-ALMoviePlayerController"
                ReferencedContainer = "container:Pods.xcodeproj">

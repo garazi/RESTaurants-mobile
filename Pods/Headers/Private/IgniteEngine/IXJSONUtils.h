@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Utilities/IXJSONUtils.h
+../../../IgniteEngine/IgniteEngine/Utilities/IXJSONUtils.h

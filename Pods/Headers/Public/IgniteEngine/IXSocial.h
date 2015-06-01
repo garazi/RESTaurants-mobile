@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Controls/IXSocial.h
+../../../IgniteEngine/IgniteEngine/Controls/IXSocial.h

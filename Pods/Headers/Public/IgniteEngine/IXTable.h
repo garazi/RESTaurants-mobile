@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Controls/IXTable.h
+../../../IgniteEngine/IgniteEngine/Controls/IXTable.h

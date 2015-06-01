@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/DataProviders/IXDataRowDataProvider.h
+../../../IgniteEngine/IgniteEngine/DataProviders/IXDataRowDataProvider.h

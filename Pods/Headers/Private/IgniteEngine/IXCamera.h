@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Controls/IXCamera.h
+../../../IgniteEngine/IgniteEngine/Controls/IXCamera.h

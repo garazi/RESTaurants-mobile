@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/BaseObjects/IXBaseConditionalObject.h
+../../../IgniteEngine/IgniteEngine/Core/IXBaseConditionalObject.h

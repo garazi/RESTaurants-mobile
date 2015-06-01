@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/DataProviders/IXEntityContainer.h
+../../../IgniteEngine/IgniteEngine/DataProviders/IXEntityContainer.h

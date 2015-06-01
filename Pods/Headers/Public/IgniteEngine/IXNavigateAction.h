@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Actions/IXNavigateAction.h
+../../../IgniteEngine/IgniteEngine/Actions/IXNavigateAction.h

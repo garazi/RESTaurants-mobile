@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Utilities/IXFormatter.h
+../../../IgniteEngine/IgniteEngine/Utilities/IXFormatter.h

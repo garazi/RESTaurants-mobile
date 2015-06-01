@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Categories/UIImagePickerController+IXAdditions.h
+../../../IgniteEngine/IgniteEngine/Categories/UIImagePickerController+IXAdditions.h

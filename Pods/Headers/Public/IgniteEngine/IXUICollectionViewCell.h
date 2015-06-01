@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/View/IXUICollectionViewCell.h
+../../../IgniteEngine/IgniteEngine/Views/IXUICollectionViewCell.h

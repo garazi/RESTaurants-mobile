@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/IXConstants.h
+../../../IgniteEngine/IgniteEngine/Core/IXConstants.h

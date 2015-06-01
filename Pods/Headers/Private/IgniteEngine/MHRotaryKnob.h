@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/ThirdParty/MHRotaryKnob/MHRotaryKnob.h
+../../../IgniteEngine/IgniteEngine/Utilities/MHRotaryKnob.h

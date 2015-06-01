@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Controls/IXMessage.h
+../../../IgniteEngine/IgniteEngine/Controls/IXMessage.h

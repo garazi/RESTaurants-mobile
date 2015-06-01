@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Actions/IXFunctionAction.h
+../../../IgniteEngine/IgniteEngine/Actions/IXFunctionAction.h

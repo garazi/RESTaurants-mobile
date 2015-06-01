@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Other/IXAFNetworkActivityLogger.h
+../../../IgniteEngine/IgniteEngine/Utilities/IXAFNetworkActivityLogger.h

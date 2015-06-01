@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/IXStructs.h
+../../../IgniteEngine/IgniteEngine/Core/IXStructs.h

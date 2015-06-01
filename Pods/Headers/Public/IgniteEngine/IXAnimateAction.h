@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Actions/IXAnimateAction.h
+../../../IgniteEngine/IgniteEngine/Actions/IXAnimateAction.h

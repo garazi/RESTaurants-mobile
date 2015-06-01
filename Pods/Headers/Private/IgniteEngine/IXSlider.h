@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Controls/IXSlider.h
+../../../IgniteEngine/IgniteEngine/Controls/IXSlider.h

@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Controls/IXScanner.h
+../../../IgniteEngine/IgniteEngine/Controls/IXScanner.h

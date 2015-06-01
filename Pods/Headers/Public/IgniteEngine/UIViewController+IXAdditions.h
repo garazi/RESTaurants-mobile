@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Categories/UIViewController+IXAdditions.h
+../../../IgniteEngine/IgniteEngine/Categories/UIViewController+IXAdditions.h

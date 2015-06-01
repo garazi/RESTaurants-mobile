@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Other/IXAFHTTPSessionManager.h
+../../../IgniteEngine/IgniteEngine/Core/IXAFHTTPSessionManager.h

@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Controls/IXAudioRecorder.h
+../../../IgniteEngine/IgniteEngine/Controls/IXAudioRecorder.h

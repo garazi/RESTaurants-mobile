@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Utilities/IXControlLayoutInfo.h
+../../../IgniteEngine/IgniteEngine/Core/IXControlLayoutInfo.h

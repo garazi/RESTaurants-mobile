@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/View/IXUITableViewCell.h
+../../../IgniteEngine/IgniteEngine/Views/IXUITableViewCell.h

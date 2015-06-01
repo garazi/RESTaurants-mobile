@@ -130,7 +130,67 @@
 #define COCOAPODS_POD_AVAILABLE_IgniteEngine
 #define COCOAPODS_VERSION_MAJOR_IgniteEngine 0
 #define COCOAPODS_VERSION_MINOR_IgniteEngine 1
-#define COCOAPODS_VERSION_PATCH_IgniteEngine 1
+#define COCOAPODS_VERSION_PATCH_IgniteEngine 2
+
+// IgniteEngine/Actions
+#define COCOAPODS_POD_AVAILABLE_IgniteEngine_Actions
+#define COCOAPODS_VERSION_MAJOR_IgniteEngine_Actions 0
+#define COCOAPODS_VERSION_MINOR_IgniteEngine_Actions 1
+#define COCOAPODS_VERSION_PATCH_IgniteEngine_Actions 2
+
+// IgniteEngine/Attributes
+#define COCOAPODS_POD_AVAILABLE_IgniteEngine_Attributes
+#define COCOAPODS_VERSION_MAJOR_IgniteEngine_Attributes 0
+#define COCOAPODS_VERSION_MINOR_IgniteEngine_Attributes 1
+#define COCOAPODS_VERSION_PATCH_IgniteEngine_Attributes 2
+
+// IgniteEngine/Categories
+#define COCOAPODS_POD_AVAILABLE_IgniteEngine_Categories
+#define COCOAPODS_VERSION_MAJOR_IgniteEngine_Categories 0
+#define COCOAPODS_VERSION_MINOR_IgniteEngine_Categories 1
+#define COCOAPODS_VERSION_PATCH_IgniteEngine_Categories 2
+
+// IgniteEngine/Controllers
+#define COCOAPODS_POD_AVAILABLE_IgniteEngine_Controllers
+#define COCOAPODS_VERSION_MAJOR_IgniteEngine_Controllers 0
+#define COCOAPODS_VERSION_MINOR_IgniteEngine_Controllers 1
+#define COCOAPODS_VERSION_PATCH_IgniteEngine_Controllers 2
+
+// IgniteEngine/Controls
+#define COCOAPODS_POD_AVAILABLE_IgniteEngine_Controls
+#define COCOAPODS_VERSION_MAJOR_IgniteEngine_Controls 0
+#define COCOAPODS_VERSION_MINOR_IgniteEngine_Controls 1
+#define COCOAPODS_VERSION_PATCH_IgniteEngine_Controls 2
+
+// IgniteEngine/Core
+#define COCOAPODS_POD_AVAILABLE_IgniteEngine_Core
+#define COCOAPODS_VERSION_MAJOR_IgniteEngine_Core 0
+#define COCOAPODS_VERSION_MINOR_IgniteEngine_Core 1
+#define COCOAPODS_VERSION_PATCH_IgniteEngine_Core 2
+
+// IgniteEngine/DataProviders
+#define COCOAPODS_POD_AVAILABLE_IgniteEngine_DataProviders
+#define COCOAPODS_VERSION_MAJOR_IgniteEngine_DataProviders 0
+#define COCOAPODS_VERSION_MINOR_IgniteEngine_DataProviders 1
+#define COCOAPODS_VERSION_PATCH_IgniteEngine_DataProviders 2
+
+// IgniteEngine/Evaluations
+#define COCOAPODS_POD_AVAILABLE_IgniteEngine_Evaluations
+#define COCOAPODS_VERSION_MAJOR_IgniteEngine_Evaluations 0
+#define COCOAPODS_VERSION_MINOR_IgniteEngine_Evaluations 1
+#define COCOAPODS_VERSION_PATCH_IgniteEngine_Evaluations 2
+
+// IgniteEngine/Utilities
+#define COCOAPODS_POD_AVAILABLE_IgniteEngine_Utilities
+#define COCOAPODS_VERSION_MAJOR_IgniteEngine_Utilities 0
+#define COCOAPODS_VERSION_MINOR_IgniteEngine_Utilities 1
+#define COCOAPODS_VERSION_PATCH_IgniteEngine_Utilities 2
+
+// IgniteEngine/Views
+#define COCOAPODS_POD_AVAILABLE_IgniteEngine_Views
+#define COCOAPODS_VERSION_MAJOR_IgniteEngine_Views 0
+#define COCOAPODS_VERSION_MINOR_IgniteEngine_Views 1
+#define COCOAPODS_VERSION_PATCH_IgniteEngine_Views 2
 
 // JAFontAwesome
 #define COCOAPODS_POD_AVAILABLE_JAFontAwesome

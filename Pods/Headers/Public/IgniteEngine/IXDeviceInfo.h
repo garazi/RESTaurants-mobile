@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/Utilities/IXDeviceInfo.h
+../../../IgniteEngine/IgniteEngine/Utilities/IXDeviceInfo.h

@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/IXEnums.h
+../../../IgniteEngine/IgniteEngine/Core/IXEnums.h

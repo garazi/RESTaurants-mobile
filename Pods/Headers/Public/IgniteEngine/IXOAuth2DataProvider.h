@@ -1,1 +1,1 @@
-../../../IgniteEngine/Classes/Model/DataProviders/IXOAuth2DataProvider.h
+../../../IgniteEngine/IgniteEngine/DataProviders/IXOAuth2DataProvider.h
